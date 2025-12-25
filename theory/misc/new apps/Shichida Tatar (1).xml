@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeContentCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <STAR_TYPE>TYPE_1</STAR_TYPE>
+  <NodeContents>
+    <NodeContent Number="0" Title="imitatia" Content="5=&gt;0 descifrarea sensurilor=&gt;imitatie" />
+    <NodeContent Number="1" Title="copiere comportamentelor" Content="Empty Content" />
+    <NodeContent Number="2" Title="tipare comportamentale" Content="Empty Content" />
+    <NodeContent Number="3" Title="cunoastare experimentala" Content="Empty Content" />
+    <NodeContent Number="4" Title="limbaj comunicare" Content="6=&gt;4 asocierea notiunilor=&gt;limbaj comunicare&#xA;descifrarea limbajului de comunicare" />
+    <NodeContent Number="5" Title="descifrarea sensurilor" Content="6=&gt;5 asocierea informatiilor=&gt;descifrarea sensurilor&#xA;&#xA;observand detaliile si descifrand semnificatia&#xA;&#xA;4=&gt;5 limbaj comunicare=&gt;descirarea sensurilor" />
+    <NodeContent Number="6" Title="asocierea notiunilor" Content="7=&gt;6 recunoasterea imaginilor asociate cu continutul=&gt;asocierea notilunilor&#xA;depasim limitele, imaginatie creativa" />
+    <NodeContent Number="7" Title="recunoasterea imaginii asociate cu continutul" Content="5=&gt;7 descifrarea sensurilor=&gt;recunoasterea imaginii asociate cu continutul&#xA;&#xA;generalizam procesul&#xA;&#xA;0=&gt;7 imitatie=&gt;recunoasterea imaginii asociate cu continutul&#xA;&#xA;mima" />
+    <NodeContent Number="8" Title="incurajarea succesului" Content="Empty Content" />
+    <NodeContent Number="9" Title="evaluarea progresului" Content="Empty Content" />
+    <NodeContent Number="10" Title="crearea conditiilor experimentale favorabile" Content="Empty Content" />
+    <NodeContent Number="11" Title="experimentare in grup" Content="Empty Content" />
+    <NodeContent Number="12" Title="aplicarea in alte situatii" Content="Empty Content" />
+    <NodeContent Number="13" Title="analogia" Content="Empty Content" />
+    <NodeContent Number="14" Title="acceptarea unui profil" Content="Empty Content" />
+    <NodeContent Number="15" Title="jocul de rol" Content="Empty Content" />
+    <NodeContent Number="16" Title="socializarea" Content="Empty Content" />
+    <NodeContent Number="17" Title="reguli sociale" Content="Empty Content" />
+    <NodeContent Number="18" Title="identificarea gen proxim si diferenta specifica" Content="Empty Content" />
+    <NodeContent Number="19" Title="incadrarea pe categorii a obiectelor" Content="Empty Content" />
+    <NodeContent Number="20" Title="incurajarea prin joc mimetic" Content="Empty Content" />
+    <NodeContent Number="21" Title="asumarea unei sarcini simple" Content="Empty Content" />
+    <NodeContent Number="22" Title="asumare" Content="Empty Content" />
+    <NodeContent Number="23" Title="imaginatie, creativitate, traire" Content="Empty Content" />
+    <NodeContent Number="24" Title="empatizarea" Content="Empty Content" />
+    <NodeContent Number="25" Title="descoperire" Content="Empty Content" />
+    <NodeContent Number="26" Title="experiment" Content="Empty Content" />
+    <NodeContent Number="27" Title="manifestari" Content="Empty Content" />
+    <NodeContent Number="28" Title="dezvoltarea logicii specifice fenomenului" Content="Empty Content" />
+    <NodeContent Number="29" Title="descifrarea situatiilor" Content="Empty Content" />
+    <NodeContent Number="30" Title="ce simte celalalt (progr de intuire)" Content="Empty Content" />
+    <NodeContent Number="31" Title="vederea intuitiva, dezvoltarea simturilor secundare" Content="Empty Content" />
+    <NodeContent Number="32" Title="imprietenirea si lucrul in colectiv" Content="Empty Content" />
+    <NodeContent Number="33" Title="coordonarea activitatilor in echipa" Content="Empty Content" />
+    <NodeContent Number="34" Title="planificare" Content="Empty Content" />
+    <NodeContent Number="35" Title="pasii logici" Content="Empty Content" />
+    <NodeContent Number="36" Title="intelegere metodica" Content="Empty Content" />
+    <NodeContent Number="37" Title="motivatie" Content="Empty Content" />
+    <NodeContent Number="38" Title="descoperire" Content="Empty Content" />
+    <NodeContent Number="39" Title="modelarea realitatii" Content="Empty Content" />
+    <NodeContent Number="40" Title="rezultate predictibile" Content="Empty Content" />
+    <NodeContent Number="41" Title="strategii" Content="Empty Content" />
+    <NodeContent Number="42" Title="traseu" Content="Empty Content" />
+    <NodeContent Number="43" Title="recunoasterea progresului" Content="Empty Content" />
+    <NodeContent Number="44" Title="descoperirea prin joc" Content="Empty Content" />
+    <NodeContent Number="45" Title="succes" Content="Empty Content" />
+    <NodeContent Number="46" Title="trairea afectiva" Content="Empty Content" />
+    <NodeContent Number="47" Title="stima de sine" Content="Empty Content" />
+    <NodeContent Number="48" Title="curajul asincroniei" Content="Empty Content" />
+    <NodeContent Number="49" Title="interes/pasiune" Content="Empty Content" />
+    <NodeContent Number="50" Title="placerea de a se auto-antrena" Content="Empty Content" />
+    <NodeContent Number="51" Title="imbunatatirea performantelor" Content="Empty Content" />
+    <NodeContent Number="52" Title="ambitie de a reusi" Content="Empty Content" />
+    <NodeContent Number="53" Title="emancipare eliberare" Content="Empty Content" />
+    <NodeContent Number="54" Title="increderea in fortele proprii" Content="Empty Content" />
+    <NodeContent Number="55" Title="performanta pe domeniul de pasiune" Content="Empty Content" />
+    <NodeContent Number="56" Title="coduri" Content="Empty Content" />
+    <NodeContent Number="57" Title="increderea in sine" Content="Empty Content" />
+    <NodeContent Number="58" Title="curiozitate" Content="Empty Content" />
+    <NodeContent Number="59" Title="asocierea informatiilor" Content="Empty Content" />
+    <NodeContent Number="60" Title="procesarea in 2 pasi a informatiei" Content="Empty Content" />
+    <NodeContent Number="61" Title="recunoasterea paternului" Content="Empty Content" />
+    <NodeContent Number="62" Title="cuvinte potrivite" Content="Empty Content" />
+    <NodeContent Number="63" Title="laudarea succesului" Content="Empty Content" />
+    <NodeContent Number="64" Title="incurajarea intrebarilor" Content="Empty Content" />
+    <NodeContent Number="65" Title="confirmarea intuitiei" Content="Empty Content" />
+    <NodeContent Number="66" Title="grupuri pe domenii de interes" Content="Empty Content" />
+    <NodeContent Number="67" Title="transfer de cunoastere" Content="Empty Content" />
+    <NodeContent Number="68" Title="asocierea pe functii/intrajutorare" Content="Empty Content" />
+    <NodeContent Number="69" Title="cercetare, detalii relevante" Content="Empty Content" />
+    <NodeContent Number="70" Title="cautarea legilor/regulilor" Content="Empty Content" />
+    <NodeContent Number="71" Title="dezvoltare accelerata" Content="Empty Content" />
+  </NodeContents>
+</NodeContentCollection>

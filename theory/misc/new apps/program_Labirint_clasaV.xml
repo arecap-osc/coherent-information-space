@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeContentCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <STAR_TYPE>TYPE_1</STAR_TYPE>
+  <NodeContents>
+    <NodeContent Number="0" Title="Performanta personala" Content="numar variabil de pasi logici cu semnalarea gradului de dificultate" />
+    <NodeContent Number="1" Title="Schimbarea patternurilor" Content="traditia culturala, mema culturala, continuitatea culturii" />
+    <NodeContent Number="2" Title="Analiza calitativa" Content="descifrarea sensurilor in functie de context" />
+    <NodeContent Number="3" Title="Responsabilitate [decizii asumate]" Content="etica functionala a relatiei dintre tehnologie si om/societate" />
+    <NodeContent Number="4" Title="Dezvoltarea de noi competente" Content="evolutia gandirii [cum evolueaza de-a lungul istoriei diferite concepte]" />
+    <NodeContent Number="5" Title="Largirea hartii mentale" Content="obiecte derivate, inrudite, legaturi si conexiuni" />
+    <NodeContent Number="6" Title="dezvoltarea curiozitatii" Content="Educatie pentru societate, istorie" />
+    <NodeContent Number="7" Title="rafinarea gandirii" Content="Educatie pentru societate, istorie" />
+    <NodeContent Number="8" Title="schimbarea granulatiei analizei" Content="Educatie pentru societate, istorie" />
+    <NodeContent Number="9" Title="descoperirea legilor specifice fenomenului" Content="Educatie pentru societate, istorie" />
+    <NodeContent Number="10" Title="estimarea consecintelor, analiza de impact" Content="Educatie pentru societate, istorie" />
+    <NodeContent Number="11" Title="specializare" Content="Educatie pentru societate, istorie" />
+    <NodeContent Number="12" Title="Disponibilitate" Content="rezistenta la shcimbarea de limba" />
+    <NodeContent Number="13" Title="Adaptabilitate" Content="cum adaptam limba la contextul cultural (trebnic-netrebnic, mernic-nemernic)" />
+    <NodeContent Number="14" Title="Dorinta de a invata" Content="patrunderea intelesurilor limbii din punct de vedere etimologic" />
+    <NodeContent Number="15" Title="Orizont de cunoastere" Content="argumentatia" />
+    <NodeContent Number="16" Title="Schimbarea granulatiei" Content="limbaje tehnice" />
+    <NodeContent Number="17" Title="Intelegerea semnificativului" Content="Limba si comunicare" />
+    <NodeContent Number="18" Title="Chei de memorie" Content="Limba si comunicare" />
+    <NodeContent Number="19" Title="Cooperare" Content="Limba si comunicare" />
+    <NodeContent Number="20" Title="Descifrarea sabloanelor de gandire" Content="Limba si comunicare" />
+    <NodeContent Number="21" Title="Descifrarea sensurilor" Content="Limba si comunicare" />
+    <NodeContent Number="22" Title="Conexiuni" Content="Limba si comunicare" />
+    <NodeContent Number="23" Title="Sintetizare" Content="cuvantul care inspira" />
+    <NodeContent Number="24" Title="Schimbarea mediului educational" Content="comunicarea pe medierea culturala, lingvistica" />
+    <NodeContent Number="25" Title="Analiza [evaluare]" Content="aria de incredere culturala a mesajului, (sa gasesti cai de comunicare cu oricine)" />
+    <NodeContent Number="26" Title="Potential [aptitudini]" Content="comunicare si lucrul in echipa" />
+    <NodeContent Number="27" Title="Perspective" Content="tehnologiile invazive si efectele lor" />
+    <NodeContent Number="28" Title="Planificare strategica" Content="- Programe de leadership - prin dezbatere&#xA;- Antreprenoriat" />
+    <NodeContent Number="29" Title="Predictie si scenarii" Content="Programe de leadership - prin dezbatere" />
+    <NodeContent Number="30" Title="Idei majore" Content="Programe de leadership - prin dezbatere" />
+    <NodeContent Number="31" Title="Rafinarea hartii mentale [cartografiere]" Content="- Stiintele mediului&#xA;- Programe de leadership - prin dezbatere" />
+    <NodeContent Number="32" Title="Repozitionare" Content="Programe de leadership - prin dezbatere" />
+    <NodeContent Number="33" Title="Valorificarea potentialelor" Content="- Programe de leadership - prin dezbatere&#xA;- Antreprenoriat" />
+    <NodeContent Number="34" Title="Autoanaliza (analiza oportunitatilor ce se deschid)" Content="Modele de comportament" />
+    <NodeContent Number="35" Title="Alegere [decizia de implicare in studiu]" Content="invatarea prin transfer de bune practici" />
+    <NodeContent Number="36" Title="Dedicare" Content="principiile sportivitatii" />
+    <NodeContent Number="37" Title="Obiective" Content="identificare potential nativ-activ" />
+    <NodeContent Number="38" Title="Curaj autentic [redescoperire]" Content="imbunatatirea performantelor" />
+    <NodeContent Number="39" Title="Autonomie" Content="- Educatie fizica si sport" />
+    <NodeContent Number="40" Title="Rezolvarea situatiilor" Content="- organizare pentru a stabili o strategie de echipa" />
+    <NodeContent Number="41" Title="Strategie personala" Content="- Educatie fizica si sport" />
+    <NodeContent Number="42" Title="Dezvoltarea constienta a abilitatilor" Content="- Educatie fizica si sport" />
+    <NodeContent Number="43" Title="Strategii si gandire strategica" Content="- Educatie fizica si sport" />
+    <NodeContent Number="44" Title="Depasirea limitelor" Content="- Educatie fizica si sport" />
+    <NodeContent Number="45" Title="Acumulari [cunostinte fundamentale]" Content="principiile care transced sisteme de gandire" />
+    <NodeContent Number="46" Title="Note / Evaluare / Sistem de notare" Content="evaluare calitativa, corelativa, cantitativa pe sistem de gandire calitativ, corelativ, cantitativ (ce si cum se evalueaza se conduce) ; ex: te lasi condus de principii morale sau de legi restrictive" />
+    <NodeContent Number="47" Title="Validare" Content="triangularea informatiei prin schimbarea referentialului;&#xA;ex: gras si frumos, slab si frumos, frumusete interioara-exterioara" />
+    <NodeContent Number="48" Title="Motivatie intrinseca" Content="identificarea si clasificarea temelor pentru toate stilurile de invatare" />
+    <NodeContent Number="49" Title="Constienta" Content="influentele tehnologie asupra dezvoltarii personalitatii umane" />
+    <NodeContent Number="50" Title="Perseverenta" Content="- Consiliere orientare" />
+    <NodeContent Number="51" Title="Asumarea drumului" Content="- Consiliere orientare&#xA;- Sustinerea copilului in asumarea drumului personal" />
+    <NodeContent Number="52" Title="Aplicabilitatea cunostintelor" Content="- Consiliere orientare" />
+    <NodeContent Number="53" Title="Identificarea instrumentelor de gandire" Content="- Instrumente [de evaluare calitativa] a sistemelor&#xA;- Consiliere orientare" />
+    <NodeContent Number="54" Title="Structurarea logicii" Content=" Consiliere orientare" />
+    <NodeContent Number="55" Title="Motivarea si sustinerea progresului" Content="- Consiliere orientare" />
+    <NodeContent Number="56" Title="Explorare" Content="analiza diverselor contexte,scenarii si configuratii" />
+    <NodeContent Number="57" Title="Progres [salt calitativ]" Content="influentele reciproce dintre stiinte si tehnologie" />
+    <NodeContent Number="58" Title="Entuziasm" Content="bucuria descoperirii a ceea ce nu e la suprafata&#xA;(Evrika!)" />
+    <NodeContent Number="59" Title="Curiozitate" Content="lasat liber pentru copii sa puna intrebari&#xA;incurajarea dialogului si feedbackului" />
+    <NodeContent Number="60" Title="experiment" Content="stiinte" />
+    <NodeContent Number="61" Title="invatare din experienta proprie" Content="stiinte" />
+    <NodeContent Number="62" Title="perfectionare" Content="stiinte" />
+    <NodeContent Number="63" Title="capacitatea de finalizare" Content="stiinte" />
+    <NodeContent Number="64" Title="pasiune cognitiva" Content="stiinte" />
+    <NodeContent Number="65" Title="aprofundare" Content="stiinte" />
+    <NodeContent Number="66" Title="Asumare decizii" Content="tehnologie orientata catre inventica si experiment" />
+    <NodeContent Number="67" Title="Pasiune" Content="tehnologie orientata catre inventica si experiment" />
+    <NodeContent Number="68" Title="Descoperiri proprii" Content="tehnologie orientata catre inventica si experiment" />
+    <NodeContent Number="69" Title="Asumarea riscului" Content="tehnologie orientata catre inventica si experiment" />
+    <NodeContent Number="70" Title="Drum propriu" Content="tehnologie orientata catre inventica si experiment" />
+    <NodeContent Number="71" Title="Rafinarea gandirii" Content="tehnologie orientata catre inventica si experiment" />
+  </NodeContents>
+</NodeContentCollection>

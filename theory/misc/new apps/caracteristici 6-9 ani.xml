@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeContentCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <STAR_TYPE>TYPE_1</STAR_TYPE>
+  <NodeContents>
+    <NodeContent Number="0" Title="convingerile" Content="Empty Content" />
+    <NodeContent Number="1" Title="orizont de asteptare" Content="comportamente /algoritm propriu de actiune + convingerile" />
+    <NodeContent Number="2" Title="comportamente /algoritm propriu de actiune" Content="Empty Content" />
+    <NodeContent Number="3" Title="relatii interumane" Content="comportamente /algoritm propriu de actiune + atitudini" />
+    <NodeContent Number="4" Title="atitudinile" Content="Empty Content" />
+    <NodeContent Number="5" Title="intrarea pe nise sociale" Content="atitudinile + convingerile&#xA;[IN GRUPUL CLASEI]" />
+    <NodeContent Number="6" Title="adaptare" Content="atitudinile + intrarea pe nise sociale" />
+    <NodeContent Number="7" Title="cucerirea de pozitii" Content="intrarea pe nise sociale + convingerile" />
+    <NodeContent Number="8" Title="conflict" Content="convingerile + orizont de asteptare" />
+    <NodeContent Number="9" Title="motivatie" Content="comportamente/algoritm propriu de actiune + orizont de asteptare" />
+    <NodeContent Number="10" Title="prozelitism" Content="relatii interumane + comportamente /algoritm propriu de actiune" />
+    <NodeContent Number="11" Title="coduri de comportament" Content="relatii interumane + atitudinile" />
+    <NodeContent Number="12" Title="conditii de &quot;lupta sau fugi&quot;" Content="comportamente /algoritm propriu de actiune + conditii de mediu [contextul]" />
+    <NodeContent Number="13" Title="conditii de mediu (contextul)" Content="Empty Content" />
+    <NodeContent Number="14" Title="decizie intre asincronie / retard" Content="stima de sine + conditii de mediu (contextul)" />
+    <NodeContent Number="15" Title="stima de sine" Content="Empty Content" />
+    <NodeContent Number="16" Title="leadership" Content="comportamente /algoritm propriu de actiune + stima de sine" />
+    <NodeContent Number="17" Title="dominare prin umilire" Content="comportamente /algoritm propriu de actiune + leadership&#xA;&#xA;18-&gt;17 competitivitate / cooperare catre dominare prin umilire [ex copii se bat intre ei si pedagogul ofera valori, educarea non-violentei --&gt; cuvinte care sa le imbunatateasca harta mentala: prietenie, cooperare, etc --&gt; partea de psihopedagogie --&gt; distribuire de responsabilitati pe care copii le pot duce in grupe de proiecte]&#xA;&#xA;22-&gt; 17 egocentrism catre dominre prin umilire [ex. &quot;eu&quot;/&quot;al meu&quot;/&quot;nu te atingi de&quot; --&gt; pedagogul conduce catre daruire]" />
+    <NodeContent Number="18" Title="competitivitate / cooperare" Content="conditii de &quot;lupta sau fugi&quot; + comportamente / algoritm propriu de actiune" />
+    <NodeContent Number="19" Title="ierarhii" Content="conditii de &quot;lupta sau fugi&quot; + conditiile de mediu [contextul]" />
+    <NodeContent Number="20" Title="potentarea/ascunderea abilitatilor" Content="decizie intre asincronie / retard + conditiile de mediu [contextul]" />
+    <NodeContent Number="21" Title="stabilizarea pozitiei" Content="decizie intre asincronie / retard + stima de sine" />
+    <NodeContent Number="22" Title="egocentrism" Content="stima de sine + leadership" />
+    <NodeContent Number="23" Title="adaptare / inadaptare" Content="nevoia de acceptare de sine + stima de sine" />
+    <NodeContent Number="24" Title="nevoia de acceptare de sine" Content="Empty Content" />
+    <NodeContent Number="25" Title="alegerea drumului" Content="cunoastere de sine + nevoia de acceptare de sine" />
+    <NodeContent Number="26" Title="cunoastere de sine" Content="Empty Content" />
+    <NodeContent Number="27" Title="siguranta" Content="cunoastere de sine + stima de sine" />
+    <NodeContent Number="28" Title="curajul descoperirii" Content="cunoastere de sine + siguranta" />
+    <NodeContent Number="29" Title="profesionalism" Content="stima de sine + siguranta" />
+    <NodeContent Number="30" Title="labilitate psiho-emotionala" Content="stima de sine + adaptare / inadaptare" />
+    <NodeContent Number="31" Title="imitare de modele" Content="adaptare / inadaptare + nevoia de acceptare de sine" />
+    <NodeContent Number="32" Title="proiectii spre viitor" Content="nevoia de acceptare de sine + alegerea drumului" />
+    <NodeContent Number="33" Title="decizie" Content="alegerea drumului + cunoastere de sine" />
+    <NodeContent Number="34" Title="iertare" Content="echilibrarea perceptiilor + cunoasterea de sine" />
+    <NodeContent Number="35" Title="echilibrarea perceptiilor" Content="Empty Content" />
+    <NodeContent Number="36" Title="intuire corecta" Content="constientizare + echilibrarea perceptiilor" />
+    <NodeContent Number="37" Title="constientizare" Content="Empty Content" />
+    <NodeContent Number="38" Title="intelepciune [evalure/asumare riscuri]" Content="cunoastere de sine + constientizare" />
+    <NodeContent Number="39" Title="provocarea limitelor proprii" Content="intelepciune [evalure/asumare riscuri] + cunoastere de sine" />
+    <NodeContent Number="40" Title="performante de varf fara stress" Content="iertare + cunoastere de sine" />
+    <NodeContent Number="41" Title="reconsiderarea realitatii" Content="iertare + echilibrarea perceptiilor" />
+    <NodeContent Number="42" Title="precunoastere" Content="echilibrarea perceptiilor + intuire corecta" />
+    <NodeContent Number="43" Title="intrare in flow" Content="constientizare + intuire corecta" />
+    <NodeContent Number="44" Title="cercetare [cu instrumentar de cercetare]" Content="intelepciune [evalure/asumare riscuri] + constientizare&#xA;ex: triangularea informatiei, cercetare, validare]" />
+    <NodeContent Number="45" Title="autocontrol" Content="sensibilitate emotionala + constientizare" />
+    <NodeContent Number="46" Title="sensibilitate emotionala" Content="Empty Content" />
+    <NodeContent Number="47" Title="empatie" Content="sensibilitate emotionala + incredere" />
+    <NodeContent Number="48" Title="incredere" Content="Empty Content" />
+    <NodeContent Number="49" Title="stapanire de sine" Content="constientizare + incredere&#xA;[stapanirea fenomenului -&gt; stapanirea de sine in cadrul fenomenului]" />
+    <NodeContent Number="50" Title="armonie" Content="incredere + stapanire de sine" />
+    <NodeContent Number="51" Title="luciditate" Content="stapanire de sine + constientizare" />
+    <NodeContent Number="52" Title="bucuria descoperirii" Content="autocontrol + constientizare" />
+    <NodeContent Number="53" Title="rezonanta cu realitatea studiata" Content="autocontrol + sensibilitate emotionala" />
+    <NodeContent Number="54" Title="inteligenta colectiva" Content="sensibilitate emotionala + empatie" />
+    <NodeContent Number="55" Title="conectare" Content="empatie + incredere" />
+    <NodeContent Number="56" Title="respect de sine" Content="capacitatile psiho-emotionale si atitudinile" />
+    <NodeContent Number="57" Title="auto-control" Content="atitudinile + increderea" />
+    <NodeContent Number="58" Title="performanta" Content="capacitati psiho emotionale individuale + incredere&#xA;[din trairea fenomenului]" />
+    <NodeContent Number="59" Title="capacitati psiho emotionale individuale" Content="Empty Content" />
+    <NodeContent Number="60" Title="perseverenta" Content="capacitati psiho emotionale individuale + respect de sine&#xA;&#xA;[task commitment]" />
+    <NodeContent Number="61" Title="charisma" Content="respect de sine + atitudinile" />
+    <NodeContent Number="62" Title="contaminarea trairii" Content="atitudinile + controlul" />
+    <NodeContent Number="63" Title="forta de a depasi obstacole" Content="auto-control + incredere" />
+    <NodeContent Number="64" Title="auto-depasire" Content="performanta  + incredere" />
+    <NodeContent Number="65" Title="salt cognitiv" Content="capacitati psiho emotionale individuale + performanta" />
+    <NodeContent Number="66" Title="maximizarea potentialelor" Content="auto-control + relatii interumane" />
+    <NodeContent Number="67" Title="maestri" Content="relatii interumane + leadership&#xA;[IQ 150-175 --&gt; etajul 3]&#xA;&#xA;copiii cu deficiente sunt maestri pentru parintii lor [se depaseste conflictul pe care il are generatia adulta vs copii]" />
+    <NodeContent Number="68" Title="armonia sociala" Content="siguranta + leadership" />
+    <NodeContent Number="69" Title="har" Content="intelepciune [evalure/asumare riscuri] + siguranta" />
+    <NodeContent Number="70" Title="exceptionalitatea" Content="stapanire de sine + intelepciune [evalure/asumare riscuri]" />
+    <NodeContent Number="71" Title="aprofundare" Content="stapanire de sine + auto-control" />
+  </NodeContents>
+</NodeContentCollection>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeContentCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <STAR_TYPE>TYPE_1</STAR_TYPE>
+  <NodeContents>
+    <NodeContent Number="0" Title="procesarea disfunctionala (cu redundante) a informatiei ce va avea ca efect trasmiterea partiala de informatie  sau dereglari de ritmuri" Content="5=&gt;0 dezvoltarea unor feedbackuri locale autonome ce mentin noua stare ( testul gras se autogenereaza)=&gt;procesarea partiala/cu redundante a informatiei ce va avea ca efect trasmiterea partiala de informatie  sau dereglari de ritmuri&#xA;probleme&#xA;solutii&#xA;8=&gt;0&#xA;probleme &#xA;solutii" />
+    <NodeContent Number="1" Title="modificari ale secventei de ADN-ului induse de diverse citokine, ce va conduce la activarea anumitor enzime/cai metabolice" Content="(modificarile de ADN sunt consecinta si nu cauza bolii-" />
+    <NodeContent Number="2" Title="defecte ale cailor de semnalizare moleculara si neuronala din intestin care conduc la alterarea productiei hepatice de glucoza" Content="" />
+    <NodeContent Number="3" Title="modificari ale florei bacteriene intestinale" Content="Empty Content" />
+    <NodeContent Number="4" Title="afectarea feedbackurilor de relationare cu mediul (excese alimentare, crestere ponderala, rezistenta la insulina) data de comunicarea partiala dintre mediu si structurile interne" Content="" />
+    <NodeContent Number="5" Title="dezvoltarea unor feedbackuri locale autonome ce mentin noua stare ( testul gras se autogenereaza)" Content="5=&gt;0 " />
+    <NodeContent Number="6" Title="inflamatie locala/generala data de modificarea structurala si functionala a adipocitelor la persoanele grase" Content="Empty Content" />
+    <NodeContent Number="7" Title="disfunctionalitatea tesutui gras ca organ endocrin" Content="Empty Content" />
+    <NodeContent Number="8" Title="modificarea metilarii ADN-ului (epigenetice)" Content="Empty Content" />
+    <NodeContent Number="9" Title="disfunctionalitati intracelulare (ale sistemului de curatare a proteinelor impachetate gresit)" Content="Empty Content" />
+    <NodeContent Number="10" Title="modularea raspunsului neuroendocrin de catre microbita (prin AGL cu lant scurt)" Content="Empty Content" />
+    <NodeContent Number="11" Title="rolul microbiotei in dezvoltarea obezitatii (initierea inflamatiei, interactiunea cu sistemul imun, reglarea absorbtiei de nutrienti)" Content="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4239493/&#xA;&#xA;LPZ induc endotexemie care reprezinta primul in dezvoltarea insulinorezistentei si a DZ" />
+    <NodeContent Number="12" Title="reglarea/modificarea comportametului alimentar" Content="Empty Content" />
+    <NodeContent Number="13" Title="senzori intestinali sensibili la cantitatea si calitatea nutrientilor (nutrient sensing mechanisms)" Content="Empty Content" />
+    <NodeContent Number="14" Title="neurohormoni si citokine locale secretate de celulele intestinale" Content="" />
+    <NodeContent Number="15" Title="feedbackuri cu sistemul nervos enteric si SNC pentru reglarea homeostaziei interne" Content="Empty Content" />
+    <NodeContent Number="16" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="17" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="18" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="19" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="20" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="21" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="22" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="23" Title="Plexurile Meissner si Auerbach-reflexe locale " Content="Empty Content" />
+    <NodeContent Number="24" Title="SNE+SNA+SNC ce integreaza emotiile si starile interioare si proceseaza semnale de la visceroreceptori si de la organele de simt" Content="Empty Content" />
+    <NodeContent Number="25" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="26" Title="activarea/modularea cailor metabolice prin neurotransmitatori sau neurohormoni (hormoni locali la nivel digestiv: gastrina, colecistokinina, vip, substanta p)" Content="Empty Content" />
+    <NodeContent Number="27" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="28" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="29" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="30" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="31" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="32" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="33" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="34" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="35" Title="cai metabolice de utilizare a nutrientilor" Content="Empty Content" />
+    <NodeContent Number="36" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="37" Title="reglarea exprimarii receptorilor de insulina sau glucoza si cai alternative de metabolizare (de cautat alte suporturi energetice exceptand glucoza sau polizaharide ce permit energizarea organismului directa din mediu) " Content="Empty Content" />
+    <NodeContent Number="38" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="39" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="40" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="41" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="42" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="43" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="44" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="45" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="46" Title="modificarea concentratiei parametrilor masurabili homeostazici (glicemie, insulina, profil lipidic, etc)" Content="47=&gt;46 modificari la nivelul transcriptiei genetice-metabolomica=&gt;modificarea concentratiei parametrilor masurabili homeostazici (glicemie, insulina, profil lipidic, etc)" />
+    <NodeContent Number="47" Title="modificari la nivelul transcriptiei genetice-metabolomica" Content="Empty Content" />
+    <NodeContent Number="48" Title="modificarea functionalitatii cailor metabolice (cu acumulari excesive sau deficiente)" Content="" />
+    <NodeContent Number="49" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="50" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="51" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="52" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="53" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="54" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="55" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="56" Title="dificultati in a se acorda pe frecventa mediului date de multiple cauze ( alimentatie cu produsi de sinteza ca re induc informatie eronata sau o personalitate egocentrista)" Content="" />
+    <NodeContent Number="57" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="58" Title="comportamente alimentare specifice date de accesul la resurse, incadrarea in nisa sociala sau traditie" Content="Empty Content" />
+    <NodeContent Number="59" Title="Integrarea in mediul natural prin diverse cai (acordare pe frecventa mediului prin alimentatie sau preluare directa din mediu)" Content="60=&gt;59 modificarea calitatii vietii=&gt;Integrarea in mediul natural prin diverse cai&#xA;probleme:depresie, incredere in sine scazuta, capacitatea scazuta de a face fata bolii,limitarea independentei somatice &#xA;solutii: diferentierea intre ''intrinsec impairment'' si ''atributional impairment'' si modalitati de a defini/manageriza in mod individualizat cum resimte fiecare scaderea calitatii vietii (empowering personal)&#xA;65=&gt;59 boli metabolice specifice anumitor grupuri populationale=&gt;Integrarea in mediul natural prin diverse cai  &#xA;probleme:impactul paternurilor dietetice spatio-temporale &#xA;solutii:analiza prevalentei bolilor metabolice (i.e. diabet) in diferite zone geografice cu studierea stilului de viata si transfer de bune practici intre culturi (limitarile date de clima cu solutii si modalitati locale de adaptare); impactul diferitelor alimente asupra aparitiei diabetului (carne, zahar, diete bogate in lipide) (solutiile adaptative cele mai eficiente)" />
+    <NodeContent Number="60" Title="favorizarea aparitiei infectiilor din cauza scaderii activitatii sistemului imun" Content="" />
+    <NodeContent Number="61" Title="propagarea defectelor locale pe stare de anxietate mentinuta de secretia de  cortizon" Content="Empty Content" />
+    <NodeContent Number="62" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="63" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="64" Title="susceptibilitatea genetica in a dezvolta o anumita patologie" Content="Empty Content" />
+    <NodeContent Number="65" Title="boli metabolice specifice anumitor grupuri populationale " Content="Empty Content" />
+    <NodeContent Number="66" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="67" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="68" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="69" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="70" Title="Empty Title" Content="Empty Content" />
+    <NodeContent Number="71" Title="Empty Title" Content="Empty Content" />
+  </NodeContents>
+</NodeContentCollection>

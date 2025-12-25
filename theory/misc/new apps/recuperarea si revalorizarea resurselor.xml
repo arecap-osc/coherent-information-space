@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeContentCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <STAR_TYPE>TYPE_1</STAR_TYPE>
+  <NodeContents>
+    <NodeContent Number="0" Title="colaborare" Content="5 [deschidere] --&gt; 0 [colaborare] Aprecierea potentialelor celorlalti; vad ca si ceilalti sunt buni&#xA;8 [organizare/structurare - stup] --&gt; 0 [colaborare] Fiecare are rolul lui in structura; fiecare vine cu &quot;darul&quot; lui [talentul lui]" />
+    <NodeContent Number="1" Title="Identificarea de solutii si variante" Content="0 [Cooperare] --&gt; 1 [Identificarea de solutii si variante] &#xA;colectare/adunare de date [data mining]&#xA;8 [organizare / structurare - stup] --&gt; 1 [Identificarea de solutii si variante] brainstorming" />
+    <NodeContent Number="2" Title="Grupare pe categorii de activitati [bresle]" Content="&#xA;17=&gt;2 schimbarea granulatiei=&gt;grupare pe bresle&#xA;-Probleme: formarea de subgrupuri izolate si nerecunoascute (infractionale)&#xA;-Solutii: gruparea pe abilitati si domenii de interes&#xA;18=&gt;2 prioritizare=&gt;grupare pe bresle&#xA;-Probleme: castele izolate cu educare profesionala in familie &#xA;-Solutii: deschiderea orizontului de perfectionare catre altii pe nivele de perfectionare (sistemul de centuri colorate)&#xA;" />
+    <NodeContent Number="3" Title="Reconsiderarea valorilor personale" Content="4 [Comunitati / simbioza / ecosistem] --&gt; 3 prin internalizare normelor si valorilor de functionare a comumnitatii&#xA;10 [autoanaliza / introspectie] --&gt; 3 prin filtrarea valorilor personale si din comunitate&#xA;57 [redefinirea bunastarii] --&gt; 3 reconsiderarea  necesarului de resurse [reanalizarea nevoilor personale]&#xA;67 [revelatie?] --&gt; 3&#xA;prin realizarea locului meu in univers&#xA;prin schimbarea de perspectiva" />
+    <NodeContent Number="4" Title="Comunitati / simbioza / ecosistem" Content="6 --&gt;4 interese comune&#xA;11--&gt;4 implicare&#xA;56--&gt;4 functionalitate in comunitate&#xA;57--&gt;4 redefinirea setului de valori (comune)" />
+    <NodeContent Number="5" Title="Deschidere" Content="4--&gt;5 validare interna si transfer de bune practici (dinamica acceptarii)&#xA;6--&gt;5 disponibilitate&#xA;56--&gt;5 largirea spectrului (am o sita mai larga)" />
+    <NodeContent Number="6" Title="Motivatie" Content="Empty Content" />
+    <NodeContent Number="7" Title="Asumare rol personal" Content="Empty Content" />
+    <NodeContent Number="8" Title="Organizare / structurare / stup" Content="Empty Content" />
+    <NodeContent Number="9" Title="Interese comune" Content="Empty Content" />
+    <NodeContent Number="10" Title="autoanaliza / introspectie" Content="Empty Content" />
+    <NodeContent Number="11" Title="Evaluarea disponibilitatilor personale" Content="Empty Content" />
+    <NodeContent Number="12" Title="Evaluarea strategiilor de recuperare" Content="2=&gt;12 specializare=&gt;evaluarea strategiilor de recuperare&#xA;-Probleme: imposibilitatea de evadare din domeniul ingust de specializare&#xA;-Solutii: deschiderea catre reprofesionalizare pe domenii conexe &#xA;19=&gt;12 trierea=&gt;evaluarea strategiilor de recuperare&#xA;-Probleme: inadaptabilitate pe domeniul de profesie&#xA;-Solutii: descoperirea si antrenarea mugurilor de abilitate naturala prin evaluarea intelegerii problemelor celorlalti si a problemelor globale" />
+    <NodeContent Number="13" Title="Nivel de utilitate" Content="12=&gt;13 evaluarea strategiilor=&gt;nivel de utilitate&#xA;-Probleme: incapacitate de decizie intre urgent si important&#xA;-Solutii: analizarea consecintelor pe termen scurt, mediu, lung&#xA;14=&gt;13 asumarea deciziilor=&gt;nivel de utilitate&#xA;-Probleme: confuzia fata de nivelul si etajele de utilitate (fizic, social, mental)&#xA;-Solutii: echilibrarea trup-minte-suflet-constiinta-&#xA;responsabilitate-prin deschiderea nivelului de constiinta" />
+    <NodeContent Number="14" Title="Asumare decizii" Content="15=&gt;14 lider de criza=&gt;asumare decizii&#xA;-Probleme: riscuri inutile sau inacceptabile&#xA;-Solutii: dezbaterea comunitatii si utilizarea inteligentei colective, alegerea unui anturaj experimentat care cunoaste alti experti&#xA;21=&gt;14 meritocratie=&gt;asumare decizii&#xA;-Probleme: insuficienta competentelor necesare asumarii deciziilor  &#xA;-Solutii: formarea prealabila, selectarea in functie de abilitati, tinuta etica, realizari anterioare, etc" />
+    <NodeContent Number="15" Title="Lider de criza" Content="16=&gt;15 viziune de ansamblu=&gt;lider de criza&#xA;-Probleme: modul simplist de evaluare al realitatii&#xA;-Solutii: antrenarea intelegerii pe mai multe nivele de granulatie&#xA;21=&gt;15 meritocratie=&gt;lider de criza&#xA;-Probleme: incapacitatea de ridicare la nivelul cerut de functie&#xA;-Solutii: un manager este inlocuit de un manager mai capabil (antrenarea in managementul crizelor)" />
+    <NodeContent Number="16" Title="Viziune de ansamblu (big picture)" Content="2=&gt;16 gruparea pe categorii de activitati=&gt;viziune de ansamblu&#xA;-Probleme: cunoastere ingusta de nisa ce nu poate fi extinsa dincolo de nisa&#xA;-Solutii: reteaua profesionala&#xA;17=&gt;16 schimbarea granulatiei=&gt;viziune de ansamblu&#xA;-Probleme: lipsa limbajului de comunicare specializata&#xA;-Solutii: dezvoltarea emisferei drepte cu transfer de viziune" />
+    <NodeContent Number="17" Title="schimbarea granulatiei" Content="Empty Content" />
+    <NodeContent Number="18" Title="prioritizare" Content="Empty Content" />
+    <NodeContent Number="19" Title="triere" Content="Empty Content" />
+    <NodeContent Number="20" Title="competente" Content="Empty Content" />
+    <NodeContent Number="21" Title="meritocratie" Content="Empty Content" />
+    <NodeContent Number="22" Title="criterii calitative" Content="Empty Content" />
+    <NodeContent Number="23" Title="Initiativa" Content="Empty Content" />
+    <NodeContent Number="24" Title="Necesitatea de a actiona in conditii limita" Content="Empty Content" />
+    <NodeContent Number="25" Title="Noi metode si instrumente de lucru" Content="Empty Content" />
+    <NodeContent Number="26" Title="analiza calitativa a solutiilor" Content="Empty Content" />
+    <NodeContent Number="27" Title="cod deontologic (conduita eco)" Content="Empty Content" />
+    <NodeContent Number="28" Title="rezultate" Content="Empty Content" />
+    <NodeContent Number="29" Title="actiuni de reconstructie si regenerare" Content="Empty Content" />
+    <NodeContent Number="30" Title="planificare" Content="Empty Content" />
+    <NodeContent Number="31" Title="proceduri" Content="Empty Content" />
+    <NodeContent Number="32" Title="modus operandi" Content="Empty Content" />
+    <NodeContent Number="33" Title="eficientizare resurse" Content="Empty Content" />
+    <NodeContent Number="34" Title="Renuntare la balast" Content="Empty Content" />
+    <NodeContent Number="35" Title="(re)valorificarea potentialelor si resurselor" Content="Empty Content" />
+    <NodeContent Number="36" Title="Armonizare vechi cu nou" Content="Empty Content" />
+    <NodeContent Number="37" Title="recalibrare" Content="Empty Content" />
+    <NodeContent Number="38" Title="optimizare" Content="Empty Content" />
+    <NodeContent Number="39" Title="testarea functionalitatii" Content="Empty Content" />
+    <NodeContent Number="40" Title="noi logici (imbunatatirea gandirii)" Content="Empty Content" />
+    <NodeContent Number="41" Title="noi structuri" Content="Empty Content" />
+    <NodeContent Number="42" Title="integrarea functionala (a info, resurse, potentiale)" Content="Empty Content" />
+    <NodeContent Number="43" Title="redescoperire traditii vechi" Content="Empty Content" />
+    <NodeContent Number="44" Title="directii de iesire din criza" Content="Empty Content" />
+    <NodeContent Number="45" Title="Largirea orizontului - noi domenii de interes" Content="Empty Content" />
+    <NodeContent Number="46" Title="Nivel de vitalitate (energie vitala, renastere, reinventare)" Content="Empty Content" />
+    <NodeContent Number="47" Title="Cresterea nivelului increderii si stimei de sine" Content="Empty Content" />
+    <NodeContent Number="48" Title="detaliu semnificativ" Content="Empty Content" />
+    <NodeContent Number="49" Title="cooperare" Content="Empty Content" />
+    <NodeContent Number="50" Title="open source (impartasire)" Content="Empty Content" />
+    <NodeContent Number="51" Title="inteligenta colectiva" Content="Empty Content" />
+    <NodeContent Number="52" Title="constiinta colectiva" Content="Empty Content" />
+    <NodeContent Number="53" Title="explorare" Content="Empty Content" />
+    <NodeContent Number="54" Title="validare" Content="Empty Content" />
+    <NodeContent Number="55" Title="performanta" Content="Empty Content" />
+    <NodeContent Number="56" Title="Acceptare" Content="Empty Content" />
+    <NodeContent Number="57" Title="redefinirea bunastarii" Content="Empty Content" />
+    <NodeContent Number="58" Title="Smerenie" Content="Empty Content" />
+    <NodeContent Number="59" Title="Respectul creatiei" Content="Empty Content" />
+    <NodeContent Number="60" Title="armonie" Content="Empty Content" />
+    <NodeContent Number="61" Title="intelegerea limbajelor" Content="Empty Content" />
+    <NodeContent Number="62" Title="schimbare de paradigma" Content="Empty Content" />
+    <NodeContent Number="63" Title="schimbarea perspectivei" Content="Empty Content" />
+    <NodeContent Number="64" Title="entuziasm" Content="Empty Content" />
+    <NodeContent Number="65" Title="iubire" Content="Empty Content" />
+    <NodeContent Number="66" Title="dezintegrare pozitiva" Content="Empty Content" />
+    <NodeContent Number="67" Title="revelatie?" Content="Empty Content" />
+    <NodeContent Number="68" Title="scop/directie" Content="Empty Content" />
+    <NodeContent Number="69" Title="actiune" Content="Empty Content" />
+    <NodeContent Number="70" Title="omul potrivit la locul potrivit" Content="Empty Content" />
+    <NodeContent Number="71" Title="altruism" Content="Empty Content" />
+  </NodeContents>
+</NodeContentCollection>

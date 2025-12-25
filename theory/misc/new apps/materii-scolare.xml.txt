@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeContentCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <STAR_TYPE>TYPE_1</STAR_TYPE>
+  <NodeContents>
+    <NodeContent Number="0" Title="aplicare practica" Content="Empty Content" />
+    <NodeContent Number="1" Title="fizica-chimie-tehnologie" Content="Empty Content" />
+    <NodeContent Number="2" Title="experiment" Content="Empty Content" />
+    <NodeContent Number="3" Title="logici interne ale fenomenelor/ stiintele complexitatii" Content="Empty Content" />
+    <NodeContent Number="4" Title="formalizare" Content="Empty Content" />
+    <NodeContent Number="5" Title="algoritmizare" Content="Empty Content" />
+    <NodeContent Number="6" Title="structurare multidisciplinara a cunostintelor" Content="Empty Content" />
+    <NodeContent Number="7" Title="planificare si executie" Content="Empty Content" />
+    <NodeContent Number="8" Title="ateliere de creativitate tehnica si realizare tehnologica" Content="Empty Content" />
+    <NodeContent Number="9" Title="observarea caracteristicilor relevante si analizarea logicii interne" Content="club de dezbateri" />
+    <NodeContent Number="10" Title="enrichment, analiza realitatii-emiterea de ipoteze" Content="club de dezbateri" />
+    <NodeContent Number="11" Title="instrumentele complexitatii" Content="Empty Content" />
+    <NodeContent Number="12" Title="biologie-stiintele mediului" Content="Empty Content" />
+    <NodeContent Number="13" Title="intuire" Content="Empty Content" />
+    <NodeContent Number="14" Title="jocuri logice" Content="Empty Content" />
+    <NodeContent Number="15" Title="strategii" Content="Empty Content" />
+    <NodeContent Number="16" Title="cibernetica si informatica aplicata" Content="Empty Content" />
+    <NodeContent Number="17" Title="realizarea de produse informatice aplicate-robotica" Content="Empty Content" />
+    <NodeContent Number="18" Title="studiul metamorfozelor din natura" Content="Empty Content" />
+    <NodeContent Number="19" Title="comunicarea in natura" Content="Empty Content" />
+    <NodeContent Number="20" Title="atelier de creativitate in gandire" Content="Empty Content" />
+    <NodeContent Number="21" Title="aplicatii tehnice si planificare strategica" Content="Empty Content" />
+    <NodeContent Number="22" Title="sisteme expert-portofolii de solutii complementare" Content="Empty Content" />
+    <NodeContent Number="23" Title="jocuri sportive" Content="Empty Content" />
+    <NodeContent Number="24" Title="colaborare" Content="Empty Content" />
+    <NodeContent Number="25" Title="tehnici adaptative" Content="Empty Content" />
+    <NodeContent Number="26" Title="proiecte de grup" Content="Empty Content" />
+    <NodeContent Number="27" Title="tehnici de supravietuire in natura si protejarea mediului natural" Content="Empty Content" />
+    <NodeContent Number="28" Title="studiul echilibrului ecosistemic si refacerea echilibrului afectat de actiunea umana" Content="Empty Content" />
+    <NodeContent Number="29" Title="ecologie, relatii ecologice, mecanismele sustenabilitatii biodiversitatii" Content="Empty Content" />
+    <NodeContent Number="30" Title="dexvoltatarea abilitatilor sportive-elemente de crestere si imbunatatire a sanatatii" Content="Empty Content" />
+    <NodeContent Number="31" Title="competitie de calitate-intrajutorare la nevoie" Content="Empty Content" />
+    <NodeContent Number="32" Title="biodiversitatea" Content="relatiile de ofeta reciproca dintre specii, profesiile naturii si rolul umanitatii in ecosistem" />
+    <NodeContent Number="33" Title="studiul ingineriei naturii" Content="realizarea de concepte noi tehnologice si de inventii noi" />
+    <NodeContent Number="34" Title="tehnici inovative" Content="Empty Content" />
+    <NodeContent Number="35" Title="experimentare" Content="Empty Content" />
+    <NodeContent Number="36" Title="creatie tehnologica" Content="Empty Content" />
+    <NodeContent Number="37" Title="creativitate/ inventivitate" Content="Empty Content" />
+    <NodeContent Number="38" Title="cercetarea tehnologica pe utilizarea resurselor regenerabile" Content="Empty Content" />
+    <NodeContent Number="39" Title="proiecte de reciclare a gunoaielor sau noxelor" Content="proiecte de reciclare a gunoaielor sau noxelor si de transformare a acestora in materiale industriale sau agricole secundare" />
+    <NodeContent Number="40" Title="realizarea concreta si aplicabila de tehnologii de reciclare" Content="realizarea concreta si aplicabila de tehnologii de reciclare a gunoaielor si noxelor si de ecologizare a zonelor afectate" />
+    <NodeContent Number="41" Title="laborator de experimentat idei si de realizare de prototipuri" Content="Empty Content" />
+    <NodeContent Number="42" Title="realizarea de elemente de auto-dotare instrumentala" Content="Empty Content" />
+    <NodeContent Number="43" Title="laborator de data-mining si analiza" Content="laborator de data-mining si analiza care conduce la intelegerea fenomenelor si la validarea ipotezelor de lucru si a proiectelor" />
+    <NodeContent Number="44" Title="studiul mecanismelor de refacere naturala a echilibrului ecosistemic" Content="exemple de tehnologii umane ce conduc la acest rezultat" />
+    <NodeContent Number="45" Title="protejarea mediului" Content="Empty Content" />
+    <NodeContent Number="46" Title="intrajutorare" Content="Empty Content" />
+    <NodeContent Number="47" Title="comunicare-limbi" Content="Empty Content" />
+    <NodeContent Number="48" Title="exploatarea de baze de date" Content="Empty Content" />
+    <NodeContent Number="49" Title="tehnologii de data-mining si invatare rapida" Content="Empty Content" />
+    <NodeContent Number="50" Title="obiceiuri culturale ce conduc la eficientizarea unor mecanisme sociale si la coerentizarea comportamentelor sustenabile sociale si de mediu" Content="transferul de bune practici si realizarea de coduri in cadrul scolii" />
+    <NodeContent Number="51" Title="crearea de baze de date necesare studierii din perspective multiple a unui fenomen" Content="club de dezbateri si de emitere de ipoteze aspura istoricului si dezvoltarii fenomenului, utilizarea mai multor logici de analizare si a mai multor perspective de abordare" />
+    <NodeContent Number="52" Title="echilibrul sistemic social si ecosistemic" Content="rolul culturilor si a obiceiurilor in conservarea acestui echilibru&#xA;&#xA;obiceiuri culturale ce creaza dezechilibru ecosistemic (club de dezbateri)" />
+    <NodeContent Number="53" Title="realizarea de proiecte de sustenabilizare concomitenta a mediului si de diminuare a dezechilibrelor socio-economice" Content="" />
+    <NodeContent Number="54" Title="studiul limbii nationale si a limbilor straine" Content="studiul limbii nationale si a limbilor straine din perspectiva dinamicii culturale si a filosofiei de gandire proprii diferitelor culturi&#xA;&#xA;elemente care ne apropie sau ne diferentiaza sub aspect al dinamicii istorice de dezvoltare lingvistica" />
+    <NodeContent Number="55" Title="intelegerea perspectivelor de gandire si exprimare a diferitelor culturi" Content="studiul diferentelor culturale, credinte, ritualuri, cutume, tabuuri, traditii ce diferentiaza culturile" />
+    <NodeContent Number="56" Title="analizarea stiintifica" Content="Empty Content" />
+    <NodeContent Number="57" Title="resurse planetare-geografie" Content="Empty Content" />
+    <NodeContent Number="58" Title="istoria gandirii/ istoria culturii" Content="Empty Content" />
+    <NodeContent Number="59" Title="gandire" Content="Empty Content" />
+    <NodeContent Number="60" Title="matematici aplicate" Content="Empty Content" />
+    <NodeContent Number="61" Title="instrumente matematice de gandire" Content="Empty Content" />
+    <NodeContent Number="62" Title="gestionarea sustenabila-antreprenoriat sustenabil " Content="Empty Content" />
+    <NodeContent Number="63" Title="realizarea de micro proiecte sustenabile" Content="Empty Content" />
+    <NodeContent Number="64" Title="cunoasterea radacinilor civilizatiilor si culturilor" Content="Empty Content" />
+    <NodeContent Number="65" Title="modele de gandire, evolutia conceptelor cheie" Content="Empty Content" />
+    <NodeContent Number="66" Title="structura interna si de suprafata a pamantului" Content="metabolismul terestru-teoria Gaia&#xA;&#xA;abordarea din perspectiva complexitatii a raspandirii resurselor naturale si rolul acestora in viziunea Gaia" />
+    <NodeContent Number="67" Title="abordarea de tip cibernetic a circuitelor de feedback in natura" Content="legaturile cu logicile complexitatii a mecanismelor de autoreglaj din natura&#xA;&#xA;proiectarea sustenabilitatii socio-culturale prin analizarea mecanismelor inspirate din natura" />
+    <NodeContent Number="68" Title="analizarea mecanismelor de feedback din natura si a buclelor de feedbak alterate din cauza interventiei umane" Content="proiectarea de masuri de refacere a acestor bucle prin tehnologii specifice si schimbarea comportamentelor umane" />
+    <NodeContent Number="69" Title="studiul rolului diferitelor specii in realizarea echilibrului general" Content="cercetarea exemplelor de bune practici in care diferite specii devin aliati in diferite tehnologii pentru recuperarea echilibrelor in natura" />
+    <NodeContent Number="70" Title="realizarea de antrenamente de dezvoltare a abilitatilor umane naturale si de maximizare a potentialelor" Content="practicarea acestora (ex: tehnici de calcul mental, de invatare eficienta, de analiza a datelor, de observare a detaliilor relevante, etc.)" />
+    <NodeContent Number="71" Title="realizarea de scenarii de management a diferitelor situatii critice sau crize prin actiuni in timp real" Content="colaborare pe retele de specialisti sau de socializare&#xA;&#xA;crearea de baze de date cu specific pentru diferite aspecte" />
+  </NodeContents>
+</NodeContentCollection>

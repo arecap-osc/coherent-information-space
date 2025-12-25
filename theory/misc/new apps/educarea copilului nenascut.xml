@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeContentCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <STAR_TYPE>TYPE_1</STAR_TYPE>
+  <NodeContents>
+    <NodeContent Number="0" Title="armonizare" Content="2=&gt;0 luat in brate" />
+    <NodeContent Number="1" Title="empatie" Content="Empty Content" />
+    <NodeContent Number="2" Title="intuirea nevoilor copilului" Content="Empty Content" />
+    <NodeContent Number="3" Title="constientizare" Content="Empty Content" />
+    <NodeContent Number="4" Title="comunicarea cu copilul" Content="0=&gt;4 intrarea in ritmul copilului" />
+    <NodeContent Number="5" Title="echilibru" Content="Empty Content" />
+    <NodeContent Number="6" Title="Bucurie" Content="comunicarea cu copilul + echilibrul" />
+    <NodeContent Number="7" Title="adaptabilitate" Content="echilibru + armonizare" />
+    <NodeContent Number="8" Title="incredere" Content="armonizare + empatie" />
+    <NodeContent Number="9" Title="Integrare" Content="intuirea nevoilor copilului + empatie" />
+    <NodeContent Number="10" Title="Indrumare" Content="intuirea nevoilor copilului + constientizare" />
+    <NodeContent Number="11" Title="Recunoasterea" Content="comunicarea cu copilul + constientizare" />
+    <NodeContent Number="12" Title="auto control" Content="Empty Content" />
+    <NodeContent Number="13" Title="feromonii de contact cu mama" Content="Empty Content" />
+    <NodeContent Number="14" Title="comportamente umaniste inalte" Content="Empty Content" />
+    <NodeContent Number="15" Title="decizii adaptative" Content="Empty Content" />
+    <NodeContent Number="16" Title="gasirea de solutii" Content="Empty Content" />
+    <NodeContent Number="17" Title="flexibilitate" Content="intuirea nevoilor copilului + gasirea de solutii" />
+    <NodeContent Number="18" Title="echilibrul relatiei" Content="intuirea nevoilor copilului + autocontrol" />
+    <NodeContent Number="19" Title="stabilitate" Content="feromonii de contact cu mama + autocontrol" />
+    <NodeContent Number="20" Title="depasirea instinctualitatii" Content="feromonii de contact cu mama + comportamente umaniste inalte" />
+    <NodeContent Number="21" Title="anduranta" Content="comportamente umaniste inalte + decizii adaptative" />
+    <NodeContent Number="22" Title="creativitate" Content="decizii adaptative + gasirea de solutii" />
+    <NodeContent Number="23" Title="adaptare la mediu nou" Content="Empty Content" />
+    <NodeContent Number="24" Title="programe interne" Content="Empty Content" />
+    <NodeContent Number="25" Title="autonomie" Content="Empty Content" />
+    <NodeContent Number="26" Title="antrenare a copilului in burta mamei" Content="Empty Content" />
+    <NodeContent Number="27" Title="nivel de mobilitate coordonata" Content="Empty Content" />
+    <NodeContent Number="28" Title="putere de concentrare" Content="antrenare a copilului in burta mamei + nivel de mobilitate coordonata" />
+    <NodeContent Number="29" Title="mobilizare totala" Content="nivel de mobilitate coordonata + decizii adaptative" />
+    <NodeContent Number="30" Title="liber arbitru" Content="adaptare la mediu nou + decizii adaptative" />
+    <NodeContent Number="31" Title="detasare" Content="adaptare la mediu nou + programe interne" />
+    <NodeContent Number="32" Title="auto-depasire" Content="programe interne + autonomie" />
+    <NodeContent Number="33" Title="abilitati inalte" Content="antrenarea copilului in burta mamei + autonomie" />
+    <NodeContent Number="34" Title="abilitati" Content="Empty Content" />
+    <NodeContent Number="35" Title="decizii de crestere coordonata" Content="Empty Content" />
+    <NodeContent Number="36" Title="dezvoltarea intelectului" Content="Empty Content" />
+    <NodeContent Number="37" Title="salturi evolutive" Content="Empty Content" />
+    <NodeContent Number="38" Title="accesarea calitatilor inascute" Content="Empty Content" />
+    <NodeContent Number="39" Title="inducerea calitatilor inalte" Content="accesarea calitatilor inascute + antrenarea copilului in burta mamei" />
+    <NodeContent Number="40" Title="hranire informationala si emotionala" Content="antrenare a copilului in burta mamei + abilitati" />
+    <NodeContent Number="41" Title="auto-cunoastere" Content="abilitati + decizii de crestere coordonata" />
+    <NodeContent Number="42" Title="auto-emancipare" Content="decizii de crestere coordonata + dezvoltarea intelectului" />
+    <NodeContent Number="43" Title="accelerarea dezvoltarii" Content="dezvoltarea intelectului + salturi evolutive" />
+    <NodeContent Number="44" Title="Exceptionalitate" Content="salturi evolutive + accesarea calitatilor inascute" />
+    <NodeContent Number="45" Title="asincronie" Content="Empty Content" />
+    <NodeContent Number="46" Title="stari paradoxale" Content="Empty Content" />
+    <NodeContent Number="47" Title="modificarea perceptiilor" Content="Empty Content" />
+    <NodeContent Number="48" Title="dezvoltarea de calitati paradoxale" Content="Empty Content" />
+    <NodeContent Number="49" Title="genialitate" Content="Empty Content" />
+    <NodeContent Number="50" Title="vizionarism" Content="dezvoltarea de calitati paradoxale + genialitate" />
+    <NodeContent Number="51" Title="spargerea frontierelor cunoasterii" Content="salturi evolutive + genialitate" />
+    <NodeContent Number="52" Title="talent" Content="asincronie + salturi evolutive" />
+    <NodeContent Number="53" Title="inspiratie" Content="asincronie + stari paradoxale" />
+    <NodeContent Number="54" Title="descoperire" Content="modificarea perceptiilor + stari paradoxale" />
+    <NodeContent Number="55" Title="supra-normalitate" Content="modificarea perceptiilor + dezvoltarea de calitati paradoxale" />
+    <NodeContent Number="56" Title="evolutie" Content="Empty Content" />
+    <NodeContent Number="57" Title="conectare" Content="Empty Content" />
+    <NodeContent Number="58" Title="frecvente inalte" Content="Empty Content" />
+    <NodeContent Number="59" Title="informatia genetica" Content="4=&gt;59 blandete, iubire, armonie&#xA;48=&gt;59 atentie distributiva&#xA;60=&gt;59 incurajare, recunoastere&#xA;65=&gt;59 stari inalte produse prin copierea parintelui&#xA;61=&gt;59 incredere in fortele proprii&#xA;64=&gt;59 potentarea simturilor secundare" />
+    <NodeContent Number="60" Title="salt calitativ" Content="evolutie + informatia genetica&#xA;61=&gt;60 recunosterea progresului copilului&#xA;56=&gt;60 hrana fizica, emotionala, intelectuala, energetica, spirituala" />
+    <NodeContent Number="61" Title="rafinarea abilitatilor" Content="evolutie + comunicarea cu copilul" />
+    <NodeContent Number="62" Title="rezonanta" Content="conectare + comunicarea cu copilul" />
+    <NodeContent Number="63" Title="telepatie" Content="conectare + dezvoltarea de calitati paradoxale" />
+    <NodeContent Number="64" Title="linistea mintii" Content="dezvoltarea de calitati paradoxale + frecvente inalte" />
+    <NodeContent Number="65" Title="armonizare [pace]" Content="frecvente inalte + informatia genetica" />
+    <NodeContent Number="66" Title="iubire" Content="conectare + constientizare" />
+    <NodeContent Number="67" Title="revelatie" Content="constientizare + gasirea de solutii&#xA;68 -&gt; 67 intrarea in logica fenomenului catre revelatie -&gt; cunoasterea complexitatii vietii intrauterine a copilului&#xA;27 -&gt; 67 nivel de mobilitate coordonata catre revelatie [mame vizuale] -&gt; prin glasul miscarii, prin armonizarea miscarilor [ex: dansez cu copilul din burta, prin thai chi]" />
+    <NodeContent Number="68" Title="intrarea in logica fenomenului" Content="gasirea de solutii + nivel de mobilitate coordonata" />
+    <NodeContent Number="69" Title="reinventare" Content="nivel de mobilitate coordonata + accesarea calitatilor inascute" />
+    <NodeContent Number="70" Title="maximizarea potentialului" Content="accesarea calitatilor inascute + genialitate" />
+    <NodeContent Number="71" Title="spiritualitate inalta" Content="genialitate + conectare" />
+  </NodeContents>
+</NodeContentCollection>

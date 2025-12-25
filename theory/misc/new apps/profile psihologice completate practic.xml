@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeContentCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <STAR_TYPE>TYPE_1</STAR_TYPE>
+  <NodeContents>
+    <NodeContent Number="0" Title="evolutie" Content="-evolutie&#xA;-inovarea&#xA;-maximizarea potentialului" />
+    <NodeContent Number="1" Title="Incredere in sine" Content="-Incredere in sine&#xA;-alternative&#xA;-Cunoasterea ecologiei&#xA;" />
+    <NodeContent Number="2" Title="afectivitate pozitiva" Content="-afectivitate pozitiva&#xA;-resurse secundare sau regenerabile&#xA;-&quot;Garduri vii sustenabile&quot;" />
+    <NodeContent Number="3" Title="Atractie" Content="-Atractie&#xA;-noi tehnologii&#xA;-comunicarea pe frecventele naturii" />
+    <NodeContent Number="4" Title="intelegere" Content="-intelegere&#xA;-noi tehnologii&#xA;-permacultura" />
+    <NodeContent Number="5" Title="Curiozitate" Content="-Curiozitate&#xA;-cresterea performantelor individuale&#xA;-cunoasterea echilibrului speciilor din natura" />
+    <NodeContent Number="6" Title="Revelatie" Content="-Revelatie&#xA;-generatia adaptata la noile tehnologii&#xA;-optimizarea relatiilor om-natura" />
+    <NodeContent Number="7" Title="Descoperire" Content="-Descoperire&#xA;-Tehnologii de marire a perfomantelor individuale&#xA;-aliante cu specii din natura" />
+    <NodeContent Number="8" Title="Asumare" Content="-Asumare&#xA;-estimarea efectelor secundare / colaterale&#xA;-&quot;politete&quot; de mediu" />
+    <NodeContent Number="9" Title="Autoacceptare" Content="-Autoacceptare&#xA;-Tehnologii cu resurse alternative&#xA;-optimizarea speciilor si a biotopului speciilor" />
+    <NodeContent Number="10" Title="Pasiune" Content="-Pasiune&#xA;-tehnologii inovative sustenabile si durabile&#xA;-comunicarea cu &quot;gardurile vii&quot;" />
+    <NodeContent Number="11" Title="Simpatie" Content="-Simpatie&#xA;-noua generatie tehnologica&#xA;-maximizarea ofertei naturii" />
+    <NodeContent Number="12" Title="Empatie" Content="-Empatie&#xA;-experimente de echilibrare&#xA;-intelegerea utilitatii generale a speciilor&#xA;" />
+    <NodeContent Number="13" Title="simtirea" Content="-simtirea&#xA;-simtire cu ajutorul receptorilor&#xA;-echilibrul relatiei om-natura" />
+    <NodeContent Number="14" Title="Conectare" Content="-Conectare&#xA;-reforestare depoluare&#xA;-invatarea prin observarea fina a naturii" />
+    <NodeContent Number="15" Title="armonie" Content="-armonie&#xA;-colaborarea cu natura&#xA;-Dezechilibrarea mediului in lipsa cunoasterii" />
+    <NodeContent Number="16" Title="Entuziasm" Content="-Entuziasm&#xA;-biotehnologii recuperatorii sustenabile&#xA;-etica deciziei de mediu" />
+    <NodeContent Number="17" Title="Bucurie" Content="-Bucurie&#xA;-recuperarea teritoriilor desertificate&#xA;-specii care se regenereaza" />
+    <NodeContent Number="18" Title="Creare de legaturi" Content="-Creare de legaturi&#xA;-alianta omului cu natura in tehnologii de recuperare a mediului&#xA;-specii care se regenereaza" />
+    <NodeContent Number="19" Title="Toleranta" Content="-Toleranta&#xA;-tehnologii care reduc / anuleaza amprenta ecologica&#xA;-refacere in cascada a echilibrului speciilor" />
+    <NodeContent Number="20" Title="Comuniune" Content="-Comuniune&#xA;-studierea mecanismelor de reechilibrare prin biotopuri specifice&#xA;-bionica" />
+    <NodeContent Number="21" Title="Rezonanta" Content="-Rezonanta&#xA;-alianta cu natura&#xA;-intelegerea feed-backurilor din natura" />
+    <NodeContent Number="22" Title="Idealism" Content="-Idealism&#xA;-studiul tehnologiilor naturii&#xA;-nevoia de invatare" />
+    <NodeContent Number="23" Title="Daruire" Content="-Daruire&#xA;-tehnologii de comunicare cu natura&#xA;-etaje de cunoastere si analiza" />
+    <NodeContent Number="24" Title="capacitatea energetica echilibrata" Content="-capacitatea energetica echilibrata&#xA;-colaborarea umana&#xA;-cunoasterea" />
+    <NodeContent Number="25" Title="Autocontrol" Content="-Autocontrol&#xA;-partajarea open-source a solutiilor inovative&#xA;-nivele de complexitate si de granulatie a observatiei naturii" />
+    <NodeContent Number="26" Title="echilibru" Content="-echilibru&#xA;-recuperarea echilibrului natural&#xA;-interventia pentru cresterea sustenabiliatii sistemului" />
+    <NodeContent Number="27" Title="Stare de meditatie" Content="-Stare de meditatie&#xA;-evaluari, corelari pe noua perceptie&#xA;-cautarea de solutii de depoluare" />
+    <NodeContent Number="28" Title="Transcendere" Content="-Transcendere&#xA;-modificarea granulatiei perceptiei&#xA;-recolte mari cu tehnologii agricole sustenabile" />
+    <NodeContent Number="29" Title="Integrare in absolut" Content="-Integrare in absolut&#xA;-permacultura&#xA;-efectele secundare ale folosirii diferitelor tehnici agricole" />
+    <NodeContent Number="30" Title="Bunatate" Content="-Bunatate&#xA;-gasirea cailor de comunicare cu natura&#xA;-istoricul dezvoltarii agriculturii in diferite zone, efecte secundare obtinute" />
+    <NodeContent Number="31" Title="Vindecatori" Content="-Vindecatori&#xA;-cercetare pe retea de colaborare asupra comuniacrii cu natura&#xA;-traditiille agricole locale si analiza greselilor sau succeselor anterioare" />
+    <NodeContent Number="32" Title="Abilitati inalte" Content="-Abilitati inalte&#xA;-educare online&#xA;-bunele practici internationale in agricultura" />
+    <NodeContent Number="33" Title="Autodisciplina" Content="-Autodisciplina&#xA;-transfer de bune practici&#xA;-politici publice in agricultura si analiza de impact" />
+    <NodeContent Number="34" Title="Stare de flow [inspiratie]" Content="-Stare de flow [inspiratie]&#xA;-reprofesionalizarea umana&#xA;-limitele actiunii / controlului si mecanismele de autocontrol ale naturii" />
+    <NodeContent Number="35" Title="procesarea" Content="-procesarea&#xA;-negocierea termenilor de echilibru&#xA;-echilibru sustenabil" />
+    <NodeContent Number="36" Title="Prezenta de spirit" Content="-Prezenta de spirit&#xA;-descoperirea sau recuperarea de noi sau vechi logici&#xA;-inovare tehnologica sustenabila" />
+    <NodeContent Number="37" Title="detasare" Content="-detasare&#xA;-schimbarea paradigmei de gandire&#xA;-optimizarea sustenabilitatii" />
+    <NodeContent Number="38" Title="Deschidere" Content="-Deschidere&#xA;-modestie, altruism&#xA;-policies" />
+    <NodeContent Number="39" Title="Discernamant" Content="-Discernamant&#xA;-respect fata de natura&#xA;-strategii de finantare, organizare si implementare" />
+    <NodeContent Number="40" Title="Comunicare" Content="-Comunicare&#xA;-joburi de oameni in slujba naturii&#xA;-evaluarea efectelor derivate sau secundare asupra sustenabilitatii ecosistemului si a apei, aerului, solului si ecosistemului solului" />
+    <NodeContent Number="41" Title="Accesarea limbajului universal" Content="- accesarea limbajelor universale&#xA;-tehnologii inovative de inlocuire a ofertei mediului&#xA;-factori ce pot perturba echilibrul ecosistemic prin utilizarea tehnologiilor agricole inadecvate" />
+    <NodeContent Number="42" Title="Premonitie" Content="-Premonitie&#xA;-schimbarea paradigmei de relatii intre om si mediu&#xA;-inovarea in agricultura sustenabila, durabila si eficienta" />
+    <NodeContent Number="43" Title="Anticipare" Content="-Anticipare&#xA;-integrarea omului in mediu&#xA;-cercetari recente, tehnica de cercetare" />
+    <NodeContent Number="44" Title="Accesarea inteligentei colective" Content="-Accesarea inteligentei colective&#xA;-omul nou&#xA;-planuri de lucru si de afaceri in cultivarea produselor agricole" />
+    <NodeContent Number="45" Title="Incredere" Content="-Incredere&#xA;-redefinirea bunastarii&#xA;-recuperarea echilibrului natural" />
+    <NodeContent Number="46" Title="adaptarea" Content="-adaptarea&#xA;-bunastare&#xA;-non-agresivitate" />
+    <NodeContent Number="47" Title="Stare de constienta" Content="-Stare de constienta&#xA;-dezvoltarea calitatilor umane&#xA;-studierea naturii in natura" />
+    <NodeContent Number="48" Title="intuitie" Content="-intuitie&#xA;-daruieste si primeste&#xA;-relatiile profesionale ale fiintelor din natura" />
+    <NodeContent Number="49" Title="Introspectie" Content="-Introspectie&#xA;-pace&#xA;-crearea de aliante intre specii" />
+    <NodeContent Number="50" Title="Autocunoastere" Content="-Autocunoastere&#xA;-colaborarea internationala&#xA;-agricultura ce imita natura, studiul eficientei pe termen scurt, mediu, lung, influente asupra sanatatii umane" />
+    <NodeContent Number="51" Title="Viziune" Content="-Viziune&#xA;-drepturi si indatoriri&#xA;-utilizarea tehnologiilor ce folosesc specii ale naturii pentru cresterea sustenabilitatii, echilibrului sistemic si randamentului agricol" />
+    <NodeContent Number="52" Title="Convingere" Content="-Convingere&#xA;-gross national happyness&#xA;-noi tehnologii agricole sustenabile, mod de folosire, rezultate" />
+    <NodeContent Number="53" Title="Simbioza" Content="-Simbioza&#xA;-evaluari calitative si relationale&#xA;-permacultura ca exemplu de tehnologie agricola, performante posibile" />
+    <NodeContent Number="54" Title="iertare" Content="-iertare&#xA;-politicile de dezvoltare comunitara&#xA;-intelegerea mecanismelor naturii de optimizarea cantitatii de biomasa fara cresterea amprentei ecologice" />
+    <NodeContent Number="55" Title="iluminare" Content="-iluminare&#xA;-stergerea ofensei culturale&#xA;-intelegerea sistemica a contributiei speciilor la crearea de biomasa, intretinerea solului, depoluare si copierea retetelor naturii in agricultura" />
+    <NodeContent Number="56" Title="Coerenta" Content="-Coerenta&#xA;-independenta fata de stat&#xA;-prelucrarea ecologica a pamantului" />
+    <NodeContent Number="57" Title="Acordare pe frecventa" Content="-Acordare pe frecventa&#xA;-colaborarea pe retele comerciale&#xA;-medicina de mediu" />
+    <NodeContent Number="58" Title="Traire" Content="-Traire&#xA;-sustenabilitate&#xA;-relatii simbiotice om-natura" />
+    <NodeContent Number="59" Title="memorarea" Content="-memorarea&#xA;-retragerea ofertei de mediu&#xA;-prelucrarea pamantului" />
+    <NodeContent Number="60" Title="Structurare" Content="-Structurare&#xA;-Tehnologii casnice autonome&#xA;-refacerea speciilor din ecosistemul solului" />
+    <NodeContent Number="61" Title="Asimilare" Content="-Asimilare&#xA;-Inovare tehnologica de garaj&#xA;-recolte bogate si sanatoase genetic" />
+    <NodeContent Number="62" Title="Recunoastere de pattern" Content="-Recunoastere de pattern&#xA;-sharing de patente tehnologice open source&#xA;-insanatosirea si revigorarea mediului" />
+    <NodeContent Number="63" Title="Proiectare mentala" Content="-Proiectare mentala&#xA;-comert etic&#xA;-iinginerie de mediu" />
+    <NodeContent Number="64" Title="Inspiratie" Content="-Inspiratie&#xA;-dirijarea resurselor financiare online catre zonele de mare nevoie&#xA;-tehnologii care utilizeaza fiinte vii" />
+    <NodeContent Number="65" Title="Invatarea" Content="-Invatarea&#xA;-consumul de resurrse secundare / regenerabile&#xA;-re-echilibrarea cererii-ofertei naturii" />
+    <NodeContent Number="66" Title="Intrare in rezonanta armonica" Content="-Intrare in rezonanta armonica&#xA;-progres economic sustenabil&#xA;-rolul vibratiilor, sunetelor si muzicii clasice in medicina de mediu si in cresterea recoltelor" />
+    <NodeContent Number="67" Title="Energie creatoare" Content="-Energie creatoare&#xA;-Refacerea mediului&#xA;-responsabilitatea corporatista aplicata asupra dezechilibrelor sustenabilitatii produse de factorii industriali" />
+    <NodeContent Number="68" Title="Claritate" Content="-Claritate&#xA;-evaluarea consecintelor derivate&#xA;-contrinutia bacteriilor, viermilor, algelor si a altor organisme din sol la depoluarea solului, apei, aerului; schimburile de gaze datorate solului si calitati acestora, influente asupra incalzirii globale" />
+    <NodeContent Number="69" Title="Har" Content="-Har (grace)&#xA;-colaborarea pentru rezolvarea crizelor&#xA;-rotatia culturilor, cultivarea cu alge a apelor poluate, alte solutii de depoluare" />
+    <NodeContent Number="70" Title="Sinceritate" Content="-Sinceritate&#xA;-negocierea termenilor de echilibru&#xA;-prelucrarea pamantului&#xA;-culturi capabile sa extraga factorii poluanti din sol si sa ajute la reconvertirea acestora in resurse secundare" />
+    <NodeContent Number="71" Title="Dezintegrare pozitiva" Content="-Dezintegrare pozitiva&#xA;-drumurile de incredere comerciale&#xA;-tehnici de vindecare a speciilor ce sunt afectate de poluare si sunt active in sustenabilitatea mediului (ex. albinele)" />
+  </NodeContents>
+</NodeContentCollection>
