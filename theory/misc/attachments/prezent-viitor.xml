@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NodeContentCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <STAR_TYPE>TYPE_1</STAR_TYPE>
+  <NodeContents>
+    <NodeContent Number="0" Title="inovarea" Content="" />
+    <NodeContent Number="1" Title="alternative" Content="" />
+    <NodeContent Number="2" Title="resurse secundare sau regenerabile" Content="Empty Content" />
+    <NodeContent Number="3" Title="saltul tehnologic" Content="Empty Content" />
+    <NodeContent Number="4" Title="noi tehnologii" Content="Empty Content" />
+    <NodeContent Number="5" Title="cresterea performantelor individuale" Content="Empty Content" />
+    <NodeContent Number="6" Title="generatia adaptata la noile tehnologii" Content="saltul conceptual si ecart-ul de comunicare intre generatii" />
+    <NodeContent Number="7" Title="Tehnologii de marire a perfomantelor individuale" Content="ex: proteze cibernetice si nanotehnologii" />
+    <NodeContent Number="8" Title="estimarea efectelor secundare / colaterale" Content="micsorarea riscurilor produse de inovare prin alegerea celor cu amprenta negativa zero asupra echilibrului global" />
+    <NodeContent Number="9" Title="Tehnologii cu resurse alternative" Content="ex. masina care functioneaza cu electricitate, cu apa, etc" />
+    <NodeContent Number="10" Title="tehnologii inovative sustenabile si durabile" Content="ex: motorul pe apa [arde hidrogenul --&gt; elimina aburi]" />
+    <NodeContent Number="11" Title="noua generatie tehnologica" Content="la aproximativ 25 de ani avem salt tehnoogic --&gt; crearea altor forme de economie&#xA;&#xA;ex: saltul tehnologic al internetului --&gt; economia bazata pe cunoastere [20% din PIB-ul Romaniei este generat de industria software]" />
+    <NodeContent Number="12" Title="experimente de echilibrare" Content="Empty Content" />
+    <NodeContent Number="13" Title="amprenta ecologica micsorata" Content="Empty Content" />
+    <NodeContent Number="14" Title="reforestare depoluare" Content="Empty Content" />
+    <NodeContent Number="15" Title="colaborarea cu natura" Content="Empty Content" />
+    <NodeContent Number="16" Title="biotehnologii recuperatorii sustenabile" Content="Empty Content" />
+    <NodeContent Number="17" Title="recuperarea teritoriilor desertificate" Content="ex: dintr-o frunza de bananier pot sa scot o padure de bananieri" />
+    <NodeContent Number="18" Title="alianta omului cu natura in tehnologii de recuperare a mediului" Content="alianta omului cu natura in tehnologii de recuperare a mediului" />
+    <NodeContent Number="19" Title="tehnologii care reduc / anuleaza amprenta ecologica" Content="ex: reforestare bazata pe biodiversitate [nu plantam numai pomi ci si plantele simbiotice --&gt; comunitate simbiotica functionala]" />
+    <NodeContent Number="20" Title="studierea mecanismelor de reechilibrare prin biotopuri specifice" Content="ex: plantele depoluante de la Midia Navodari [plante rosii]" />
+    <NodeContent Number="21" Title="alianta cu natura" Content="ex: garduri de tufisuri in care cresc rozatoare mici care se hranesc cu insecte --&gt; reducerea folosirii de insecticide&#xA;&#xA;ex: cartitele care mananca insectele --&gt; carabusii de mai" />
+    <NodeContent Number="22" Title="studiul tehnologiilor naturii" Content="patternuri ale naturii --&gt; intelegerea functionalitatilor si utilitatilor" />
+    <NodeContent Number="23" Title="tehnologii de comunicare cu natura" Content="Empty Content" />
+    <NodeContent Number="24" Title="colaborarea umana" Content="Empty Content" />
+    <NodeContent Number="25" Title="partajarea open-source a solutiilor inovative" Content="Empty Content" />
+    <NodeContent Number="26" Title="recuperarea echilibrului natural" Content="Empty Content" />
+    <NodeContent Number="27" Title=" evaluari, corelari pe noua perceptie" Content="Empty Content" />
+    <NodeContent Number="28" Title="modificarea granulatiei perceptiei" Content="- observarea detaliilor semnificative, clare&#xA;- intelegerea functionalitatilor derivate, secundare, tertiare... si a rolului micrositemelor in macroreglaje&#xA;&#xA;ex: iaurt care ne place, dupa 3 sapta avem colici --&gt; iaurtul contine bacterii lactice de dauneaza florei intestinale umane [efect macro al detaliului micro]&#xA;&#xA;daca vezi cauzalitatea, poti gasi solutii [ex refacerea florei intestinale]" />
+    <NodeContent Number="29" Title="permacultura" Content="ex: deseurile din industria agricola [ind. cafelei --&gt; pastaia cafelei care se rasneste devine ingrasamant in procesul de reforestare]" />
+    <NodeContent Number="30" Title="gasirea cailor de comunicare cu natura" Content="ex: mozart la campul de grau --&gt; dublarea recoltei" />
+    <NodeContent Number="31" Title="cercetare pe retea de colaborare asupra comunicarii cu natura" Content="ex: politicile open-source de dispersie a informatiilor de tip comunicare cu natura&#xA;&#xA;experimentul de la damanhur" />
+    <NodeContent Number="32" Title="educare online" Content="platforme de comunicare/colaborare, open-source&#xA;&#xA;control + sincronicitate [laslo barabas --&gt; pattern recognition] --&gt; aparitia motoarelor de cautare necontrolabile --&gt; isis" />
+    <NodeContent Number="33" Title="transfer de bune practici" Content="colaborare pe reteaua profesionala folosind transferul de bune practici" />
+    <NodeContent Number="34" Title="reprofesionalizarea umana" Content="Empty Content" />
+    <NodeContent Number="35" Title="retragerea ofertei de mediu" Content="Empty Content" />
+    <NodeContent Number="36" Title="descoperirea sau recuperarea de noi sau vechi logici" Content="Empty Content" />
+    <NodeContent Number="37" Title="schimbarea paradigmei de gandire" Content="Empty Content" />
+    <NodeContent Number="38" Title="modestie, altruism" Content="Empty Content" />
+    <NodeContent Number="39" Title="respect fata de natura" Content="modestia si smerenia in fata genialitatii naturii" />
+    <NodeContent Number="40" Title="joburi de oameni in slujba naturii" Content="&quot;omul in slujba naturii&quot; --&gt; joburi specializate in recuperarea potentialului natural, rezolvarea crizelor din natura generate de om [ex: reforestare]" />
+    <NodeContent Number="41" Title="tehnologii inovative de inlocuire a ofertei mediului" Content="Empty Content" />
+    <NodeContent Number="42" Title="schimbarea paradigmei de relatii intre om si mediu" Content="Empty Content" />
+    <NodeContent Number="43" Title="integrarea omului in mediu" Content="Empty Content" />
+    <NodeContent Number="44" Title="omul nou CU DESCHIDERE MENTALA" Content="platforma de calitati umane generate si partajate de diverse culturi --&gt; negocierea unei filosofii culturale acceptate" />
+    <NodeContent Number="45" Title="redefinirea bunastarii" Content="Empty Content" />
+    <NodeContent Number="46" Title="bunastare" Content="Empty Content" />
+    <NodeContent Number="47" Title="dezvoltarea calitatilor umane" Content="Empty Content" />
+    <NodeContent Number="48" Title="daruieste si primeste" Content="Empty Content" />
+    <NodeContent Number="49" Title="pace" Content="Empty Content" />
+    <NodeContent Number="50" Title="colaborarea internationala" Content="Empty Content" />
+    <NodeContent Number="51" Title="drepturi si indatoriri" Content="Empty Content" />
+    <NodeContent Number="52" Title="gross national happyness" Content="Empty Content" />
+    <NodeContent Number="53" Title="evaluari calitative si relationale" Content="Empty Content" />
+    <NodeContent Number="54" Title="politicile de dezvoltare comunitara" Content="Empty Content" />
+    <NodeContent Number="55" Title="stergerea ofensei culturale" Content="Empty Content" />
+    <NodeContent Number="56" Title="independenta fata de stat" Content="Empty Content" />
+    <NodeContent Number="57" Title="colaborarea pe retele comerciale" Content="Empty Content" />
+    <NodeContent Number="58" Title="sustenabilitate" Content="Empty Content" />
+    <NodeContent Number="59" Title="minerale si energetice" Content="Empty Content" />
+    <NodeContent Number="60" Title="Tehnologii casnice autonome" Content="ex: imprimanta 3D sau generator de energie ce varsa surplusul in sistem [inetrnetul energetic]" />
+    <NodeContent Number="61" Title="Inovare tehnologica de garaj" Content="ex: laborator propriu inovativ" />
+    <NodeContent Number="62" Title="sharing de patente tehnologice open source" Content="ex: open office" />
+    <NodeContent Number="63" Title="comert etic" Content="[fara intermediari intre producatori si consumatori]" />
+    <NodeContent Number="64" Title="dirijarea resurselor financiare online catre zonele de mare nevoie" Content="existenta unei monede online cu durata finita de actiune ce nu poate fi tezaurizata [trebuie folosita inainte de durata de expirare]" />
+    <NodeContent Number="65" Title="consumul de resurrse secundare / regenerabile" Content="utilizarea gropilor de gunoi pt creerea de noi materii prime [format din subsante procesate deja --&gt; reducerea etapelor de procesare]" />
+    <NodeContent Number="66" Title="progres economic sustenabil" Content="Empty Content" />
+    <NodeContent Number="67" Title="Refacerea mediului" Content="Empty Content" />
+    <NodeContent Number="68" Title="evaluarea consecintelor derivate" Content="Empty Content" />
+    <NodeContent Number="69" Title="colaborarea pentru rezolvarea crizelor" Content="Empty Content" />
+    <NodeContent Number="70" Title="negocierea termenilor de echilibru" Content="Empty Content" />
+    <NodeContent Number="71" Title="drumurile de incredere comerciale" Content="Empty Content" />
+  </NodeContents>
+</NodeContentCollection>
