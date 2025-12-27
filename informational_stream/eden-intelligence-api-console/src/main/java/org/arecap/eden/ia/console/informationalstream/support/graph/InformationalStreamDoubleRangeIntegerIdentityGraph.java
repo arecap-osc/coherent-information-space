@@ -13,7 +13,7 @@ public abstract class InformationalStreamDoubleRangeIntegerIdentityGraph impleme
 
     private InformationalStreamVectorDirection vectorDirection;
 
-    private InformationalStreamVectorDirection originVectorDirection = InformationalStreamVectorDirection.SelectorConsumer;
+    private InformationalStreamVectorDirection originVectorDirection = InformationalStreamVectorDirection.SelectorDetectorConsumer;
 
     private Integer step;
 
