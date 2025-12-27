@@ -23,8 +23,8 @@ public class AnimatedCurveInformationalStreamGraph extends InformationalStreamGr
                 InformationalStreamDoubleRangeIntegerIdentityGraphBean sgraph = isg.get(step);
 //                if(sgraph.getId() == 0)
                 if (sgraph.getNetting().name().contains(StreamTopology.Upstream.name())) {
-                    if (sgraph.getVectorDirection().equals(InformationalStreamVectorDirection.SelectorConsumer)
-                            && sgraph.getOriginVectorDirection().equals(InformationalStreamVectorDirection.SelectorConsumer)) {
+                    if (sgraph.getVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer)
+                            && sgraph.getOriginVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer)) {
                         drawInformationalStream2(graphics2D, mediaRendererTransform, sgraph.getUpstreamConsumerFunctionGraph(), sgraph.getUpstreamSelectorSystemGraph(), frameNo);
                         drawInformationalStream2(graphics2D, mediaRendererTransform, sgraph.getUpstreamConsumerSystemGraph(), sgraph.getUpstreamSelectorFunctionGraph(), frameNo);
 
@@ -109,8 +109,8 @@ public class AnimatedCurveInformationalStreamGraph extends InformationalStreamGr
 
                     drawInformationalStreamReverse(graphics2D, mediaRendererTransform, sgraph.getUpstreamDetectorSystemGraph(), sgraph.getUpstreamConsumerSystemGraph(), frameNo);
                 } else {
-                    if (sgraph.getVectorDirection().equals(InformationalStreamVectorDirection.SelectorConsumer)
-                            && sgraph.getOriginVectorDirection().equals(InformationalStreamVectorDirection.SelectorConsumer)) {
+                    if (sgraph.getVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer)
+                            && sgraph.getOriginVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer)) {
                         drawInformationalStream2(graphics2D, mediaRendererTransform, sgraph.getDownstreamConsumerFunctionGraph(), sgraph.getDownstreamSelectorSystemGraph(), frameNo);
                         drawInformationalStream2(graphics2D, mediaRendererTransform, sgraph.getDownstreamConsumerSystemGraph(), sgraph.getDownstreamSelectorFunctionGraph(), frameNo);
 
