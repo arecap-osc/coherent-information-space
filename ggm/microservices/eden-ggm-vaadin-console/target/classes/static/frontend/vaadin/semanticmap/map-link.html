@@ -1,0 +1,35 @@
+<dom-module id="map-link">
+    <template>
+        <style include="shared-styles">
+        </style>
+        <vaadin-vertical-layout class="map-link" theme="spacing" style="width: 100%; height: 100%; padding-right: 20px;">
+            <label id="linkTitle">Label</label>
+            <vaadin-text-field id="verb" label="Verb"></vaadin-text-field>
+            <vaadin-text-area id="conjunction" label="Conjunctie"></vaadin-text-area>
+            <vaadin-text-area id="verbalization" label="Verbalizare"></vaadin-text-area>
+            <vaadin-text-area id="phrase" label="Locutiune"></vaadin-text-area>
+            <vaadin-text-area id="details" label="Detalii"></vaadin-text-area>
+            <vaadin-horizontal-layout>
+                <vaadin-button id="saveBtn">
+                    Save
+                </vaadin-button>
+            </vaadin-horizontal-layout>
+        </vaadin-vertical-layout>
+    </template>
+
+    <script>
+        class MapLink extends Polymer.Element {
+            static get is() {
+                return 'map-link';
+            }
+
+            static get properties() {
+                return {
+                    // Declare your properties here.
+                };
+            }
+        }
+
+        customElements.define(MapLink.is, MapLink);
+    </script>
+</dom-module>

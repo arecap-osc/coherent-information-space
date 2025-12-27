@@ -1,0 +1,17 @@
+select al.c as nodes, al.c-nl.c as unfilled, nl.c as filled, (nl.c*100/al.c)::text||'%', al.l as level from
+(select count(*) as c, level as l from etl e where application_id=1666463 group by level) al
+left join
+(select count(*) as c, level as l from etl e where application_id=1666463 and node is not null group by level) nl
+on al.l=nl.l
+order by level;
+
+--show possible mappings for unmapped nodes
+select distinct brief, semantic, e.original_node, a.address_index from etl e,
+application_data a
+where a.application_id=1666463 and e.application_id=1666463 
+and e.node is null and level=1
+and semantic is not null
+--and semantic <>''
+--and brief like '%'|| semantic ||'%'
+and semantic like brief ||'%'
+and network='SUSTAINABLE_EDGES::1';

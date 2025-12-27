@@ -1,0 +1,134 @@
+<dom-module id="multi-image-view">
+
+    <template>
+        <style>
+			:host {
+                width: 100%;
+                position: relative;
+                z-index: 0;
+            }
+        </style>
+        <vaadin-horizontal-layout id="layout-wrapper-multi-image-view"
+                                  on-mousemove="mouseMove"
+                                  on-mousedown="mouseDown"
+                                  on-mouseup="mouseUp"
+                                  on-mouseleave="mouseLeave"
+                                  on-click="mouseClick"
+                                  on-contextmenu="mouseRightClick"
+                                  on-wheel="mouseWheel"
+                                  on-DOMMouseScroll="mouseWheel"
+                                  on-gestureend="gestureEnd">
+        </vaadin-horizontal-layout>
+    </template>
+
+    <script>
+        var _drag = false;
+        var _mouseDown = false;
+        var _mouseDownAtX = 0;
+        var _mouseDownAtY = 0;
+        var _timer = null;
+        var _hoverTimer = null;
+        var _wheelTimer = null;
+        var _gestureTimer = null;
+
+        function resetTimer(timer) {
+            if(timer !== null) {
+                clearTimeout(timer);
+                timer = null;
+            }
+        }
+
+    class MultiImageView extends Polymer.Element {
+
+      static get is() {
+        return 'multi-image-view';
+      }
+
+
+
+        mouseMove(event) {
+            resetTimer(_timer);
+            resetTimer(_hoverTimer);
+            var serverRpc = this.$server;
+            event.preventDefault();
+            if(_mouseDown) {
+                _timer = setTimeout(function() {
+                            _drag = true;
+                            serverRpc.onMouseStop((event.clientX - _mouseDownAtX) /2, (event.clientY - _mouseDownAtY)/ 2);
+                         }, 100 );
+            } else {
+                _hoverTimer = setTimeout(function() {
+                    serverRpc.onMouseHover(event.offsetX, event.offsetY);
+                }, 50);
+            }
+        }
+
+        mouseDown(event) {
+            if(event.button == 0) {
+                event.preventDefault();
+                event.stopPropagation();
+                _mouseDown = true;
+                _mouseDownAtX = event.clientX;
+                _mouseDownAtY = event.clientY;
+            }
+        }
+
+        mouseUp(event) {
+            _mouseDown = false;
+
+        }
+
+        mouseLeave(event) {
+            _mouseDown = false;
+        }
+
+
+        mouseClick(event) {
+            resetTimer(_timer);
+            event.preventDefault();
+            event.stopPropagation();
+            if(_drag == false ) {
+                this.$server.onClick(event.offsetX, event.offsetY);
+            }
+            _drag = false;
+        }
+
+        mouseRightClick(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            this.$server.onRightClick(event.offsetX, event.offsetY);
+        }
+
+        mouseWheel(event) {
+            var serverRpc = this.$server;
+            event.preventDefault();
+            event.stopPropagation();
+
+            _wheelTimer = setTimeout(function() {
+                serverRpc.onMouseWheel(event.wheelDelta);
+                resetTimer(_wheelTimer);
+            },  50)
+        }
+
+        gestureEnd(event) {
+            var serverRpc = this.$server;
+            event.preventDefault();
+            event.stopPropagation();
+
+            _gestureTimer = setTimeout(function() {
+                serverRpc.onGesturePinch(event.scale);
+                resetTimer(_gestureTimer);
+            },  50);
+        }
+
+      ready() {
+        super.ready();
+      }
+
+    }
+    window.customElements.define(MultiImageView.is, MultiImageView);
+
+
+
+    </script>
+</dom-module>

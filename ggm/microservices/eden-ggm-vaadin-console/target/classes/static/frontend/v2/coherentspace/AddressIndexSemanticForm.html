@@ -1,0 +1,20 @@
+<dom-module id="address-index-semantic-form">
+    <template>
+        <style>
+
+        </style>
+        <vaadin-horizontal-layout id="action-buttons"></vaadin-horizontal-layout>
+        <vaadin-form-layout id="form">
+            <vaadin-text-area id="semantic-value" label="Semantica" colspan="2"></vaadin-text-area>
+        </vaadin-form-layout>
+    </template>
+    <script>
+        class AddressIndexSemanticForm extends Polymer.Element {
+            static get is() {
+                return 'address-index-semantic-form'
+            }
+        }
+        customElements.define(AddressIndexSemanticForm.is, AddressIndexSemanticForm);
+    </script>
+</dom-module>
+

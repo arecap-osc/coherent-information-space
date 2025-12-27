@@ -1,0 +1,20 @@
+<dom-module id="pw-template">
+    <template>
+        <style>
+            .pw-template-hl {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        <vaadin-horizontal-layout id="pw-template-hl" class="pw-template-hl">
+        </vaadin-horizontal-layout>
+    </template>
+    <script>
+        class PortalWindowTemplate extends Polymer.Element {
+            static get is() {
+                return 'pw-template'
+            }
+        }
+        customElements.define(PortalWindowTemplate.is, PortalWindowTemplate);
+    </script>
+</dom-module>

@@ -1,0 +1,86 @@
+<!--<link rel="import" href="../../../../../eden-logical-model-console/bower_components/polymer/polymer.html">-->
+<!--<link rel="import" href="../../../../../../bower_components/vaadin-ordered-layout/src/vaadin-vertical-layout.html">-->
+<!--<link rel="import" href="../../../../../../bower_components/vaadin-text-field/src/vaadin-text-field.html">-->
+<!--<link rel="import" href="../../../../../../bower_components/vaadin-text-field/src/vaadin-text-area.html">-->
+<!--<link rel="import" href="../../../../../../bower_components/vaadin-ordered-layout/src/vaadin-horizontal-layout.html">-->
+
+
+<dom-module id="route-form">
+    <template>
+        <style>
+            .syntax {
+                width: 100%;
+                height: 90%;
+            }
+            .route-data {
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+            }
+            .route-form {
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+            }
+
+            .route-form .vertical {
+                margin-right: 10px;
+                overflow: auto;
+            }
+
+            .route-textarea {
+                padding-top: 0px;
+                width: 100%;
+            }
+            .route-breadcrumb {
+                font-size: 12px;
+                font-style: italic;
+                font-weight: bold;
+            }
+            .route-buttons {
+                font-size: 10px;
+                height: 22px;
+            }
+            #wellsComboBox {
+                width: 100%;
+            }
+        </style>
+        <vaadin-vertical-layout class="syntax">
+            <vaadin-horizontal-layout id="action-buttons">
+                <vaadin-button id="save-btn" class="route-buttons">
+                    Save
+                </vaadin-button>
+            </vaadin-horizontal-layout>
+            <vaadin-combo-box id="wellsComboBox"></vaadin-combo-box>
+            <label id="logicalFunction" class="route-breadcrumb ">logicalFunction</label>
+            <label id="currentEdge" class="route-breadcrumb ">currentEdge</label>
+            <vaadin-vertical-layout class="route-data">
+                <vaadin-vertical-layout id="attachDoc"></vaadin-vertical-layout>
+                <vaadin-text-area id="syntax" label="Locutiune" class="route-textarea"></vaadin-text-area>
+                <vaadin-text-area id="syntaxDetails" label="Detalii" class="route-textarea"></vaadin-text-area>
+                <label id="syntaxDisabled"></label>
+                <vaadin-horizontal-layout class="route-form">
+                    <vaadin-vertical-layout class="route-form vertical">
+                        <vaadin-text-field id="verb" label="Verb"></vaadin-text-field>
+                        <vaadin-text-area id="conjunction" label="Conjunctie" class="route-textarea"></vaadin-text-area>
+                        <vaadin-text-area id="verbalization" label="Verbalizare" class="route-textarea"></vaadin-text-area>
+                        <vaadin-text-area id="phrase" label="Locutiune" class="route-textarea"></vaadin-text-area>
+                        <vaadin-text-area id="verbDetails" label="Detalii verb" class="route-textarea"></vaadin-text-area>
+                    </vaadin-vertical-layout>
+                    <vaadin-vertical-layout class="route-form vertical" id="mapLinkFormLayout">
+                    </vaadin-vertical-layout>
+                </vaadin-horizontal-layout>
+            </vaadin-vertical-layout>
+        </vaadin-vertical-layout>
+    </template>
+    <script>
+        class RouteForm extends Polymer.Element {
+            static get is() {
+                return 'route-form'
+            }
+        }
+
+        customElements.define(RouteForm.is, RouteForm);
+    </script>
+</dom-module>
+

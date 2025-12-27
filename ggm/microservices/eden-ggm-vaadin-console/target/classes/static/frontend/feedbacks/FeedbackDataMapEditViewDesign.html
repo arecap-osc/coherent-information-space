@@ -1,0 +1,159 @@
+<!-- Dependency resources -->
+
+<dom-module id="feedbackdatamap-edit-view">
+
+    <template>
+		<style>
+            .semicliclu-mov-title {
+                color: #A349A4;
+            }
+            .semicliclu-verde-title {
+                color: #22B14C;
+            }
+            table, td, th {
+            	border-collapse: collapse;
+            	border: 1px solid black;
+            }
+			.font-size-mic {
+				font-size: 10px;
+				vertical-align: middle;
+			}
+			hr { 
+				border-top: 1px solid black;
+			}
+        </style>
+<label id="colrow"></label>
+<hr/>
+<vaadin-vertical-layout height-full>
+ 
+ <vaadin-horizontal-layout>
+	 <vaadin-horizontal-layout id="top-layout-with-images"></vaadin-horizontal-layout>
+	 <vaadin-vertical-layout>
+		 <vaadin-horizontal-layout>
+			 <label>&nbsp;</label>
+			 <vaadin-button id="previous">
+			   <-
+			 </vaadin-button>
+			 <label>&nbsp;</label>
+			 <vaadin-button id="next">
+			   -> 
+			 </vaadin-button>
+		 </vaadin-horizontal-layout>
+		 <vaadin-horizontal-layout>
+			 <label>&nbsp;</label>
+			 <vaadin-button id="save">
+			   Save 
+			 </vaadin-button>
+			 <label>&nbsp;</label>
+			 <vaadin-button id="cancel">
+			   Close 
+			 </vaadin-button>
+		  </vaadin-horizontal-layout>
+	 </vaadin-vertical-layout>
+ </vaadin-horizontal-layout>
+ 
+ 
+ <br/>
+ <label>Ciclu complet</label>
+ <table border="1" width="100%">
+  <tbody>
+   <tr>
+    <th width="10%">Ieșire Date</th>
+    <th width="15%">Procesare Date</th>
+    <th width="15%">Baze Strategii</th>
+    <th>Comentarii</th>
+   </tr>
+   <tr>
+    <td>
+     &nbsp;<label id="iesireDate"></label></td>
+    <td>
+     &nbsp;<label id="procesareDate"></label></td>
+    <td>
+     &nbsp;<label id="bazeStrategii"></label></td>
+    <td><label>&nbsp;Feedback complet </label></td>
+   </tr>
+   <tr>
+    <th>Intrare Data</th>
+    <th>Evaluare Răspunsuri</th>
+    <th>Baze Experiențe</th>
+    <th rowspan="2">
+     <vaadin-text-area id="completeSemantic"></vaadin-text-area></th>
+   </tr>
+   <tr>
+    <td>
+     &nbsp;<label id="intrareDate"></label></td>
+    <td>
+     &nbsp;<label id="evaluareRaspunsuri"></label></td>
+    <td>
+     &nbsp;<label id="bazeExperiente"></label></td>
+   </tr>
+  </tbody>
+ </table>
+ 
+ <br/>
+ <label class="semicliclu-mov-title">Semiciclu mov</label>
+ <table border="1" class="semicliclu-mov-title" width="100%">
+  <tbody>
+   <tr>
+    <th width="10%">Intrare Data</th>
+    <th width="15%">Procesare Date</th>
+    <th width="15%">Baze Experiențe</th>
+    <th width="10%">Ieșire Date</th>
+    <th>Comentarii</th>
+   </tr>
+   <tr>
+    <td>
+     &nbsp;<label id="intrareDate2" class="semicliclu-mov-title"></label></td>
+    <td>
+     &nbsp;<label id="procesareDate2" class="semicliclu-mov-title"></label></td>
+    <td>
+     &nbsp;<label id="bazeExperiente2" class="semicliclu-mov-title"></label></td>
+    <td>
+     &nbsp;<label id="iesireDate2" class="semicliclu-mov-title"></label></td>
+    <td>
+     <vaadin-text-area id="inOutSemantic"></vaadin-text-area></td>
+   </tr>
+  </tbody>
+ </table>
+ 
+ <br/>
+ <label class="semicliclu-verde-title">Semiciclu verde</label>
+ <table border="1" class="semicliclu-verde-title" width="100%">
+  <tbody>
+   <tr>
+    <th width="10%">Ieșire Date</th>
+    <th width="15%">Evaluare Răspunsuri</th>
+    <th width="15%">Baze Strategii</th>
+    <th width="10%">Intrare Data</th>
+    <th>Comentarii</th>
+   </tr>
+   <tr>
+    <td>
+     &nbsp;<label id="iesireDate3" class="semicliclu-verde-title"></label></td>
+    <td>
+     &nbsp;<label id="evaluareRaspunsuri2" class="semicliclu-verde-title"></label></td>
+    <td>
+     &nbsp;<label id="bazeStrategii2" class="semicliclu-verde-title"></label></td>
+    <td>
+     &nbsp;<label id="intrareDate3" class="semicliclu-verde-title"></label></td>
+    <td>
+     <vaadin-text-area id="outInSemantic"></vaadin-text-area></td>
+   </tr>
+  </tbody>
+ </table>
+ 
+</vaadin-vertical-layout>
+</template>
+
+    <script>
+    class FeedbackDataMapEditView extends Polymer.Element {
+      static get is() {
+        return 'feedbackdatamap-edit-view';
+      }
+      ready() {
+        super.ready();
+      }
+    }
+    window.customElements.define(FeedbackDataMapEditView.is, FeedbackDataMapEditView);
+    </script>
+</dom-module>

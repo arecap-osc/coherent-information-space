@@ -1,0 +1,50 @@
+<dom-module id="map-word">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+            }
+
+            #actions {
+                width: 100%;
+            }
+
+            #details {
+                height: 100px;
+            }
+
+            #cancelBtn {
+                margin-right: 10px;
+            }
+        </style>
+        <vaadin-vertical-layout theme="spacing" style="width: 100%; height: 100%; padding-right: 20px; border-bottom: 1px solid black;">
+            <vaadin-text-field id="letter" label="Litera"></vaadin-text-field>
+            <vaadin-text-area id="word" label="Semantica"></vaadin-text-area>
+            <vaadin-text-area id="details" label="Detalii"></vaadin-text-area>
+            <vaadin-horizontal-layout id="actions">
+                <vaadin-button id="cancelBtn">
+                    Cancel
+                </vaadin-button>
+                <vaadin-button id="saveBtn">
+                    Save
+                </vaadin-button>
+            </vaadin-horizontal-layout>
+        </vaadin-vertical-layout>
+    </template>
+
+    <script>
+        class MapWord extends Polymer.Element {
+            static get is() {
+                return 'map-word';
+            }
+
+            static get properties() {
+                return {
+                    // Declare your properties here.
+                };
+            }
+        }
+
+        customElements.define(MapWord.is, MapWord);
+    </script>
+</dom-module>

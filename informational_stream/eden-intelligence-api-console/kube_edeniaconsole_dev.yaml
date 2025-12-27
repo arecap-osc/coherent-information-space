@@ -1,0 +1,147 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edeniaconsoledev
+  labels:
+    run: edeniaconsoledev
+    version: v1
+    environment: dev
+    tier: frontend
+    phase: deploy
+    release: deploy
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
+    service.beta.kubernetes.io/do-loadbalancer-sticky-sessions-type: "cookies"
+    service.beta.kubernetes.io/do-loadbalancer-sticky-sessions-cookie-name: "egvcd"
+    service.beta.kubernetes.io/do-loadbalancer-sticky-sessions-cookie-ttl: "34650"
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-protocol: "http"
+    service.beta.kubernetes.io/do-loadbalancer-healthcheck-path: "/actuator/health"
+spec:
+  type: LoadBalancer
+  # This is necessary for sticky-sessions to avoid NAT
+  # confusion on the way in.
+  externalTrafficPolicy: Local
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: edeniaconsoledev
+    version: v1
+    environment: dev
+  sessionAffinity: ClientIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edeniaconsoledev-deployment
+  labels:
+    app: edeniaconsoledev
+    version: v1
+    environment: dev
+    tier: frontend
+    phase: deploy
+    deployment: latest
+    release: stable
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edeniaconsoledev
+      version: v1
+      environment: dev
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/edeniaconsoledev.logs: '[{"source":"edeniaconsoledev","service":"edeniaconsoledev"}]'
+      labels:
+        app: edeniaconsoledev
+        version: v1
+        environment: dev
+        tier: frontend
+        phase: deploy
+        deployment: latest
+        release: stable
+    spec:
+      containers:
+      - name: edeniaconsoledev
+        env:
+          - name: spring.datasource.url
+            value: "jdbc:postgresql://db-postgresql-fra1-39234-ieftin-do-user-5032469-0.db.ondigitalocean.com:25061/edeniadevpool?sslmode=require&prepareThreshold=0"
+          - name: spring.datasource.username
+            value: "doadmin"
+          - name: spring.datasource.password
+            value: "n8au4w6mrp3p8i4e"
+          - name: com.auth0.clientId
+            value: "Gq2WCM1K6MhQMehln8p3HRVyj003xEzG"
+          - name: com.auth0.clientSecret
+            value: "P2ruqVtmKnD14MBB2SwMwxW6dG4hfHiw3MWfMR5ytn3Topo0L9dHrShj1LlxEhNz"
+          - name: JAVA_OPTS
+#            value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+            value: "-Xmx512M"
+          - name: server.port
+            value: "8080"
+          - name: spring.jpa.hibernate.ddl-auto
+            value: "validate"
+          - name: spring.properties.hibernate.enable_lazy_load_no_trans
+            value: "true"
+          - name: permissions.default
+            value: "eden-ia-console-permission"
+          - name: env
+            value: "dev"
+          - name: DD_LOGS_ENABLED
+            value: "true"
+          - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
+            value: "true"
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+        image: registry.gitlab.com/noian-coop/eden/eden-intelligence-api/eden-intelligence-api-console/eden-intelligence-api-console-build:latest
+        imagePullPolicy: "Always"
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 80
+          timeoutSeconds: 10
+          periodSeconds: 30
+#        livenessProbe:
+#          httpGet:
+#            path: /health
+#            port: 8080
+#            httpHeaders:
+#            - name: Authorization
+#              value: Basic Z2VvcmdlLmJvYm9jOkdlb3JnZUJvYm9jMDA3Xw==
+        resources:
+          limits:
+            memory: "1024Mi"
+            #cpu: "4"
+          requests:
+            memory: "536Mi"
+            #cpu: "0.1"
+        volumeMounts:
+          - name: logpodpath
+            mountPath: /var/log/pods
+          - name: logcontainerpath
+            mountPath: /var/lib/docker/containers
+        ports:
+        - containerPort: 8080
+      volumes:
+      - hostPath:
+          path: /var/log/pods
+        name: logpodpath
+      - hostPath:
+          path: /var/lib/docker/containers
+        name: logcontainerpath
+      imagePullSecrets:
+       - name: regcred
+      # This is necessary for sticky-sessions because it can
+      # only consistently route to the same nodes, not pods.
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app: edeniaconsoledev
+            topologyKey: kubernetes.io/hostname
