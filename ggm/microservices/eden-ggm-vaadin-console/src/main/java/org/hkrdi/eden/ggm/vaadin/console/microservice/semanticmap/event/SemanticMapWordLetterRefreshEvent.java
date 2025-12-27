@@ -1,0 +1,15 @@
+package org.hkrdi.eden.ggm.vaadin.console.microservice.semanticmap.event;
+
+import java.util.EventObject;
+
+public class SemanticMapWordLetterRefreshEvent extends EventObject {
+    /**
+     * Constructs a prototypical Event.
+     *
+     * @param source The object on which the Event initially occurred.
+     * @throws IllegalArgumentException if source is null.
+     */
+    public SemanticMapWordLetterRefreshEvent(Long source) {
+        super(source);
+    }
+}

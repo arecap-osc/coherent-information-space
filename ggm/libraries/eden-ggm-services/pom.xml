@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.hkrdi.eden</groupId>
+        <artifactId>eden-ggm-libraries-root</artifactId>
+        <version>${revision}</version>
+        <relativePath>../eden-ggm-libraries-root</relativePath>
+    </parent>
+    <artifactId>eden-ggm-services</artifactId>
+    <name>Eden GGM Services</name>
+    <description>
+        Eden GGM Services
+    </description>
+    <url>https://gitlab.com/hkrdi/eden/global-governance-model/libraries/eden-ggm-services.git</url>
+    <organization>
+        <name>HKRDI</name>
+        <url>https://www.hkrdi.org/</url>
+    </organization>
+    <licenses>
+    </licenses>
+    <developers>
+        <developer>
+            <id>gavianu</id>
+            <name>Octavian Stirbei</name>
+            <email>octavianstirbei at gmail.com</email>
+            <organization>ARECAP</organization>
+            <organizationUrl>https://gitlab.com/arecap</organizationUrl>
+            <roles>
+                <role>Project lead</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>boge</id>
+            <name>George Boboc</name>
+            <email>boboc.george at gmail.com</email>
+            <organization>ARECAP</organization>
+            <organizationUrl>https://gitlab.com/arecap</organizationUrl>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+    <properties>
+        <main.basedir>${basedir}</main.basedir>
+        <checkstyle.basedir>${basedir}/../eden-ggm-libraries-root</checkstyle.basedir>
+    </properties>
+    <scm>
+        <url>https://gitlab.com/hkrdi/eden/global-governance-model/libraries/eden-ggm-services</url>
+        <connection>scm:git:https://gitlab.com/hkrdi/eden/global-governance-model/libraries/eden-ggm-services.git</connection>
+        <developerConnection>scm:git:https://gitlab.com/hkrdi/eden/global-governance-model/libraries/eden-ggm-services.git</developerConnection>
+    </scm>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-cop</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hkrdi.eden</groupId>
+            <artifactId>eden-ggm-data-repository</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-core -->
+
+    </dependencies>
+
+    <repositories>
+        <!-- Repositories to allow snapshot and milestone BOM imports during development.
+            This section is stripped by the flatten plugin during install/deploy. -->
+        <repository>
+            <id>central2</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>central</id>
+            <name>927be400752f-releases</name>
+            <url>http://159.89.29.55:8081/artifactory/noian</url>
+        </repository>
+        <repository>
+            <id>snapshots</id>
+            <name>927be400752f-snapshots</name>
+            <url>http://159.89.29.55:8081/artifactory/libs-snapshot</url>
+        </repository>
+    </repositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.5</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                    <prefix>git</prefix>
+                    <verbose>false</verbose>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                    <format>json</format>
+                    <gitDescribe>
+                        <skip>false</skip>
+                        <always>false</always>
+                        <dirty>-dirty</dirty>
+                    </gitDescribe>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

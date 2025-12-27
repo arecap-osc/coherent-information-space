@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.hkrdi.eden</groupId>
+        <artifactId>eden-ggm-libraries-build</artifactId>
+        <version>${revision}</version>
+        <relativePath>../eden-ggm-libraries-build</relativePath>
+    </parent>
+    <artifactId>eden-ggm-libraries-modules</artifactId>
+    <packaging>pom</packaging>
+    <name>Eden GGM Libraries Modules</name>
+    <description>Eden GGM Libraries Modules</description>
+    <properties>
+        <main.basedir>${basedir}</main.basedir>
+    </properties>
+    <modules>
+        <module>../eden-ggm-libraries-ebom</module>
+        <module>../eden-ggm-libraries-root</module>
+        <module>../eden-ggm-algebraic-fractals</module>
+        <module>../eden-ggm-data-repository</module>
+    </modules>
+</project>

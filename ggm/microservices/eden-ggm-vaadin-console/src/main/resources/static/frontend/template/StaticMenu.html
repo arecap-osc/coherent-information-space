@@ -1,0 +1,27 @@
+<!-- Dependency resources -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/vaadin-button/vaadin-button.html">
+
+<dom-module id="pwa-static-menu">
+
+
+    <template>
+        <style>
+        </style>
+
+        <vaadin-button id="pwa-modal-menu-btn" on-click="handleOpen"></vaadin-button>
+
+    </template>
+
+    <script>
+    class StaticMenu extends Polymer.Element {
+      static get is() {
+        return 'pwa-static-menu';
+      }
+      ready() {
+        super.ready();
+      }
+    }
+    window.customElements.define(StaticMenu.is, StaticMenu);
+    </script>
+</dom-module>

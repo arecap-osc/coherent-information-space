@@ -1,0 +1,69 @@
+<!--<link rel="import" href="../../../../../eden-logical-model-console/bower_components/polymer/polymer.html">-->
+<!--<link rel="import" href="../../../../../../bower_components/vaadin-ordered-layout/src/vaadin-vertical-layout.html">-->
+<!--<link rel="import" href="../../../../../../bower_components/vaadin-text-field/src/vaadin-text-field.html">-->
+<!--<link rel="import" href="../../../../../../bower_components/vaadin-text-field/src/vaadin-text-area.html">-->
+<!--<link rel="import" href="../../../../../../bower_components/vaadin-ordered-layout/src/vaadin-horizontal-layout.html">-->
+
+
+<dom-module id="route-disabled-form">
+    <template>
+        <style>
+            .route-form {
+                width: 100%;
+                height: 100%;
+            }
+
+            .route-form .vertical {
+                margin-right: 10px;
+            }
+
+            .route-textarea {
+                height: 75px;
+                padding-top: 0px;
+                font-size: 10px;
+                width: 100%;
+            }
+            .route-breadcrumb {
+                font-size: 10px;
+                font-style: italic;
+            }
+            .route-buttons {
+                font-size: 10px;
+                height: 22px;
+            }
+        </style>
+        <vaadin-vertical-layout class="syntax-form">
+            <vaadin-horizontal-layout id="action-buttons">
+                <vaadin-button id="save-btn" class="route-buttons">
+                    Save
+                </vaadin-button>
+            </vaadin-horizontal-layout>
+            <label id="bredCrumb" class="route-breadcrumb">bredCrumb</label>
+            <label id="logicalFunction" class="route-breadcrumb ">logicalFunction</label>
+            <vaadin-vertical-layout id="attachDoc"></vaadin-vertical-layout>
+            <vaadin-text-area id="syntax" label="Locutiune" class="route-textarea"></vaadin-text-area>
+            <vaadin-text-area id="syntaxDetails" label="Detalii" class="route-textarea"></vaadin-text-area>
+            <label id="syntaxDisabled"></label>
+            <vaadin-vertical-layout class="route-form">
+                <vaaadin-vertical-layout class="route-form vertical">
+                    <vaadin-text-field id="verb" label="Verb"></vaadin-text-field>
+                    <vaadin-text-area id="conjunction" label="Conjunctie" class="route-textarea"></vaadin-text-area>
+                    <vaadin-text-area id="verbalisation" label="Verbalizare" class="route-textarea"></vaadin-text-area>
+                    <vaadin-text-area id="phrase" label="Locutiune" class="route-textarea"></vaadin-text-area>
+                    <vaadin-text-area id="verbDetails" label="Detalii verb" class="route-textarea"></vaadin-text-area>
+                </vaaadin-vertical-layout>
+                <vaadin-vertical-layout class="route-form vertical" id="mapLinkFormLayout"></vaadin-vertical-layout>
+            </vaadin-vertical-layout>
+        </vaadin-vertical-layout>
+    </template>
+    <script>
+        class RouteDisabledForm extends Polymer.Element {
+            static get is() {
+                return 'route-disabled-form'
+            }
+        }
+
+        customElements.define(RouteDisabledForm.is, RouteDisabledForm);
+    </script>
+</dom-module>
+

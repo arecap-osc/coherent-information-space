@@ -1,0 +1,39 @@
+<!-- Dependency resources -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/vaadin-button/vaadin-button.html">
+<link rel="import" href="../bower_components/vaadin-icons/vaadin-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="/frontend/feedbacks/UnicursalGridViewDesign.html">
+<link rel="import" href="/frontend/feedbacks/UnicursalEditViewDesign.html">
+
+<dom-module id="unicursal-main-view">
+
+    <template>
+		<style></style>
+		
+		<vaadin-vertical-layout height-full width-full class="form-layout">
+	 		 <vaadin-horizontal-layout width-full>
+	 		 		<slot></slot>
+			 		<!-- <unicursal-edit-view/> -->
+		 	 </vaadin-horizontal-layout>
+			 <vaadin-horizontal-layout width-full>
+			 		<!-- <unicursal-grid-view/> -->
+	 		 </vaadin-horizontal-layout>
+			 <vaadin-horizontal-layout width-full id="footerContainer">
+			 		<label part="label">footerContainer</label>
+			 </vaadin-horizontal-layout>
+		</vaadin-vertical-layout>
+	</template>
+
+    <script>
+    class UnicursalMainView extends Polymer.Element {
+      static get is() {
+        return 'unicursal-main-view';
+      }
+      ready() {
+        super.ready();
+      }
+    }
+    window.customElements.define(UnicursalMainView.is, UnicursalMainView);
+    </script>
+</dom-module>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.hkrdi.eden</groupId>
+    <artifactId>eden-ggm-libraries-build</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <name>Eden GGM Libraries Build</name>
+    <description>Eden GGM Libraries Build</description>
+    <properties>
+        <revision>0.0.57-SNAPSHOT</revision>
+        <main.basedir>${basedir}</main.basedir>
+    </properties>
+    <!-- Most elements are in profiles so they are stripped out during maven-flatten -->
+    <profiles>
+        <!-- Default profile for command line build -->
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>../eden-ggm-libraries-modules</module>
+            </modules>
+        </profile>
+        <!-- M2E profile to allow easy import into Eclipse -->
+        <profile>
+            <id>m2e</id>
+            <activation>
+                <property>
+                    <name>m2e.version</name>
+                </property>
+            </activation>
+            <modules>
+                <module>../eden-ggm-libraries-modules</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>repository</id>
+            <activation>
+                <property>
+                    <name>repository</name>
+                </property>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>repository</id>
+                    <url>${repository}</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>repository</id>
+                    <url>${repository}</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <distributionManagement>
+    	<repository>
+        	<id>central</id>
+        	<name>927be400752f-releases</name>
+        	<url>http://159.89.29.55:8081/artifactory/noian</url>
+    	</repository>
+    	<snapshotRepository>
+        	<id>snapshots</id>
+        	<name>927be400752f-snapshots</name>
+        	<url>http://159.89.29.55:8081/artifactory/libs-snapshot</url>
+    	</snapshotRepository>
+     </distributionManagement>
+    
+    <repositories>
+        <!-- Repositories to allow snapshot and milestone BOM imports during development.
+            This section is stripped by the flatten plugin during install/deploy. -->
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m1e settings
+                    only. It has no influence on the Maven build itself. -->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            org.jetbrains.kotlin
+                                        </groupId>
+                                        <artifactId>
+                                            kotlin-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [1.1.51,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>compile</goal>
+                                            <goal>test-compile</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

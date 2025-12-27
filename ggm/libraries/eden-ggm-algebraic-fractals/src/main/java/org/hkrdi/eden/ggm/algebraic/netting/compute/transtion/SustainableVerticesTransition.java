@@ -1,0 +1,18 @@
+package org.hkrdi.eden.ggm.algebraic.netting.compute.transtion;
+
+import org.springframework.data.geo.Point;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+
+public interface SustainableVerticesTransition extends HexavalentTransition{
+
+    default Point getHorizontalTransition() {
+        return new Point( getWidthBigDecimal().multiply(new BigDecimal(2)).doubleValue(), 0);
+    }
+
+    default Point getVerticalTransition() {
+        return new Point(getWidthBigDecimal().doubleValue(), getHeightBigDecimal().divide(new BigDecimal(2),
+                MathContext.DECIMAL128).doubleValue());
+    }
+}

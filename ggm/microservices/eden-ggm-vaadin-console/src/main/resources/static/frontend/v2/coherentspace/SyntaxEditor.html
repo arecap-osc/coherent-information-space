@@ -1,0 +1,32 @@
+<dom-module id="syntax-editor">
+    <template>
+        <style>
+            .syntax-editor-vl {
+                width: 100%;
+            }
+            .se-nodes-semantic-hl {
+                width: 100%;
+                border-bottom: 1px solid black;
+            }
+            .se-nodes-syntax-hl {
+                width: 100%;
+                border-bottom: 1px solid black;
+            }
+        </style>
+        <vaadin-vertical-layout theme="spacing" id="syntax-editor-vl" class="syntax-editor-vl">
+            <vaadin-horizontal-layout  theme="spacing" id="se-nodes-semantics-hl" class="se-nodes-semantic-hl">
+                <semantic-form ></semantic-form>
+            </vaadin-horizontal-layout>
+            <vaadin-horizontal-layout  theme="spacing" id="se-nodes-syntax-hl" class="se-nodes-syntax-hl">
+            </vaadin-horizontal-layout>
+        </vaadin-vertical-layout>
+    </template>
+    <script>
+        class SyntaxEditor extends Polymer.Element {
+            static get is() {
+                return 'syntax-editor'
+            }
+        }
+        customElements.define(SyntaxEditor.is, SyntaxEditor);
+    </script>
+</dom-module>

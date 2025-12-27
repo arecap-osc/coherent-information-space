@@ -1,0 +1,111 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edenggmmediaapidev
+  labels:
+    run: edenggmmediaapidev
+    version: v1
+    environment: dev
+    tier: frontend
+    phase: deploy
+    release: deploy    
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 9990
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: edenggmmediaapidev
+    version: v1
+    environment: dev
+  sessionAffinity: ClientIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edenggmmediaapidev-deployment
+  labels:
+    app: edenggmmediaapidev
+    version: v1
+    environment: dev
+    tier: frontend
+    phase: deploy
+    deployment: latest
+    release: stable
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edenggmmediaapidev
+      version: v1
+      environment: dev
+  template:
+    metadata:
+      labels:
+        app: edenggmmediaapidev
+        version: v1
+        environment: dev
+        tier: frontend
+        phase: deploy
+        deployment: latest
+        release: stable        
+    spec:
+      containers:
+      - name: edenggmmediaapidev
+        env:
+          - name: JAVA_OPTS
+            value: "-Xmx500m"
+          - name: spring.datasource.url
+            #value: "jdbc:postgresql://db-postgresql-eden-dev-do-user-5032469-0.db.ondigitalocean.com:25061/edendevpool?sslmode=require"
+            #value: "jdbc:postgresql://db-postgresql-eden-dev-do-user-5032469-0.db.ondigitalocean.com:25060/edendev?currentSchema=eden&sslmode=require"
+            value: "jdbc:postgresql://db-postgresql-eden-dev-do-user-5032469-0.db.ondigitalocean.com:25061/edenggmdevpool?sslmode=require&prepareThreshold=0"
+          - name: spring.datasource.username
+            value: "doadmin"
+          - name: spring.datasource.password
+            value: "b7xduadseksnejw9"
+          - name: server.port
+            value: "8080"
+          - name: JAVA_OPTS
+#            value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+            value: "-Xmx1000M"
+          - name: hexavalent.logic.deep.max
+            value: "2"
+          - name: spring.jpa.hibernate.ddl-auto
+            value: "update"
+          - name: env
+            value: "dev"
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+        image: registry.gitlab.com/hkrdi/eden/global-governance-model/microservices/eden-ggm-media-api/edenggmmediaapi:latest
+        imagePullPolicy: "Always"
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 80
+          timeoutSeconds: 10
+          periodSeconds: 30
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8080
+#            httpHeaders:
+#            - name: Authorization
+#              value: Basic Z2VvcmdlLmJvYm9jOkdlb3JnZUJvYm9jMDA3Xw==
+          initialDelaySeconds: 80
+          timeoutSeconds: 10
+          periodSeconds: 30
+        resources:
+          limits:
+            memory: "1024Mi"
+            #cpu: "4"
+          requests:
+            memory: "1000Mi"
+            #cpu: "0.1"
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+       - name: regcred

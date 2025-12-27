@@ -1,0 +1,27 @@
+SUSTAINABLE_VERTICES::0 for clusters=5 nodes=60 connectors=210
+METABOLIC_VERTICES::0 for clusters=5 nodes=60 connectors=210
+
+SUSTAINABLE_EDGES::1 for clusters=23 nodes=276 connectors=966
+SUSTAINABLE_VERTICES::1 for clusters=17 nodes=204 connectors=714
+METABOLIC_VERTICES::1 for clusters=39 nodes=468 connectors=1638
+METABOLIC_EDGES::1 for clusters=45 nodes=540 connectors=1890 vs 1765
+
+SUSTAINABLE_EDGES::2 for clusters=105 nodes=1260 connectors=4410
+SUSTAINABLE_VERTICES::2 for clusters=77 nodes=924 connectors=3234
+METABOLIC_VERTICES::2 for clusters=247 nodes=2964 connectors=10374
+METABOLIC_EDGES::2 for clusters=313 nodes=3756 connectors=13146
+
+SUSTAINABLE_EDGES::3 for clusters=941 nodes=11292 connectors=39522
+SUSTAINABLE_VERTICES::3 for clusters=661 nodes=7932 connectors=27762
+METABOLIC_VERTICES::3 for clusters=1951 nodes=23412 connectors=81942
+METABOLIC_EDGES::3 for clusters=2613 nodes=31356 connectors=109746
+
+SUSTAINABLE_EDGES::4 for clusters=7837 nodes=94044 connectors=329154
+SUSTAINABLE_VERTICES::4 for clusters=5935 nodes=71220 connectors=249270
+METABOLIC_VERTICES::4 for clusters=17273 nodes=207276 connectors=725466
+METABOLIC_EDGES::4 for clusters=23065 nodes=276780 connectors=968730
+
+SUSTAINABLE_EDGES::5 for clusters=68423 nodes=821076 connectors=2873766
+SUSTAINABLE_VERTICES::5 for clusters=51817 nodes=621804 connectors=2176314
+METABOLIC_VERTICES::5 for clusters=153875 nodes=1846500 connectors=6462750
+METABOLIC_EDGES::5 for clusters=205271 nodes=2463252 connectors=8621382
