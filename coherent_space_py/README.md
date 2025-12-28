@@ -15,21 +15,21 @@ python -m pip install -r requirements.txt
 ## Local usage
 
 1. Ensure the repository root is on `PYTHONPATH` (or install the package in editable mode).
-2. Run the example to generate a three-step upstream-edge grid:
+2. Run the example to generate a three-step upstream-edge grid and write it to JSON:
 
 ```bash
 PYTHONPATH=. python coherent_space_py/examples/build_example_grid.py
 ```
 
-This prints the node dictionary as JSON. You can change the `step_count` parameter in `build_example_grid.py` to generate larger grids.
+This prints the node dictionary as JSON and writes it to `coherent_space_py/examples/example_grid.json`. Use `--output` to control the destination and `--step-count` to generate larger grids.
 
-To build the full netting for all four link orientations in one shot, use:
+To build the full netting for all four link orientations in one shot and write it to JSON, use:
 
 ```bash
 PYTHONPATH=. python coherent_space_py/examples/build_all_link_types_grid.py
 ```
 
-The script prints a JSON object keyed by orientation (`upstream_edge`, `downstream_edge`, `upstream_vertex`, `downstream_vertex`) where each entry includes a `summary` of node/type counts and the complete node dictionaries.
+The script prints a JSON object keyed by orientation (`upstream_edge`, `downstream_edge`, `upstream_vertex`, `downstream_vertex`) where each entry includes a `summary` of node/type counts and the complete node dictionaries. It also writes the same data to `coherent_space_py/examples/all_link_types_grid.json`. Use `--output` to control the destination and `--step-count` to generate larger grids.
 
 ## Hugging Face Space setup
 
