@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+import argparse
 import json
+import sys
+from pathlib import Path
 from typing import Dict, Tuple
 
 from coherent_space_py import (
@@ -43,9 +46,33 @@ def build_all_orientations(step_count: int = 3) -> Dict[str, dict]:
     return output
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Generate grids for all link orientations and export as JSON."
+    )
+    parser.add_argument(
+        "--step-count",
+        type=int,
+        default=3,
+        help="Number of steps from the origin to include in each grid (default: 3).",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=Path(__file__).with_name("all_link_types_grid.json"),
+        help="Path to write the JSON output (default: examples/all_link_types_grid.json).",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
-    grid = build_all_orientations(step_count=3)
-    print(json.dumps(grid, indent=2, sort_keys=True))
+    args = parse_args()
+    grid = build_all_orientations(step_count=args.step_count)
+    json_str = json.dumps(grid, indent=2, sort_keys=True)
+
+    print(json_str)
+    args.output.write_text(json_str + "\n")
+    print(f"Wrote JSON to {args.output.resolve()}", file=sys.stderr)
 
 
 if __name__ == "__main__":
