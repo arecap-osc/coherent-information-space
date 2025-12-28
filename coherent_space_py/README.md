@@ -23,6 +23,14 @@ PYTHONPATH=. python coherent_space_py/examples/build_example_grid.py
 
 This prints the node dictionary as JSON. You can change the `step_count` parameter in `build_example_grid.py` to generate larger grids.
 
+To build the full netting for all four link orientations in one shot, use:
+
+```bash
+PYTHONPATH=. python coherent_space_py/examples/build_all_link_types_grid.py
+```
+
+The script prints a JSON object keyed by orientation (`upstream_edge`, `downstream_edge`, `upstream_vertex`, `downstream_vertex`) where each entry includes a `summary` of node/type counts and the complete node dictionaries.
+
 ## Hugging Face Space setup
 
 1. Create a new **Python** Space.
