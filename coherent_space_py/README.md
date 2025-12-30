@@ -31,6 +31,24 @@ PYTHONPATH=. python coherent_space_py/examples/build_all_link_types_grid.py
 
 The script prints a JSON object keyed by orientation (`upstream_edge`, `downstream_edge`, `upstream_vertex`, `downstream_vertex`) where each entry includes a `summary` of node/type counts and the complete node dictionaries. It also writes the same data to `coherent_space_py/examples/all_link_types_grid.json`. Use `--output` to control the destination and `--step-count` to generate larger grids.
 
+### Suprastructură multivalentă (function/system)
+
+Poți suprapune logică multivalentă peste aceleași noduri fizice. Constructorii hexagonali oferă un helper care clondează fiecare nod fizic în mai multe „straturi” logice (ex. `function`, `system`) și rotește ciclul selector/detector/consumer pentru fiecare strat, păstrând geometria și vecinii.
+
+```python
+from coherent_space_py import UpstreamEdgeHexGraphBuilder
+
+builder = UpstreamEdgeHexGraphBuilder()
+physical_nodes = builder.build_hex_grid(step_count=3)
+logical_nodes = builder.build_multivalent_grid(step_count=3, logic_layers=("function", "system"))
+
+print(physical_nodes[3].to_dict())  # nod fizic
+print(logical_nodes[(3, "function")].to_dict())
+print(logical_nodes[(3, "system")].to_dict())
+```
+
+`logic_role` din nodul multivalent arată rolul trivalent ajustat pentru stratul respectiv; poziția, orientarea și vecinii rămân identici cu nodul fizic. Ajustează `logic_layers` pentru a adăuga mai multe proiecții semantice peste aceeași rețea.
+
 ## Hugging Face Space setup
 
 1. Create a new **Python** Space.
