@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Dict, List, Tuple
+from typing import Dict, Iterable, List, Tuple
 
 import numpy as np
 
 from coherent_space_py.geometry.roots_of_unity import roots_of_12
 from coherent_space_py.model.node import Node
+from coherent_space_py.model.multivalent_node import MultivalentNode
 from coherent_space_py.utils.gauss import gauss_sum
 
 
@@ -107,6 +108,42 @@ class _DefaultHexGraphBuilder(HexGraphBuilder):
             nodes[node_id].neighbors = sorted(set(neighbor_ids))
 
         return nodes
+
+    def build_multivalent_grid(
+        self,
+        step_count: int,
+        logic_layers: Iterable[str] = ("function", "system"),
+    ) -> Dict[Tuple[int, str], MultivalentNode]:
+        """Generate a logical overlay for each physical node.
+
+        Every physical node is replicated for each logic layer, keeping the
+        geometry and neighbors identical but shifting the trivalent role based
+        on the layer. The simplest policy used here is to rotate the
+        selector/detector/consumer cycle by one position for every additional
+        layer, mirroring the Java builders where function/system alternate
+        parity-driven roles.
+        """
+
+        physical_nodes = self.build_hex_grid(step_count)
+        layers = list(logic_layers)
+        if not layers:
+            raise ValueError("logic_layers must contain at least one entry")
+
+        overlay: Dict[Tuple[int, str], MultivalentNode] = {}
+        for idx, layer in enumerate(layers):
+            for node_id, node in physical_nodes.items():
+                logic_role = self.TYPE_CYCLE[(idx + self.TYPE_CYCLE.index(node.type)) % len(self.TYPE_CYCLE)]
+                overlay[(node_id, layer)] = MultivalentNode(
+                    physical_id=node_id,
+                    logic_layer=layer,
+                    logic_role=logic_role,
+                    position=node.position,
+                    orientation=node.orientation,
+                    vector_direction=node.vector_direction,
+                    neighbors=list(node.neighbors),
+                )
+
+        return overlay
 
 
 class UpstreamEdgeHexGraphBuilder(_DefaultHexGraphBuilder):

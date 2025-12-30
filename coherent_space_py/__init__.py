@@ -8,6 +8,7 @@ from coherent_space_py.builders.hex_graph_builder import (
 )
 from coherent_space_py.geometry.roots_of_unity import root_of_unity, roots_of_12
 from coherent_space_py.model.node import Node
+from coherent_space_py.model.multivalent_node import MultivalentNode
 from coherent_space_py.utils.gauss import gauss_sum
 
 __all__ = [
@@ -17,6 +18,7 @@ __all__ = [
     "UpstreamVertexHexGraphBuilder",
     "root_of_unity",
     "roots_of_12",
+    "MultivalentNode",
     "Node",
     "gauss_sum",
 ]
