@@ -11,13 +11,17 @@ from coherent_space_py.model.multivalent_node import MultivalentNode
 from coherent_space_py.utils.gauss import gauss_sum
 
 
+# Note: the ordering of directions matters for ring traversal when placing nodes.
+# Starting from (radius, 0) and stepping through these vectors keeps every point
+# on the ring at the same axial distance from the origin while walking around
+# the hexagon.
 AXIAL_DIRECTIONS: List[Tuple[int, int]] = [
-    (1, 0),
-    (1, -1),
     (0, -1),
     (-1, 0),
     (-1, 1),
     (0, 1),
+    (1, 0),
+    (1, -1),
 ]
 
 
