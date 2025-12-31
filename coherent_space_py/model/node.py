@@ -2,9 +2,10 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import List, Optional, Dict
+from typing import List, Dict, Tuple
 
 from coherent_space_py.model.enums import (
+    StreamApplicationType,
     InformationalStreamNetting,
     InformationalStreamVectorDirection
 )
@@ -36,7 +37,14 @@ class Node:
     
     neighbors: List[int] = field(default_factory=list)
     
-    connections: Dict[str, List[str]] = field(default_factory=dict)
+    connections: Dict[str, List[int]] = field(default_factory=dict)
+
+    # Fully-qualified linkage to the canonical informational-stream namespace.
+    # Mirrors org.arecap.eden.ia.console.informationalstream.* wiring.
+    namespace: str = "org.arecap.eden.ia.console.informationalstream.api"
+
+    # Canonicalized network links keyed by fully qualified StreamApplicationType name.
+    network_links: Dict[str, List[int]] = field(default_factory=dict)
 
     def to_dict(self) -> dict:
         return {
@@ -48,4 +56,6 @@ class Node:
             "orientation": self.orientation,
             "neighbors": list(self.neighbors),
             "connections": self.connections,
+            "namespace": self.namespace,
+            "network_links": self.network_links,
         }
