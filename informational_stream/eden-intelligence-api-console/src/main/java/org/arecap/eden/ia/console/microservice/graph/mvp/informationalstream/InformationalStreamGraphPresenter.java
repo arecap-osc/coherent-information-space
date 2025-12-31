@@ -35,17 +35,11 @@ public class InformationalStreamGraphPresenter extends MediaRenderImagePresenter
 
     @Override
     public void composeOrRefreshImages(Boolean forceRefresh) {
-        Double screenW = getScreenProperties().getWidth();
-        Double screenH = getScreenProperties().getHeight();
-
-        Double offsetX = (screenW - 800) / 2;
-        Double offsetY = (screenH - 800) / 2;
-
         graph.clear();
-        for(int step= 1; step <= 6; step ++) {
+        for(int step= 1; step <= 4; step ++) {
             graph.addAll(graphBuilder
                     .getNettingGraphs(600D, step, getScreenProperties().getScale(),
-                            new ComplexPlane(0D, 0D), new ComplexPlane(400d, -400d)));
+                            new ComplexPlane(0D, 0D), new ComplexPlane(getScreenProperties().getWidth() / 2, -getScreenProperties().getHeight() / 2)));
         }
         informationalStreamGraphMedia.getMediaRendererLayers().stream()
                 .filter(mrl -> InformationalStreamGraph.class.isAssignableFrom(mrl.getClass()))

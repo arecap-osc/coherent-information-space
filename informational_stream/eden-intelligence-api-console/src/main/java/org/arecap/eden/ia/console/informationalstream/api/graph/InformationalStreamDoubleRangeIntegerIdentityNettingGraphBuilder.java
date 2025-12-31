@@ -30,27 +30,27 @@ public interface InformationalStreamDoubleRangeIntegerIdentityNettingGraphBuilde
         ComplexPlane scroll = getScroll(root);
         while (graphPosition.getImaginary() <= displayUpperLeft.getImaginary()) {
             while (graphPosition.getReal() <= displayBottomRight.getReal()) {
-                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> selectorFunctionGraph = getSelectorFunctionGraph(root, origin, graphPosition);
+                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> selectorFunctionGraph = getGraphPointOfView1(root, origin, graphPosition);
                 if(selectorFunctionGraph.isPresent()) {
                     graph.put(selectorFunctionGraph.get().getId(), selectorFunctionGraph.get());
                 }
-                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> selectorSystemGraph = getSelectorSystemGraph(root, origin, graphPosition);
+                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> selectorSystemGraph = getGraphPointOfView2(root, origin, graphPosition);
                 if(selectorSystemGraph.isPresent()) {
                     graph.put(selectorSystemGraph.get().getId(), selectorSystemGraph.get());
                 }
-                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> detectorFunctionGraph = getDetectorFunctionGraph(root, origin, graphPosition);
+                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> detectorFunctionGraph = getGraphPointOfView3(root, origin, graphPosition);
                 if(detectorFunctionGraph.isPresent()) {
                     graph.put(detectorFunctionGraph.get().getId(), detectorFunctionGraph.get());
                 }
-                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> detectorSystemGraph = getDetectorSystemGraph(root, origin, graphPosition);
+                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> detectorSystemGraph = getGraphPointOfView4(root, origin, graphPosition);
                 if(detectorSystemGraph.isPresent()) {
                     graph.put(detectorSystemGraph.get().getId(), detectorSystemGraph.get());
                 }
-                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> consumerFunctionGraph = getConsumerFunctionGraph(root, origin, graphPosition);
+                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> consumerFunctionGraph = getGraphPointOfView5(root, origin, graphPosition);
                 if(consumerFunctionGraph.isPresent()) {
                     graph.put(consumerFunctionGraph.get().getId(), consumerFunctionGraph.get());
                 }
-                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> consumerSystemGraph = getConsumerSystemGraph(root, origin, graphPosition);
+                Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> consumerSystemGraph = getGraphPointOfView6(root, origin, graphPosition);
                 if(consumerSystemGraph.isPresent()) {
                     graph.put(consumerSystemGraph.get().getId(), consumerSystemGraph.get());
                 }
@@ -78,16 +78,16 @@ public interface InformationalStreamDoubleRangeIntegerIdentityNettingGraphBuilde
         return graphA;
     }
 
-    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getSelectorFunctionGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
+    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView1(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
 
-    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getSelectorSystemGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
+    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView2(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
 
-    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getDetectorFunctionGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
+    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView3(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
 
-    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getDetectorSystemGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
+    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView4(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
 
-    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getConsumerFunctionGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
+    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView5(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
 
-    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getConsumerSystemGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
+    Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView6(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition);
 
 }

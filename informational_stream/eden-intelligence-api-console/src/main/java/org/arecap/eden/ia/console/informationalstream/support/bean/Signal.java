@@ -2,7 +2,7 @@ package org.arecap.eden.ia.console.informationalstream.support.bean;
 
 
 import org.arecap.eden.ia.console.boot.BeanUtil;
-import org.arecap.eden.ia.console.informationalstream.api.StreamApplicationType;
+import org.arecap.eden.ia.console.informationalstream.api.StreamProcessType;
 import org.arecap.eden.ia.console.informationalstream.api.bean.FeatureSignalBean;
 import org.arecap.eden.ia.console.informationalstream.api.bean.I18nBean;
 import org.arecap.eden.ia.console.informationalstream.api.bean.SignalBean;
@@ -34,7 +34,7 @@ public class Signal implements SignalBean<Long, Signal>, FeatureSignalBean<Long,
 
     @Column
     @Enumerated(EnumType.STRING)
-    private StreamApplicationType streamApplicationType;
+    private StreamProcessType streamApplicationType;
 
     @Column
     private Locale locale;
@@ -101,12 +101,12 @@ public class Signal implements SignalBean<Long, Signal>, FeatureSignalBean<Long,
     }
 
     @Override
-    public StreamApplicationType getStreamApplicationType() {
+    public StreamProcessType getStreamApplicationType() {
         return streamApplicationType;
     }
 
     @Override
-    public void setStreamApplicationType(StreamApplicationType streamApplicationType) {
+    public void setStreamApplicationType(StreamProcessType streamApplicationType) {
         this.streamApplicationType = streamApplicationType;
     }
 

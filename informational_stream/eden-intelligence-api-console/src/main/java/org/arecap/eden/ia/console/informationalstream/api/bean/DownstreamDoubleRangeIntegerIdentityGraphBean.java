@@ -57,13 +57,13 @@ public interface DownstreamDoubleRangeIntegerIdentityGraphBean
 
     @Override
     default List<StreamApplicationGraphPropertiesFactory<Double>> getDownstreamSelectorFunctionDownstream() {
-        return getOriginVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer) && getVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer) ?
+        return getOriginVectorDirection().equals(InformationalStreamVectorDirection.CornerParity) && getVectorDirection().equals(InformationalStreamVectorDirection.CornerParity) ?
                 new ArrayList<>() : Arrays.asList(getDownstreamConsumerFunctionGraph(), getDownstreamConsumerSystemGraph());
     }
 
     @Override
     default List<StreamApplicationGraphPropertiesFactory<Double>> getDownstreamSelectorSystemDownstream() {
-        return getOriginVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer) && getVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer) ?
+        return getOriginVectorDirection().equals(InformationalStreamVectorDirection.CornerParity) && getVectorDirection().equals(InformationalStreamVectorDirection.CornerParity) ?
                 Arrays.asList(getDownstreamDetectorFunctionGraph(), getDownstreamDetectorSystemGraph()) :
                 Arrays.asList(getDownstreamDetectorFunctionGraph(), getDownstreamDetectorSystemGraph(), getDownstreamConsumerFunctionGraph(), getDownstreamConsumerSystemGraph());
     }
@@ -80,14 +80,14 @@ public interface DownstreamDoubleRangeIntegerIdentityGraphBean
 
     @Override
     default List<StreamApplicationGraphPropertiesFactory<Double>> getDownstreamConsumerFunctionDownstream() {
-        return getOriginVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer) && getVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer) ?
+        return getOriginVectorDirection().equals(InformationalStreamVectorDirection.CornerParity) && getVectorDirection().equals(InformationalStreamVectorDirection.CornerParity) ?
                 Arrays.asList(getDownstreamSelectorFunctionGraph(), getDownstreamSelectorSystemGraph()) :
                 new ArrayList<>();
     }
 
     @Override
     default List<StreamApplicationGraphPropertiesFactory<Double>> getDownstreamConsumerSystemDownstream() {
-        return getOriginVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer) && getVectorDirection().equals(InformationalStreamVectorDirection.SelectorDetectorConsumer) ?
+        return getOriginVectorDirection().equals(InformationalStreamVectorDirection.CornerParity) && getVectorDirection().equals(InformationalStreamVectorDirection.CornerParity) ?
                 Arrays.asList(getDownstreamSelectorFunctionGraph(), getDownstreamSelectorSystemGraph(), getDownstreamDetectorFunctionGraph(), getDownstreamDetectorSystemGraph()) :
                 Arrays.asList(getDownstreamDetectorFunctionGraph(), getDownstreamDetectorSystemGraph());
     }

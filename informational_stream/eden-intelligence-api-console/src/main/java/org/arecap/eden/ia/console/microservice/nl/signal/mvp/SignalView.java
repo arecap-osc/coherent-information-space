@@ -15,7 +15,7 @@ import com.vaadin.flow.i18n.LocaleChangeEvent;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
 import org.arecap.eden.ia.console.common.i18n.I18NProviderStatic;
-import org.arecap.eden.ia.console.informationalstream.api.StreamApplicationType;
+import org.arecap.eden.ia.console.informationalstream.api.StreamProcessType;
 import org.arecap.eden.ia.console.informationalstream.support.bean.Signal;
 import org.arecap.eden.ia.console.mvp.component.horizontallayout.HorizontalLayoutGridCrudFlowEntityView;
 
@@ -37,11 +37,11 @@ public class SignalView extends HorizontalLayoutGridCrudFlowEntityView<SignalPre
 
     private TextField filter = new TextField();
 
-    private ComboBox<StreamApplicationType> streamApplicationTypeFilter = new ComboBox<>("", StreamApplicationType.values());
+    private ComboBox<StreamProcessType> streamApplicationTypeFilter = new ComboBox<>("", StreamProcessType.values());
     private ComboBox<Locale> i18nFilter = new ComboBox<>("", Locale.ENGLISH, new Locale("RO"));
 
 
-    private ComboBox<StreamApplicationType> streamApplicationType = new ComboBox<>("textfield.streamApplicationType.label", StreamApplicationType.values());
+    private ComboBox<StreamProcessType> streamApplicationType = new ComboBox<>("textfield.streamApplicationType.label", StreamProcessType.values());
     private TextField featurePart = new TextField("textfield.featurePart.label");
     private TextArea details = new TextArea("textarea.details.label");
 
@@ -153,7 +153,7 @@ public class SignalView extends HorizontalLayoutGridCrudFlowEntityView<SignalPre
         setItems(getPresenter().getItems());
     }
 
-    private void streamApplicationTypeFilterValueChanged(AbstractField.ComponentValueChangeEvent<ComboBox<StreamApplicationType>, StreamApplicationType> comboBoxStreamApplicationTypeComponentValueChangeEvent) {
+    private void streamApplicationTypeFilterValueChanged(AbstractField.ComponentValueChangeEvent<ComboBox<StreamProcessType>, StreamProcessType> comboBoxStreamApplicationTypeComponentValueChangeEvent) {
         setItems(getPresenter().getItems());
     }
 
@@ -227,7 +227,7 @@ public class SignalView extends HorizontalLayoutGridCrudFlowEntityView<SignalPre
         return filter.getValue().trim();
     }
 
-    public Optional<StreamApplicationType> getStreamApplicationTypeFilter() {
+    public Optional<StreamProcessType> getStreamApplicationTypeFilter() {
         return streamApplicationTypeFilter.getOptionalValue();
     }
 

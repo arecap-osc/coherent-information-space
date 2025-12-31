@@ -26,7 +26,7 @@ public class UpstreamEdgeDoubleRangeIntegerIdentityGraphBuilder implements Infor
     }
 
     @Override
-    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getSelectorFunctionGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
+    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView1(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
         UpstreamEdgeDoubleRangeIntegerIdentityGraph result = new UpstreamEdgeDoubleRangeIntegerIdentityGraph(root.getStreamDistance(), root.getStep(), root.getScale());
         result.setRoot(root);
         Double realQuota = result.getWidth() * result.getScale();
@@ -73,7 +73,7 @@ public class UpstreamEdgeDoubleRangeIntegerIdentityGraphBuilder implements Infor
     }
 
     @Override
-    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getConsumerSystemGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
+    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView6(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
         UpstreamEdgeDoubleRangeIntegerIdentityGraph result = new UpstreamEdgeDoubleRangeIntegerIdentityGraph(root.getStreamDistance(), root.getStep(), root.getScale());
         result.setRoot(root);
         Double realQuota = result.getWidth() * result.getScale();
@@ -121,7 +121,7 @@ public class UpstreamEdgeDoubleRangeIntegerIdentityGraphBuilder implements Infor
     }
 
     @Override
-    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getDetectorFunctionGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
+    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView3(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
         UpstreamEdgeDoubleRangeIntegerIdentityGraph result = new UpstreamEdgeDoubleRangeIntegerIdentityGraph(root.getStreamDistance(), root.getStep(), root.getScale());
         result.setRoot(root);
         Double realQuota = result.getWidth() * result.getScale();
@@ -147,7 +147,7 @@ public class UpstreamEdgeDoubleRangeIntegerIdentityGraphBuilder implements Infor
     }
 
     @Override
-    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getSelectorSystemGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
+    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView2(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
         UpstreamEdgeDoubleRangeIntegerIdentityGraph result = new UpstreamEdgeDoubleRangeIntegerIdentityGraph(root.getStreamDistance(), root.getStep(), root.getScale());
         result.setRoot(root);
         Double realQuota = result.getWidth() * result.getScale();
@@ -196,7 +196,7 @@ public class UpstreamEdgeDoubleRangeIntegerIdentityGraphBuilder implements Infor
     }
 
     @Override
-    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getConsumerFunctionGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
+    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView5(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
         UpstreamEdgeDoubleRangeIntegerIdentityGraph result = new UpstreamEdgeDoubleRangeIntegerIdentityGraph(root.getStreamDistance(), root.getStep(), root.getScale());
         result.setRoot(root);
         Double realQuota = result.getWidth() * result.getScale();
@@ -246,7 +246,7 @@ public class UpstreamEdgeDoubleRangeIntegerIdentityGraphBuilder implements Infor
 
 
     @Override
-    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getDetectorSystemGraph(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
+    public Optional<InformationalStreamDoubleRangeIntegerIdentityGraphBean> getGraphPointOfView4(InformationalStreamDoubleRangeIntegerIdentityGraphBean root, ComplexPlanePropertiesFactory<Double> origin, ComplexPlanePropertiesFactory<Double> graphPosition) {
         UpstreamEdgeDoubleRangeIntegerIdentityGraph result = new UpstreamEdgeDoubleRangeIntegerIdentityGraph(root.getStreamDistance(), root.getStep(), root.getScale());
         result.setRoot(root);
         Double realQuota = result.getWidth() * result.getScale();

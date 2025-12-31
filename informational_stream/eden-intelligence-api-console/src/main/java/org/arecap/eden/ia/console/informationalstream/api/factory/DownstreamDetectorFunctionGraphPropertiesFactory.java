@@ -1,11 +1,11 @@
 package org.arecap.eden.ia.console.informationalstream.api.factory;
 
-import org.arecap.eden.ia.console.informationalstream.api.StreamApplicationType;
+import org.arecap.eden.ia.console.informationalstream.api.StreamProcessType;
 
 public interface DownstreamDetectorFunctionGraphPropertiesFactory<R extends Number> extends StreamApplicationGraphPropertiesFactory<R> {
 
-    default StreamApplicationType getType() {
-        return StreamApplicationType.DownstreamDetectorFunction;
+    default StreamProcessType getType() {
+        return StreamProcessType.DownstreamDetectorFunction;
     }
 
     @Override

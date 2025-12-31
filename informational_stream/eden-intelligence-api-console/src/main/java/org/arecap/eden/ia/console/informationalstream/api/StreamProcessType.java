@@ -1,6 +1,6 @@
 package org.arecap.eden.ia.console.informationalstream.api;
 
-public enum StreamApplicationType {
+public enum StreamProcessType {
 
     UpstreamSelectorFunction, UpstreamSelectorSystem,
     DownstreamSelectorFunction, DownstreamSelectorSystem,

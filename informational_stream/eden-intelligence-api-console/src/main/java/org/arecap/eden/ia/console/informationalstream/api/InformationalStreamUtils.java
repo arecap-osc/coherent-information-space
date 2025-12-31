@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.arecap.eden.ia.console.informationalstream.api.StreamApplicationType.*;
+import static org.arecap.eden.ia.console.informationalstream.api.StreamProcessType.*;
 
 public final class InformationalStreamUtils {
 
