@@ -255,6 +255,19 @@ class InfiniteCoherentGraph:
             grouped.setdefault(node.stream_application_type, []).append(node)
         return grouped
 
+    def _index_by_type_and_lattice(
+        self, nodes: List[Node]
+    ) -> Dict[InformationalStreamNeuronType, Dict[Tuple[int, int], List[Node]]]:
+        """
+        Build a lattice-aware index so that, pentru fiecare centru (q, r), putem
+        lega hexagonul local determinist pe aceeași pereche de coordonate.
+        """
+        index: Dict[InformationalStreamNeuronType, Dict[Tuple[int, int], List[Node]]] = {}
+        for node in nodes:
+            type_bucket = index.setdefault(node.stream_application_type, {})
+            type_bucket.setdefault(node.lattice_steps, []).append(node)
+        return index
+
     def _attach_hexavalent_links(self, nodes: List[Node]) -> None:
         """
         Populate neighbor/connection maps using the same rules as the Java
@@ -262,6 +275,7 @@ class InfiniteCoherentGraph:
         fully-qualified key rooted in org.arecap.eden.ia.console.informationalstream.
         """
         nodes_by_type = self._group_by_type(nodes)
+        lattice_index = self._index_by_type_and_lattice(nodes)
 
         for node in nodes:
             node.namespace = self.namespace
@@ -273,8 +287,11 @@ class InfiniteCoherentGraph:
             )
 
             for target_type in target_types:
-                candidates = nodes_by_type.get(target_type, [])
-                target_node = self._nearest_target(node, candidates)
+                # 1) Prefer conexiuni locale pe același (q, r) pentru a respecta
+                #    hexagonul determinist al centrului.
+                same_lattice = lattice_index.get(target_type, {}).get(node.lattice_steps, [])
+                target_node = self._nearest_target(node, same_lattice)
+
                 if target_node is None:
                     continue
 
