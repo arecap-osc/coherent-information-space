@@ -235,7 +235,8 @@ class UpstreamEdgeBuilder(NettingGraphBuilder):
         return netting == self.netting
 
     def get_scroll(self, root: GraphRoot) -> ComplexPlane:
-        return ComplexPlane(0.5 * root.width() * root.scale, 0.5 * root.height() * root.scale)
+        # matches DownstreamEdgeDoubleRangeIntegerIdentityGraphBuilder#getScroll
+        return ComplexPlane((3.0 / 4.0) * root.width() * root.scale, 0.5 * root.height() * root.scale)
 
     def _steps(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane) -> Tuple[int, int, float, float]:
         real_quota = root.width() * root.scale
@@ -522,11 +523,12 @@ class DownstreamEdgeBuilder(NettingGraphBuilder):
         return ComplexPlane(0.5 * root.width() * root.scale, 0.5 * root.height() * root.scale)
 
     def _steps(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane) -> Tuple[int, int]:
-        real_quota = (3.0 / 4.0) * root.width() * root.scale
+        scroll = self.get_scroll(root)
+        real_quota = scroll.real
         real_steps = _int_value_java((p.real - origin.real) / real_quota)
         if p.real < origin.real:
             real_steps -= 1
-        imag_quota = root.height() * root.scale
+        imag_quota = scroll.imaginary
         imag_steps = _int_value_java((p.imaginary - origin.imaginary) / imag_quota)
         if p.imaginary < origin.imaginary:
             imag_steps -= 1
@@ -535,32 +537,32 @@ class DownstreamEdgeBuilder(NettingGraphBuilder):
     # Ported from DownstreamEdgeDoubleRangeIntegerIdentityGraphBuilder.java
     def selector_function(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        real_steps *= -1
-        gauss_sum = get_n_gauss_sum(6, max(0, abs(real_steps) - 1)) + 1
-        root7_real = RootsOfUnity.r7(root.height() * root.scale * abs(real_steps))
-        root9_imag = RootsOfUnity.r9(root.height() * root.scale * imag_steps)
-        if real_steps > 0 or imag_steps < 0:
+        imag_steps *= -1
+        gauss_sum = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
+        root8_imag = RootsOfUnity.r8(root.height() * root.scale * imag_steps)
+        root6_real = RootsOfUnity.r6(root.height() * root.scale * real_steps)
+        if real_steps < 0 or imag_steps < 0:
             return None
         if real_steps == 0 and imag_steps == 0:
             return (0, ComplexPlane(origin.real, origin.imaginary), InformationalStreamVectorDirection.SelectorDetectorConsumer)
         if imag_steps == 0:
-            node_id = gauss_sum + abs(real_steps)
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (abs(real_steps) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            return (node_id, ComplexPlane(root7_real.real, root7_real.imaginary), vdir)
-        if abs(real_steps) + 1 >= imag_steps:
-            root7_imag = RootsOfUnity.r7(root.height() * root.scale * max(0, abs(real_steps) - imag_steps + 1))
-            node_id = get_n_gauss_sum(6, abs(real_steps)) + abs(real_steps) - imag_steps + 2
-            parity = (abs(real_steps) + imag_steps + 1) % 2
+            node_id = gauss_sum
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            return (node_id, ComplexPlane(root6_real.real, root6_real.imaginary), vdir)
+        if real_steps + 1 >= imag_steps:
+            root6_imag = RootsOfUnity.r6(root.height() * root.scale * max(0, real_steps - imag_steps + 1))
+            node_id = get_n_gauss_sum(6, real_steps) + imag_steps + 1
+            parity = (real_steps + imag_steps + 1) % 2 if imag_steps % 2 == 0 else (real_steps + imag_steps) % 2
             vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if parity == 0 else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            pos = ComplexPlane(root7_real.real + root7_imag.real, root9_imag.imaginary)
+            pos = ComplexPlane(root8_imag.real + root6_imag.real, root8_imag.imaginary + root6_imag.imaginary)
             return (node_id, pos, vdir)
         return None
 
     def selector_system(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
         gauss_sum = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
-        root1_real = RootsOfUnity.r1(root.height() * root.scale * real_steps)
-        root3_imag = RootsOfUnity.r3(root.height() * root.scale * imag_steps)
+        root1_real = RootsOfUnity.r1(root.width() * root.scale * real_steps)
+        root3_imag = RootsOfUnity.r3(root.width() * root.scale * imag_steps)
         if real_steps < 0 or imag_steps < 0:
             return None
         if real_steps == 0 and imag_steps == 0:
@@ -580,73 +582,70 @@ class DownstreamEdgeBuilder(NettingGraphBuilder):
 
     def detector_function(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        root5_imag = RootsOfUnity.r5(root.height() * root.scale * abs(imag_steps))
-        if imag_steps < 0 and real_steps >= imag_steps and real_steps < imag_steps + abs(imag_steps):
-            root7_imag = RootsOfUnity.r7(root.height() * root.scale * max(0, real_steps - imag_steps))
-            node_id = get_n_gauss_sum(6, abs(imag_steps)) + real_steps + 1
-            parity = (abs(real_steps) + abs(imag_steps)) % 2
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if parity == 0 else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            pos = ComplexPlane(root5_imag.real + root7_imag.real, root5_imag.imaginary)
+        real_gauss_sum = get_n_gauss_sum(6, max(0, real_steps))
+        root10_imag = RootsOfUnity.r10(root.height() * root.scale * imag_steps)
+        root12_real = RootsOfUnity.r12(root.height() * root.scale * real_steps)
+        if real_steps < 0 or imag_steps < 0:
+            return None
+        if real_steps == 0 and real_steps == imag_steps:
+            return (0, ComplexPlane(origin.real, origin.imaginary), InformationalStreamVectorDirection.SelectorDetectorConsumer)
+        if imag_steps == 0:
+            node_id = real_gauss_sum - 3 * real_steps + 1
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            return (node_id, ComplexPlane(root12_real.real, root12_real.imaginary), vdir)
+        if real_steps + 1 >= imag_steps:
+            root12_imag = RootsOfUnity.r12(root.height() * root.scale * max(0, real_steps - imag_steps + 1))
+            node_id = get_n_gauss_sum(6, max(0, real_steps + 1)) - 3 * (real_steps + 1) - imag_steps + 1
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if ((real_steps + imag_steps + 1) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            pos = ComplexPlane(root10_imag.real + root12_imag.real, root10_imag.imaginary + root12_imag.imaginary)
             return (node_id, pos, vdir)
         return None
 
     def detector_system(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        root11_imag = RootsOfUnity.r11(root.height() * root.scale * abs(imag_steps))
+        imag_steps *= -1
+        root8_imag = RootsOfUnity.r8(root.height() * root.scale * abs(imag_steps))
         if imag_steps < 0 and real_steps >= imag_steps and real_steps < imag_steps + abs(imag_steps):
-            root1_imag = RootsOfUnity.r1(root.height() * root.scale * max(0, real_steps - imag_steps))
-            node_id = (
-                get_n_gauss_sum(6, abs(imag_steps))
-                + 2 * imag_steps
-                - (abs(imag_steps) - abs(real_steps))
-                - (abs(imag_steps) - 1)
-            )
+            root12_imag = RootsOfUnity.r12(root.height() * root.scale * max(0, real_steps - imag_steps))
+            imag_gauss_sum = get_n_gauss_sum(6, abs(imag_steps) - 1)
+            node_id = imag_gauss_sum - 2 * imag_steps + real_steps + 1
             vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (abs(real_steps) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            pos = ComplexPlane(root11_imag.real + root1_imag.real, root11_imag.imaginary)
+            pos = ComplexPlane(root8_imag.real + root12_imag.real, root8_imag.imaginary + root12_imag.imaginary)
             return (node_id, pos, vdir)
         return None
 
     def consumer_function(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        gauss_sum = get_n_gauss_sum(6, max(0, real_steps)) - 1
-        root5_imag = RootsOfUnity.r5(root.height() * root.scale * imag_steps)
-        root7_real = RootsOfUnity.r7(root.height() * root.scale * real_steps)
-        if real_steps < 0 or imag_steps < 0:
-            return None
-        if real_steps == 0 and imag_steps == 0:
-            return (0, ComplexPlane(origin.real, origin.imaginary), InformationalStreamVectorDirection.SelectorDetectorConsumer)
-        if imag_steps == 0:
-            node_id = gauss_sum - 2 * (real_steps - 1)
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            return (node_id, ComplexPlane(root7_real.real, root7_real.imaginary), vdir)
-        if real_steps >= imag_steps:
-            root7_imag = RootsOfUnity.r7(root.height() * root.scale * max(0, real_steps - imag_steps))
-            node_id = gauss_sum - 2 * (real_steps - 1) - imag_steps
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            pos = ComplexPlane(root5_imag.real + root7_imag.real, root5_imag.imaginary)
+        root4_imag = RootsOfUnity.r4(root.height() * root.scale * abs(imag_steps))
+        if imag_steps < 0 and real_steps >= imag_steps and real_steps < imag_steps + abs(imag_steps):
+            root12_imag = RootsOfUnity.r12(root.height() * root.scale * max(0, real_steps - imag_steps))
+            imag_gauss_sum = get_n_gauss_sum(6, abs(imag_steps))
+            node_id = imag_gauss_sum + 2 * imag_steps - real_steps + 1
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (abs(real_steps + imag_steps) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            pos = ComplexPlane(root4_imag.real + root12_imag.real, root4_imag.imaginary + root12_imag.imaginary)
             return (node_id, pos, vdir)
         return None
 
     def consumer_system(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        gauss_sum = get_n_gauss_sum(6, max(0, real_steps)) - 1
-        root9_imag = RootsOfUnity.r9(root.height() * root.scale * imag_steps)
-        root7_real = RootsOfUnity.r7(root.height() * root.scale * real_steps)
+        real_steps *= -1
+        imag_steps *= -1
+        gauss_sum = get_n_gauss_sum(6, max(0, real_steps))
+        root4_imag = RootsOfUnity.r4(root.height() * root.scale * imag_steps)
+        root6_real = RootsOfUnity.r6(root.height() * root.scale * real_steps)
         if real_steps < 0 or imag_steps < 0:
             return None
-        if real_steps == 0 and imag_steps == 0:
+        if real_steps == 0 and real_steps == imag_steps:
             return (0, ComplexPlane(origin.real, origin.imaginary), InformationalStreamVectorDirection.SelectorDetectorConsumer)
         if imag_steps == 0:
-            node_id = gauss_sum - 2 * (real_steps - 1)
+            node_id = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
             vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            return (node_id, ComplexPlane(root7_real.real, root7_real.imaginary), vdir)
-        if real_steps + 1 >= imag_steps:
-            root7_imag = RootsOfUnity.r7(root.height() * root.scale * max(0, real_steps - imag_steps + 1))
-            imag_gauss_sum = get_n_gauss_sum(6, real_steps + 1) - 1
-            node_id = imag_gauss_sum - 2 * real_steps + imag_steps
-            parity = (real_steps + imag_steps + 1) % 2
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if parity == 0 else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            pos = ComplexPlane(root9_imag.real + root7_imag.real, root9_imag.imaginary)
+            return (node_id, ComplexPlane(root6_real.real, root6_real.imaginary), vdir)
+        if real_steps >= imag_steps:
+            root6_imag = RootsOfUnity.r6(root.height() * root.scale * max(0, real_steps - imag_steps))
+            node_id = gauss_sum - imag_steps + 1
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if ((real_steps + imag_steps) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            pos = ComplexPlane(root4_imag.real + root6_imag.real, root4_imag.imaginary + root6_imag.imaginary)
             return (node_id, pos, vdir)
         return None
 
@@ -658,14 +657,16 @@ class DownstreamVertexBuilder(NettingGraphBuilder):
         return netting == self.netting
 
     def get_scroll(self, root: GraphRoot) -> ComplexPlane:
-        return ComplexPlane((3.0 / 4.0) * root.width() * root.scale, root.height() * root.scale)
+        # matches DownstreamVertexDoubleRangeIntegerIdentityGraphBuilder#getScroll
+        return ComplexPlane((3.0 / 4.0) * root.width() * root.scale, (3.0 / 4.0) * root.height() * root.scale)
 
     def _steps(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane) -> Tuple[int, int]:
-        real_quota = (3.0 / 4.0) * root.width() * root.scale
+        scroll = self.get_scroll(root)
+        real_quota = scroll.real
         real_steps = _int_value_java((p.real - origin.real) / real_quota)
         if p.real < origin.real:
             real_steps -= 1
-        imag_quota = root.height() * root.scale
+        imag_quota = scroll.imaginary
         imag_steps = _int_value_java((p.imaginary - origin.imaginary) / imag_quota)
         if p.imaginary < origin.imaginary:
             imag_steps -= 1
@@ -674,21 +675,22 @@ class DownstreamVertexBuilder(NettingGraphBuilder):
     # Ported from DownstreamVertexDoubleRangeIntegerIdentityGraphBuilder.java
     def selector_function(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        real_steps *= -1
-        root7_real = RootsOfUnity.r7(root.height() * root.scale * abs(real_steps))
-        root9_imag = RootsOfUnity.r9(root.height() * root.scale * imag_steps)
-        if real_steps > 0 or imag_steps < 0:
+        imag_steps *= -1
+        gauss_sum = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
+        root9_imag = RootsOfUnity.r9(root.width() * root.scale * imag_steps)
+        root7_real = RootsOfUnity.r7(root.width() * root.scale * real_steps)
+        if real_steps < 0 or imag_steps < 0:
             return None
         if real_steps == 0 and imag_steps == 0:
             return (0, ComplexPlane(origin.real, origin.imaginary), InformationalStreamVectorDirection.SelectorDetectorConsumer)
         if imag_steps == 0:
-            node_id = get_n_gauss_sum(6, abs(real_steps)) + 1
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (abs(real_steps) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            node_id = gauss_sum
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
             return (node_id, ComplexPlane(root7_real.real, root7_real.imaginary), vdir)
-        if abs(real_steps) + 1 >= imag_steps:
-            root7_imag = RootsOfUnity.r7(root.height() * root.scale * max(0, abs(real_steps) - imag_steps + 1))
-            node_id = get_n_gauss_sum(6, abs(real_steps)) + abs(real_steps) - imag_steps + 2
-            parity = (abs(real_steps) + imag_steps) % 2
+        if real_steps + 1 >= imag_steps:
+            root7_imag = RootsOfUnity.r7(root.width() * root.scale * max(0, real_steps - imag_steps + 1))
+            node_id = get_n_gauss_sum(6, real_steps) + imag_steps + 1
+            parity = (real_steps + imag_steps + 1) % 2 if imag_steps % 2 == 0 else (real_steps + imag_steps) % 2
             vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if parity == 0 else InformationalStreamVectorDirection.ConsumerDetectorSelector
             pos = ComplexPlane(root7_real.real + root7_imag.real, root9_imag.imaginary)
             return (node_id, pos, vdir)
@@ -696,20 +698,22 @@ class DownstreamVertexBuilder(NettingGraphBuilder):
 
     def selector_system(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        root1_real = RootsOfUnity.r1(root.height() * root.scale * real_steps)
-        root3_imag = RootsOfUnity.r3(root.height() * root.scale * imag_steps)
+        imag_steps *= -1
+        gauss_sum = get_n_gauss_sum(6, max(0, real_steps))
+        root1_real = RootsOfUnity.r1(root.width() * root.scale * real_steps)
+        root3_imag = RootsOfUnity.r3(root.width() * root.scale * imag_steps)
         if real_steps < 0 or imag_steps < 0:
             return None
         if real_steps == 0 and imag_steps == 0:
             return (0, ComplexPlane(origin.real, origin.imaginary), InformationalStreamVectorDirection.SelectorDetectorConsumer)
         if imag_steps == 0:
-            node_id = get_n_gauss_sum(6, real_steps) + 1
+            node_id = gauss_sum - 3 * real_steps + 1
             vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
             return (node_id, ComplexPlane(root1_real.real, root1_real.imaginary), vdir)
         if real_steps + 1 >= imag_steps:
-            root1_imag = RootsOfUnity.r1(root.height() * root.scale * max(0, real_steps - imag_steps + 1))
-            node_id = get_n_gauss_sum(6, real_steps) + real_steps - imag_steps + 2
-            parity = (real_steps + imag_steps) % 2
+            root1_imag = RootsOfUnity.r1(root.width() * root.scale * max(0, real_steps - imag_steps + 1))
+            node_id = get_n_gauss_sum(6, max(0, real_steps + 1)) - 3 * (real_steps + 1) + imag_steps + 1
+            parity = (real_steps + 1) % 2
             vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if parity == 0 else InformationalStreamVectorDirection.ConsumerDetectorSelector
             pos = ComplexPlane(root1_real.real + root1_imag.real, root3_imag.imaginary)
             return (node_id, pos, vdir)
@@ -717,68 +721,69 @@ class DownstreamVertexBuilder(NettingGraphBuilder):
 
     def detector_function(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        root5_imag = RootsOfUnity.r5(root.height() * root.scale * abs(imag_steps))
-        if imag_steps < 0 and real_steps >= imag_steps and real_steps < imag_steps + abs(imag_steps):
-            root7_imag = RootsOfUnity.r7(root.height() * root.scale * max(0, real_steps - imag_steps))
-            node_id = get_n_gauss_sum(6, abs(imag_steps)) + real_steps
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (abs(real_steps) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            pos = ComplexPlane(root5_imag.real + root7_imag.real, root5_imag.imaginary)
+        real_gauss_sum = get_n_gauss_sum(6, max(0, real_steps))
+        root11_imag = RootsOfUnity.r11(root.width() * root.scale * imag_steps)
+        root1_real = RootsOfUnity.r1(root.width() * root.scale * real_steps)
+        if real_steps < 0 or imag_steps < 0:
+            return None
+        if real_steps == 0 and real_steps == imag_steps:
+            return (0, ComplexPlane(origin.real, origin.imaginary), InformationalStreamVectorDirection.SelectorDetectorConsumer)
+        if imag_steps == 0:
+            node_id = real_gauss_sum - 3 * real_steps + 1
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            return (node_id, ComplexPlane(root1_real.real, root1_real.imaginary), vdir)
+        if real_steps + 1 >= imag_steps:
+            root1_imag = RootsOfUnity.r1(root.width() * root.scale * max(0, real_steps - imag_steps + 1))
+            node_id = get_n_gauss_sum(6, max(0, real_steps + 1)) - 3 * (real_steps + 1) - imag_steps + 1
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if ((real_steps + imag_steps + 1) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            pos = ComplexPlane(root11_imag.real + root1_imag.real, root11_imag.imaginary)
             return (node_id, pos, vdir)
         return None
 
     def detector_system(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        root11_imag = RootsOfUnity.r11(root.height() * root.scale * abs(imag_steps))
+        root3_imag = RootsOfUnity.r3(root.width() * root.scale * abs(imag_steps))
         if imag_steps < 0 and real_steps >= imag_steps and real_steps < imag_steps + abs(imag_steps):
-            root1_imag = RootsOfUnity.r1(root.height() * root.scale * max(0, real_steps - imag_steps))
-            node_id = get_n_gauss_sum(6, abs(imag_steps)) + real_steps + 1
+            root1_imag = RootsOfUnity.r1(root.width() * root.scale * max(0, real_steps - imag_steps))
+            node_id = get_n_gauss_sum(6, max(0, abs(imag_steps))) + real_steps + 1
             parity = (abs(real_steps) + abs(imag_steps)) % 2
             vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if parity == 0 else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            pos = ComplexPlane(root11_imag.real + root1_imag.real, root11_imag.imaginary)
+            pos = ComplexPlane(root3_imag.real + root1_imag.real, root3_imag.imaginary)
             return (node_id, pos, vdir)
         return None
 
     def consumer_function(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        root5_imag = RootsOfUnity.r5(root.height() * root.scale * imag_steps)
-        root7_real = RootsOfUnity.r7(root.height() * root.scale * real_steps)
-        gauss_sum = get_n_gauss_sum(6, max(0, real_steps)) - 1
-        if real_steps < 0 or imag_steps < 0:
-            return None
-        if real_steps == 0 and imag_steps == 0:
-            return (0, ComplexPlane(origin.real, origin.imaginary), InformationalStreamVectorDirection.SelectorDetectorConsumer)
-        if imag_steps == 0:
-            node_id = gauss_sum - 2 * (real_steps - 1)
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            return (node_id, ComplexPlane(root7_real.real, root7_real.imaginary), vdir)
-        if real_steps >= imag_steps:
-            root7_imag = RootsOfUnity.r7(root.height() * root.scale * max(0, real_steps - imag_steps))
-            node_id = gauss_sum - 2 * (real_steps - 1) - imag_steps
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            pos = ComplexPlane(root5_imag.real + root7_imag.real, root5_imag.imaginary)
+        root5_imag = RootsOfUnity.r5(root.width() * root.scale * abs(imag_steps))
+        if imag_steps < 0 and real_steps >= imag_steps and real_steps < imag_steps + abs(imag_steps):
+            root1_imag = RootsOfUnity.r1(root.width() * root.scale * max(0, real_steps - imag_steps))
+            imag_gauss_sum = get_n_gauss_sum(6, abs(imag_steps))
+            node_id = imag_gauss_sum + 2 * imag_steps - real_steps + 1
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (abs(real_steps + imag_steps) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            pos = ComplexPlane(root5_imag.real + root1_imag.real, root5_imag.imaginary)
             return (node_id, pos, vdir)
         return None
 
     def consumer_system(self, root: GraphRoot, origin: ComplexPlane, p: ComplexPlane):
         real_steps, imag_steps = self._steps(root, origin, p)
-        root9_imag = RootsOfUnity.r9(root.height() * root.scale * imag_steps)
-        root7_real = RootsOfUnity.r7(root.height() * root.scale * real_steps)
-        gauss_sum = get_n_gauss_sum(6, max(0, real_steps)) - 1
+        real_steps *= -1
+        imag_steps *= -1
+        real_gauss_sum = get_n_gauss_sum(6, max(0, real_steps))
+        root5_imag = RootsOfUnity.r5(root.width() * root.scale * imag_steps)
+        root7_real = RootsOfUnity.r7(root.width() * root.scale * real_steps)
         if real_steps < 0 or imag_steps < 0:
             return None
-        if real_steps == 0 and imag_steps == 0:
+        if real_steps == 0 and real_steps == imag_steps:
             return (0, ComplexPlane(origin.real, origin.imaginary), InformationalStreamVectorDirection.SelectorDetectorConsumer)
         if imag_steps == 0:
-            node_id = gauss_sum - 2 * (real_steps - 1)
+            node_id = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
             vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if (real_steps % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
             return (node_id, ComplexPlane(root7_real.real, root7_real.imaginary), vdir)
-        if real_steps + 1 >= imag_steps:
-            root7_imag = RootsOfUnity.r7(root.height() * root.scale * max(0, real_steps - imag_steps + 1))
-            imag_gauss_sum = get_n_gauss_sum(6, real_steps + 1) - 1
-            node_id = imag_gauss_sum - 2 * real_steps + imag_steps
-            parity = (real_steps + imag_steps) % 2
-            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if parity == 0 else InformationalStreamVectorDirection.ConsumerDetectorSelector
-            pos = ComplexPlane(root9_imag.real + root7_imag.real, root9_imag.imaginary)
+        if real_steps >= imag_steps:
+            root7_imag = RootsOfUnity.r7(root.width() * root.scale * max(0, real_steps - imag_steps))
+            node_id = real_gauss_sum - imag_steps + 1
+            vdir = InformationalStreamVectorDirection.SelectorDetectorConsumer if ((real_steps + imag_steps) % 2 == 0) else InformationalStreamVectorDirection.ConsumerDetectorSelector
+            pos = ComplexPlane(root5_imag.real + root7_imag.real, root5_imag.imaginary)
             return (node_id, pos, vdir)
         return None
 
