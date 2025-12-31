@@ -15,7 +15,7 @@ from py_informationalstream_graph.informationalstream_graph import (
 from coherent_space_py.model.enums import (
     InformationalStreamNetting,
     InformationalStreamVectorDirection,
-    StreamApplicationType,
+    InformationalStreamNeuronType,
 )
 from coherent_space_py.model.node import Node
 from coherent_space_py.model.topology_rules import (
@@ -71,43 +71,43 @@ class InfiniteCoherentGraph:
 
     def _map_app_type(
         self, netting: BuilderNetting, app_type: BuilderAppType, layer: BuilderLayer
-    ) -> StreamApplicationType:
+    ) -> InformationalStreamNeuronType:
         upstream = netting in (BuilderNetting.UpstreamEdge, BuilderNetting.UpstreamVertex)
         if app_type == BuilderAppType.selector and layer == BuilderLayer.function:
             return (
-                StreamApplicationType.UpstreamSelectorFunction
+                InformationalStreamNeuronType.UpstreamSelectorFunction
                 if upstream
-                else StreamApplicationType.DownstreamSelectorFunction
+                else InformationalStreamNeuronType.DownstreamSelectorFunction
             )
         if app_type == BuilderAppType.selector and layer == BuilderLayer.system:
             return (
-                StreamApplicationType.UpstreamSelectorSystem
+                InformationalStreamNeuronType.UpstreamSelectorSystem
                 if upstream
-                else StreamApplicationType.DownstreamSelectorSystem
+                else InformationalStreamNeuronType.DownstreamSelectorSystem
             )
         if app_type == BuilderAppType.detector and layer == BuilderLayer.function:
             return (
-                StreamApplicationType.UpstreamDetectorFunction
+                InformationalStreamNeuronType.UpstreamDetectorFunction
                 if upstream
-                else StreamApplicationType.DownstreamDetectorFunction
+                else InformationalStreamNeuronType.DownstreamDetectorFunction
             )
         if app_type == BuilderAppType.detector and layer == BuilderLayer.system:
             return (
-                StreamApplicationType.UpstreamDetectorSystem
+                InformationalStreamNeuronType.UpstreamDetectorSystem
                 if upstream
-                else StreamApplicationType.DownstreamDetectorSystem
+                else InformationalStreamNeuronType.DownstreamDetectorSystem
             )
         if app_type == BuilderAppType.consumer and layer == BuilderLayer.function:
             return (
-                StreamApplicationType.UpstreamConsumerFunction
+                InformationalStreamNeuronType.UpstreamConsumerFunction
                 if upstream
-                else StreamApplicationType.DownstreamConsumerFunction
+                else InformationalStreamNeuronType.DownstreamConsumerFunction
             )
         if app_type == BuilderAppType.consumer and layer == BuilderLayer.system:
             return (
-                StreamApplicationType.UpstreamConsumerSystem
+                InformationalStreamNeuronType.UpstreamConsumerSystem
                 if upstream
-                else StreamApplicationType.DownstreamConsumerSystem
+                else InformationalStreamNeuronType.DownstreamConsumerSystem
             )
         raise ValueError(f"Unsupported application combination: {netting} {app_type} {layer}")
 
@@ -249,8 +249,8 @@ class InfiniteCoherentGraph:
             return None
         return min(filtered, key=lambda cand: abs(self._as_complex(cand.position) - origin_pos))
 
-    def _group_by_type(self, nodes: List[Node]) -> Dict[StreamApplicationType, List[Node]]:
-        grouped: Dict[StreamApplicationType, List[Node]] = {}
+    def _group_by_type(self, nodes: List[Node]) -> Dict[InformationalStreamNeuronType, List[Node]]:
+        grouped: Dict[InformationalStreamNeuronType, List[Node]] = {}
         for node in nodes:
             grouped.setdefault(node.stream_application_type, []).append(node)
         return grouped

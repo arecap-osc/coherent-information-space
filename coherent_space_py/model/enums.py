@@ -1,17 +1,18 @@
 from enum import Enum, auto
 
-class StreamApplicationType(str, Enum):
+class InformationalStreamNeuronType(str, Enum):
     """
-    Represents the 12 types of stream applications in the coherent space.
-    Mirrors org.arecap.eden.ia.console.informationalstream.api.StreamApplicationType
+    Reprezintă cei 12 neuroni logici din spațiul coerent (fost "StreamApplicationType").
+    Păstrăm aceeași enumerare, dar cu o semantică orientată pe neuron logic, nu "aplicație".
     """
+
     UpstreamSelectorFunction = "UpstreamSelectorFunction"
     UpstreamDetectorFunction = "UpstreamDetectorFunction"
     UpstreamConsumerFunction = "UpstreamConsumerFunction"
     UpstreamSelectorSystem = "UpstreamSelectorSystem"
     UpstreamDetectorSystem = "UpstreamDetectorSystem"
     UpstreamConsumerSystem = "UpstreamConsumerSystem"
-    
+
     DownstreamSelectorFunction = "DownstreamSelectorFunction"
     DownstreamDetectorFunction = "DownstreamDetectorFunction"
     DownstreamConsumerFunction = "DownstreamConsumerFunction"
@@ -21,6 +22,9 @@ class StreamApplicationType(str, Enum):
 
     def __str__(self):
         return self.value
+
+# Backward-compat alias while restul codului este migrat.
+StreamApplicationType = InformationalStreamNeuronType
 
 class InformationalStreamNetting(str, Enum):
     """

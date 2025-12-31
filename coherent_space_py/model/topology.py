@@ -1,26 +1,26 @@
 from typing import Set, Tuple, Dict
-from coherent_space_py.model.enums import StreamApplicationType, StreamTopology
+from coherent_space_py.model.enums import InformationalStreamNeuronType, StreamTopology
 
 # Abbreviation map for cleaner definition, mirroring Java's InformationalStreamUtils
 _ABBR: Dict[str, str] = {
-    StreamApplicationType.UpstreamSelectorFunction: "u(S)",
-    StreamApplicationType.UpstreamDetectorFunction: "u(D)",
-    StreamApplicationType.UpstreamConsumerFunction: "u(C)",
-    StreamApplicationType.UpstreamSelectorSystem: "S(u)",
-    StreamApplicationType.UpstreamDetectorSystem: "D(u)",
-    StreamApplicationType.UpstreamConsumerSystem: "C(u)",
-    StreamApplicationType.DownstreamSelectorFunction: "d(S)",
-    StreamApplicationType.DownstreamDetectorFunction: "d(D)",
-    StreamApplicationType.DownstreamConsumerFunction: "d(C)",
-    StreamApplicationType.DownstreamSelectorSystem: "S(d)",
-    StreamApplicationType.DownstreamDetectorSystem: "D(d)",
-    StreamApplicationType.DownstreamConsumerSystem: "C(d)",
+    InformationalStreamNeuronType.UpstreamSelectorFunction: "u(S)",
+    InformationalStreamNeuronType.UpstreamDetectorFunction: "u(D)",
+    InformationalStreamNeuronType.UpstreamConsumerFunction: "u(C)",
+    InformationalStreamNeuronType.UpstreamSelectorSystem: "S(u)",
+    InformationalStreamNeuronType.UpstreamDetectorSystem: "D(u)",
+    InformationalStreamNeuronType.UpstreamConsumerSystem: "C(u)",
+    InformationalStreamNeuronType.DownstreamSelectorFunction: "d(S)",
+    InformationalStreamNeuronType.DownstreamDetectorFunction: "d(D)",
+    InformationalStreamNeuronType.DownstreamConsumerFunction: "d(C)",
+    InformationalStreamNeuronType.DownstreamSelectorSystem: "S(d)",
+    InformationalStreamNeuronType.DownstreamDetectorSystem: "D(d)",
+    InformationalStreamNeuronType.DownstreamConsumerSystem: "C(d)",
 }
 
 # Reverse map for lookups if needed
 _TYPE_BY_ABBR = {v: k for k, v in _ABBR.items()}
 
-def _get_abbr(app_type: StreamApplicationType) -> str:
+def _get_abbr(app_type: InformationalStreamNeuronType) -> str:
     return _ABBR[app_type]
 
 # Topology Sets as sets of tuples (upstream_abbr, downstream_abbr)
@@ -86,7 +86,7 @@ DOWNSTREAM_UPSTREAM_TOPOLOGY: Set[Tuple[str, str]] = {
     ("C(d)", "u(C)"), ("C(d)", "C(u)"), ("C(u)", "C(d)")
 }
 
-def get_stream_topology(upstream: StreamApplicationType, downstream: StreamApplicationType) -> StreamTopology:
+def get_stream_topology(upstream: InformationalStreamNeuronType, downstream: InformationalStreamNeuronType) -> StreamTopology:
     """
     Determines the topology type based on the upstream and downstream application types.
     Mirrors InformationalStreamUtils.getStreamTopology

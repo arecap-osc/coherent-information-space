@@ -3,7 +3,7 @@ from typing import Dict, List, Optional
 from dataclasses import dataclass, field
 
 from coherent_space_py.model.node import Node
-from coherent_space_py.model.enums import StreamApplicationType
+from coherent_space_py.model.enums import InformationalStreamNeuronType
 
 @dataclass
 class InformationalStreamGraph:
@@ -17,7 +17,7 @@ class InformationalStreamGraph:
     nodes: Dict[int, Node] = field(default_factory=dict)
     
     # Index to quickly retrieve nodes by their application type
-    _by_type: Dict[StreamApplicationType, List[Node]] = field(default_factory=dict)
+    _by_type: Dict[InformationalStreamNeuronType, List[Node]] = field(default_factory=dict)
 
     def add_node(self, node: Node) -> None:
         """Add a node to the graph and index it."""
@@ -26,14 +26,14 @@ class InformationalStreamGraph:
             self._by_type[node.stream_application_type] = []
         self._by_type[node.stream_application_type].append(node)
 
-    def get_nodes_by_type(self, app_type: StreamApplicationType) -> List[Node]:
+    def get_nodes_by_type(self, app_type: InformationalStreamNeuronType) -> List[Node]:
         """Retrieve all nodes of a specific stream application type."""
         return self._by_type.get(app_type, [])
 
     def get_upstreams(self) -> List[Node]:
         """Get all nodes belonging to Upstream topologies."""
         result = []
-        for t in StreamApplicationType:
+        for t in InformationalStreamNeuronType:
             if t.value.startswith("Upstream"):
                 result.extend(self.get_nodes_by_type(t))
         return result
@@ -41,7 +41,7 @@ class InformationalStreamGraph:
     def get_downstreams(self) -> List[Node]:
         """Get all nodes belonging to Downstream topologies."""
         result = []
-        for t in StreamApplicationType:
+        for t in InformationalStreamNeuronType:
             if t.value.startswith("Downstream"):
                 result.extend(self.get_nodes_by_type(t))
         return result
