@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from coherent_space_py.model.infinite_graph import InfiniteCoherentGraph
 from coherent_space_py.model.enums import (
+    InformationalStreamNetting,
     InformationalStreamVectorDirection,
     StreamApplicationType,
 )
@@ -20,6 +21,13 @@ def visualize_infinite():
     # 3. Plot
     fig, ax = plt.subplots(figsize=(10, 8))
     
+    netting_colors = {
+        InformationalStreamNetting.UpstreamEdge: "#1f77b4",
+        InformationalStreamNetting.UpstreamVertex: "#2ca02c",
+        InformationalStreamNetting.DownstreamEdge: "#ff7f0e",
+        InformationalStreamNetting.DownstreamVertex: "#d62728",
+    }
+
     xs = []
     ys = []
     colors = []
@@ -28,15 +36,12 @@ def visualize_infinite():
     for node in nodes:
         xs.append(node.position.real)
         ys.append(node.position.imag)
+
+        colors.append(netting_colors.get(node.netting, "#7f7f7f"))
+
+        # Label upstream vs downstream for quick glance
+        labels.append("U" if node.stream_application_type.value.startswith("Upstream") else "D")
         
-        # Color by Netting Type logic
-        if node.stream_application_type.value.startswith("Upstream"):
-            colors.append("blue") # Upstream
-            labels.append("U")
-        else:
-            colors.append("orange") # Downstream
-            labels.append("D")
-            
         # Offset slightly if positions are identical?
         # Matplotlib will overdraw.
             
@@ -47,6 +52,7 @@ def visualize_infinite():
          ax.text(x, y, label, ha='center', va='center', color='white', fontsize=8)
 
     # Find closest node of target type
+    connection_distance_cap = 1.2 * graph.stream_distance * graph.scale
     for node in nodes: # Iterate through nodes again to draw connections
         if node.connections:
             for target_type_name in node.connections.keys():
@@ -61,7 +67,7 @@ def visualize_infinite():
                  nearest = min(candidates, key=lambda n: abs(n.position - node.position))
                  
                  # Distance check to avoid drawing across the map (local connections only)
-                 if abs(nearest.position - node.position) < 0.6: # Typically distance is ~0.3 - 0.5
+                 if abs(nearest.position - node.position) < connection_distance_cap:
                      ax.plot(
                          [node.position.real, nearest.position.real],
                          [node.position.imag, nearest.position.imag],
