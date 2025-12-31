@@ -11,8 +11,13 @@ Usage examples:
 from __future__ import annotations
 
 import argparse
+import os
 
+import matplotlib
+
+matplotlib.use("Agg")  # headless-friendly
 import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 
 from informationalstream_graph import (
     ComplexPlane,
@@ -40,7 +45,7 @@ def build_netting(hexagon: str, connection: str) -> InformationalStreamNetting:
     return InformationalStreamNetting.DownstreamVertex
 
 
-def plot_graph(nodes, title: str, with_edges: bool = True) -> None:
+def plot_graph(nodes, title: str, with_edges: bool = True) -> Figure:
     xs = []
     ys = []
     for n in nodes.values():
@@ -62,7 +67,7 @@ def plot_graph(nodes, title: str, with_edges: bool = True) -> None:
     ax.set_aspect("equal", adjustable="box")
     ax.grid(True, linestyle="--", alpha=0.3)
     plt.tight_layout()
-    plt.show()
+    return fig
 
 
 def main():
@@ -77,6 +82,8 @@ def main():
     parser.add_argument("--width", type=float, default=50.0, help="Window width (default: 50.0)")
     parser.add_argument("--height", type=float, default=30.0, help="Window height (default: 30.0)")
     parser.add_argument("--with-edges", action="store_true", help="Draw inferred neighbor edges")
+    parser.add_argument("--output", default="single_netting.png", help="Path to save the image (default: single_netting.png)")
+    parser.add_argument("--show", action="store_true", help="Display the interactive window in addition to saving the image.")
     args = parser.parse_args()
 
     netting = build_netting(args.hexagon, args.connection)
@@ -99,7 +106,11 @@ def main():
         infer_neighbors(nodes)
 
     title = f"{netting.value} | step={args.step}, stream_distance={args.stream_distance}, scale={args.scale}"
-    plot_graph(nodes, title, with_edges=args.with_edges)
+    fig = plot_graph(nodes, title, with_edges=args.with_edges)
+    fig.savefig(args.output, dpi=300)
+    print(f"Saved netting visualization to {os.path.abspath(args.output)}")
+    if args.show:
+        plt.show()
 
 
 if __name__ == "__main__":
