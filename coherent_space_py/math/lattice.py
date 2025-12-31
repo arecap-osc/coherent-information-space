@@ -88,12 +88,12 @@ class LatticeMath(ABC):
         return Node(
             id=nid,
             position=pos,
-            stream_application_type=type_enum.name,
+            stream_application_type=type_enum,
             netting=netting,
             vector_direction=vd,
-            orientation=f"id:{nid}", 
+            orientation=f"id:{nid}",
             neighbors=[],
-            connections=conns_map
+            connections=conns_map,
         )
 
 class UpstreamEdgeLattice(LatticeMath):
