@@ -1,3 +1,4 @@
+import math
 import matplotlib.pyplot as plt
 from matplotlib.patches import RegularPolygon
 from coherent_space_py.model.infinite_graph import InfiniteCoherentGraph
@@ -8,6 +9,15 @@ from coherent_space_py.model.enums import (
 )
 
 VD = InformationalStreamVectorDirection
+
+def _short_label(app_type: StreamApplicationType) -> str:
+    upstream = "U" if app_type.value.startswith("Upstream") else "D"
+    role = (
+        "S" if "Selector" in app_type.value else "D" if "Detector" in app_type.value else "C"
+    )
+    layer = "F" if "Function" in app_type.value else "S"
+    return f"{upstream}{role}{layer}"
+
 
 def visualize_infinite():
     # 1. Init Infinite Graph
@@ -51,7 +61,7 @@ def visualize_infinite():
         xs.append(node.position.real)
         ys.append(node.position.imag)
         colors.append(netting_colors.get(node.netting, "#7f7f7f"))
-        labels.append("U" if node.stream_application_type.value.startswith("Upstream") else "D")
+        labels.append(_short_label(node.stream_application_type))
 
         # Draw hexagon patch per node
         face_alpha = 0.22 if node.vector_direction == VD.SideParity else 0.32
@@ -74,9 +84,19 @@ def visualize_infinite():
 
     # Annotate U/D
     for x, y, label in zip(xs, ys, labels):
-        ax.text(x, y, label, ha="center", va="center", color="white", fontsize=7, weight="bold")
+        ax.text(
+            x,
+            y,
+            label,
+            ha="center",
+            va="center",
+            color="white",
+            fontsize=7,
+            weight="bold",
+        )
 
-    # Draw directional links using the computed neighbors and vector direction
+    # Draw directional links using the computed neighbors and the hex-logic wiring
+    # (connections are computed in InfiniteCoherentGraph via topology_rules).
     for node in nodes:
         for _, target_ids in node.connections.items():
             for target_id in target_ids:
@@ -91,7 +111,7 @@ def visualize_infinite():
                         arrowstyle="->",
                         color=netting_colors.get(node.netting, "#333333"),
                         alpha=0.35,
-                        linewidth=0.8,
+                        linewidth=0.9,
                     ),
                 )
 
