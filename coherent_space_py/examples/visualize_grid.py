@@ -1,5 +1,10 @@
 import matplotlib.pyplot as plt
 from coherent_space_py.model.infinite_graph import InfiniteCoherentGraph
+from coherent_space_py.model.enums import (
+    InformationalStreamVectorDirection
+)
+
+VD = InformationalStreamVectorDirection
 
 def visualize_infinite():
     # 1. Init Infinite Graph
@@ -70,7 +75,7 @@ def visualize_infinite():
         if -0.5 < node.position.real < 0.5 and -0.5 < node.position.imag < 0.5:
              # Determine drawing style based on vector direction (Vertex vs Edge)
             line_style = '-' if node.vector_direction == VD.Vertex else '--'
-            alpha = 0.6 if node.vector_direction == VD.Vertex else 0.4text, fontsize=6)
+            alpha = 0.6 if node.vector_direction == VD.Vertex else 0.4 #text, fontsize=6)
 
     ax.set_aspect('equal')
     plt.title('Infinite Coherent Grid: Quad Lattice + Connection "Roads"')
