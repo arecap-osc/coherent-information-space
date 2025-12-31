@@ -1,4 +1,6 @@
+import math
 import matplotlib.pyplot as plt
+from matplotlib.patches import RegularPolygon
 from coherent_space_py.model.infinite_graph import InfiniteCoherentGraph
 from coherent_space_py.model.enums import (
     InformationalStreamNetting,
@@ -7,6 +9,15 @@ from coherent_space_py.model.enums import (
 )
 
 VD = InformationalStreamVectorDirection
+
+def _short_label(app_type: StreamApplicationType) -> str:
+    upstream = "U" if app_type.value.startswith("Upstream") else "D"
+    role = (
+        "S" if "Selector" in app_type.value else "D" if "Detector" in app_type.value else "C"
+    )
+    layer = "F" if "Function" in app_type.value else "S"
+    return f"{upstream}{role}{layer}"
+
 
 def visualize_infinite():
     # 1. Init Infinite Graph
@@ -19,7 +30,7 @@ def visualize_infinite():
     print(f"Generated {len(nodes)} nodes in patch.")
     
     # 3. Plot
-    fig, ax = plt.subplots(figsize=(10, 8))
+    fig, ax = plt.subplots(figsize=(12, 10))
     
     netting_colors = {
         InformationalStreamNetting.UpstreamEdge: "#1f77b4",
@@ -28,65 +39,84 @@ def visualize_infinite():
         InformationalStreamNetting.DownstreamVertex: "#d62728",
     }
 
+    # Infer a local hex radius from the nearest neighbor spacing to keep the
+    # outlines consistent across nettings.
+    min_spacing = None
+    for i, a in enumerate(nodes):
+        for b in nodes[i + 1 :]:
+            dist = abs(a.position - b.position)
+            if dist == 0:
+                continue
+            min_spacing = dist if min_spacing is None else min(min_spacing, dist)
+    hex_radius = (min_spacing or graph.stream_distance) * 0.40
+
+    # Prepare helpers
+    nodes_by_id = {n.id: n for n in nodes}
+    labels = []
+    colors = []
     xs = []
     ys = []
-    colors = []
-    labels = []
-    
+
     for node in nodes:
         xs.append(node.position.real)
         ys.append(node.position.imag)
-
         colors.append(netting_colors.get(node.netting, "#7f7f7f"))
+        labels.append(_short_label(node.stream_application_type))
 
-        # Label upstream vs downstream for quick glance
-        labels.append("U" if node.stream_application_type.value.startswith("Upstream") else "D")
-        
-        # Offset slightly if positions are identical?
-        # Matplotlib will overdraw.
-            
-    ax.scatter(xs, ys, c=colors, s=100, alpha=0.6, edgecolors='black')
-    
-    # Annotate
+        # Draw hexagon patch per node
+        face_alpha = 0.22 if node.vector_direction == VD.SideParity else 0.32
+        edge_style = "-" if node.vector_direction == VD.CornerParity else "--"
+        hexagon = RegularPolygon(
+            (node.position.real, node.position.imag),
+            numVertices=6,
+            radius=hex_radius,
+            orientation=0.0,
+            facecolor=netting_colors.get(node.netting, "#7f7f7f"),
+            edgecolor="black",
+            alpha=face_alpha,
+            linestyle=edge_style,
+            linewidth=0.6,
+        )
+        ax.add_patch(hexagon)
+
+    # Scatter centers after hexagons for crisp edges
+    ax.scatter(xs, ys, c=colors, s=60, alpha=0.8, edgecolors="black")
+
+    # Annotate U/D
     for x, y, label in zip(xs, ys, labels):
-         ax.text(x, y, label, ha='center', va='center', color='white', fontsize=8)
+        ax.text(
+            x,
+            y,
+            label,
+            ha="center",
+            va="center",
+            color="white",
+            fontsize=7,
+            weight="bold",
+        )
 
-    # Find closest node of target type
-    connection_distance_cap = 1.2 * graph.stream_distance * graph.scale
-    for node in nodes: # Iterate through nodes again to draw connections
-        if node.connections:
-            for target_type_name in node.connections.keys():
-                 # Simple heuristic: find nearest node of that type in the patch
-                 # In a real implementation, this would be computed by math
-                 
-                 target_enum = StreamApplicationType[target_type_name]
-                 candidates = [n for n in nodes if n.stream_application_type == target_enum]
-                 if not candidates: continue
-                 
-                 # Find nearest
-                 nearest = min(candidates, key=lambda n: abs(n.position - node.position))
-                 
-                 # Distance check to avoid drawing across the map (local connections only)
-                 if abs(nearest.position - node.position) < connection_distance_cap:
-                     ax.plot(
-                         [node.position.real, nearest.position.real],
-                         [node.position.imag, nearest.position.imag],
-                         color='gray',
-                         alpha=0.3, # Faint lines
-                         linestyle='-',
-                         linewidth=0.5
-                     )
-
-    # Annotate a few nodes using the new logic
-    count = 0
+    # Draw directional links using the computed neighbors and the hex-logic wiring
+    # (connections are computed in InfiniteCoherentGraph via topology_rules).
     for node in nodes:
-        if -0.5 < node.position.real < 0.5 and -0.5 < node.position.imag < 0.5:
-             # Determine drawing style based on vector direction (Vertex vs Edge)
-            line_style = '-' if node.vector_direction == VD.CornerParity else '--'
-            alpha = 0.6 if node.vector_direction == VD.CornerParity else 0.4 #text, fontsize=6)
+        for _, target_ids in node.connections.items():
+            for target_id in target_ids:
+                target = nodes_by_id.get(target_id)
+                if target is None:
+                    continue
+                ax.annotate(
+                    "",
+                    xy=(target.position.real, target.position.imag),
+                    xytext=(node.position.real, node.position.imag),
+                    arrowprops=dict(
+                        arrowstyle="->",
+                        color=netting_colors.get(node.netting, "#333333"),
+                        alpha=0.35,
+                        linewidth=0.9,
+                    ),
+                )
 
     ax.set_aspect('equal')
-    plt.title('Infinite Coherent Grid: Quad Lattice + Connection "Roads"')
+    plt.title('Infinite Coherent Grid: Hex cells + stream vectors')
     plt.grid(True, linestyle=':', alpha=0.3)
     plt.savefig('infinite_grid_viz.png', dpi=300)
     print("Visualization saved to infinite_grid_viz.png")
