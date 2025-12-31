@@ -13,13 +13,13 @@ ISN = InformationalStreamNetting
 def get_upstream_connections(
     source_type: SAT, 
     source_vd: VD,
-    origin_vd: VD = VD.Vertex
+    origin_vd: VD = VD.CornerParity
 ) -> List[SAT]:
     """
     Returns the list of target StreamApplicationTypes that an UPSTREAM node connects to.
     """
     # Vertex Mode (was SDC)
-    is_vertex = (origin_vd == VD.Vertex and source_vd == VD.Vertex)
+    is_vertex = (origin_vd == VD.CornerParity and source_vd == VD.CornerParity)
     
     if source_type == SAT.UpstreamSelectorFunction:
         return [SAT.UpstreamDetectorSystem, SAT.UpstreamConsumerFunction] if is_vertex else [SAT.UpstreamDetectorSystem, SAT.UpstreamConsumerSystem]
@@ -44,7 +44,7 @@ def get_upstream_connections(
 def get_downstream_connections(
     source_type: SAT, 
     source_vd: VD,
-    origin_vd: VD = VD.Vertex
+    origin_vd: VD = VD.CornerParity
 ) -> List[SAT]:
     """
     Returns the list of target StreamApplicationTypes that a DOWNSTREAM node connects to.
@@ -54,7 +54,7 @@ def get_downstream_connections(
       Vertex (was SDC/Type A): D -> S
       Edge (was CDS/Type B): S -> D
     """
-    is_vertex = (origin_vd == VD.Vertex and source_vd == VD.Vertex)
+    is_vertex = (origin_vd == VD.CornerParity and source_vd == VD.CornerParity)
     
     targets = []
     

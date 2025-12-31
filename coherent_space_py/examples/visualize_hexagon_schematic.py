@@ -21,14 +21,14 @@ def visualize_schematics():
     # Configurations
     configs = [
         # Row 0: Upstream
-        {"title": "Upstream Hexagon (Vertex Mode)", "mode": "UP", "vd": VD.Vertex, "ax": axes[0, 0]},
-        {"title": "Upstream Hexagon (Edge Mode)", "mode": "UP", "vd": VD.Edge, "ax": axes[0, 1]},
+        {"title": "Upstream Hexagon (CornerParity Mode)", "mode": "UP", "vd": VD.CornerParity, "ax": axes[0, 0]},
+        {"title": "Upstream Hexagon (SideParity Mode)", "mode": "UP", "vd": VD.SideParity, "ax": axes[0, 1]},
         # Row 1: Downstream
-        {"title": "Downstream Hexagon (Vertex Mode)", "mode": "DOWN", "vd": VD.Vertex, "ax": axes[1, 0]},
-        {"title": "Downstream Hexagon (Edge Mode)", "mode": "DOWN", "vd": VD.Edge, "ax": axes[1, 1]},
+        {"title": "Downstream Hexagon (CornerParity Mode)", "mode": "DOWN", "vd": VD.CornerParity, "ax": axes[1, 0]},
+        {"title": "Downstream Hexagon (SideParity Mode)", "mode": "DOWN", "vd": VD.SideParity, "ax": axes[1, 1]},
         # Row 2: Combined (Superposition)
-        {"title": "Superposition (Vertex Mode)", "mode": "BOTH", "vd": VD.Vertex, "ax": axes[2, 0]},
-        {"title": "Superposition (Edge Mode)", "mode": "BOTH", "vd": VD.Edge, "ax": axes[2, 1]},
+        {"title": "Superposition (CornerParity Mode)", "mode": "BOTH", "vd": VD.CornerParity, "ax": axes[2, 0]},
+        {"title": "Superposition (SideParity Mode)", "mode": "BOTH", "vd": VD.SideParity, "ax": axes[2, 1]},
     ]
     
     # Geometry Definitions (Angles in degrees)

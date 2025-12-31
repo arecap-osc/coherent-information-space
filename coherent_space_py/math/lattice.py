@@ -57,7 +57,7 @@ class LatticeMath(ABC):
         pass
 
     def _create_node(self, nid: int, pos: complex, type_enum: StreamApplicationType, vd_idx: int) -> Node:
-        vd = InformationalStreamVectorDirection.Vertex if vd_idx == 0 else InformationalStreamVectorDirection.Edge
+        vd = InformationalStreamVectorDirection.CornerParity if vd_idx == 0 else InformationalStreamVectorDirection.SideParity
         
         # Determine netting dynamically based on type name
         netting = None

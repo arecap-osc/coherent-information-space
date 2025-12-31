@@ -74,8 +74,8 @@ def visualize_infinite():
     for node in nodes:
         if -0.5 < node.position.real < 0.5 and -0.5 < node.position.imag < 0.5:
              # Determine drawing style based on vector direction (Vertex vs Edge)
-            line_style = '-' if node.vector_direction == VD.Vertex else '--'
-            alpha = 0.6 if node.vector_direction == VD.Vertex else 0.4 #text, fontsize=6)
+            line_style = '-' if node.vector_direction == VD.CornerParity else '--'
+            alpha = 0.6 if node.vector_direction == VD.CornerParity else 0.4 #text, fontsize=6)
 
     ax.set_aspect('equal')
     plt.title('Infinite Coherent Grid: Quad Lattice + Connection "Roads"')

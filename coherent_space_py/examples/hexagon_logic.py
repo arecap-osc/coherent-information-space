@@ -29,10 +29,10 @@ def main():
     print("Generating Hexagon Logic (4 Types)...")
     # Define test cases for 4 variations: Upstream/Downstream x Vertex/Edge
     configs = [
-        ("Upstream Hexagon (Type A - Vertex Mode)", True, VD.Vertex),
-        ("Upstream Hexagon (Type B - Edge Mode)", True, VD.Edge),
-        ("Downstream Hexagon (Type A - Vertex Mode)", False, VD.Vertex),
-        ("Downstream Hexagon (Type B - Edge Mode)", False, VD.Edge)
+        ("Upstream Hexagon (Type A - Vertex Mode)", True, VD.CornerParity),
+        ("Upstream Hexagon (Type B - Edge Mode)", True, VD.SideParity),
+        ("Downstream Hexagon (Type A - Vertex Mode)", False, VD.CornerParity),
+        ("Downstream Hexagon (Type B - Edge Mode)", False, VD.SideParity)
     ]
     
     for title, is_upstream, source_vd in configs:

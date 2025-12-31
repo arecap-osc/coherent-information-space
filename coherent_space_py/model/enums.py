@@ -35,15 +35,16 @@ class InformationalStreamNetting(str, Enum):
     def __str__(self):
         return self.value
 
+
 class InformationalStreamVectorDirection(str, Enum):
     """
     Indicates the orientation of the informational stream around the three graph nodes.
     Mirrors org.arecap.eden.ia.console.informationalstream.api.InformationalStreamVectorDirection
     Defines the geometric orientation of the hexagon connection.
-    Previously SDC/CDS. Renamed to reflect position on lattice (Vertex vs Edge).
+    Previously SDC/CDS. Renamed to reflect position on lattice (CornerParity vs SideParity).
     """
-    Vertex = "Vertex" # Was SelectorDetectorConsumer (Input/D->S)
-    Edge = "Edge"     # Was ConsumerDetectorSelector (Output/S->D)
+    CornerParity = "CornerParity" # Was SelectorDetectorConsumer (Input/D->S)
+    SideParity = "SideParity"     # Was ConsumerDetectorSelector (Output/S->D)
 
     def __str__(self):
         return self.value
