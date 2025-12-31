@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Tuple
 
 from coherent_space_py.model.enums import (
-    StreamApplicationType,
+    InformationalStreamNeuronType,
     InformationalStreamNetting,
     InformationalStreamVectorDirection
 )
@@ -22,8 +22,8 @@ class Node:
     # Mirrors ComplexPlaneBean
     position: Tuple[float, float]
     
-    # The application type (e.g. UpstreamSelectorFunction)
-    stream_application_type: StreamApplicationType
+    # Tipul de "neuron" logic (fost StreamApplicationType), ex: UpstreamSelectorFunction
+    stream_application_type: InformationalStreamNeuronType
     
     # The netting type (e.g. UpstreamEdge)
     netting: InformationalStreamNetting
