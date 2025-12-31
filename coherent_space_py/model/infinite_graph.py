@@ -120,11 +120,42 @@ class InfiniteCoherentGraph:
             else InformationalStreamVectorDirection.SideParity
         )
 
+    def _builder_steps(
+        self, builder: object, root: object, origin_plane: ComplexPlane, position: ComplexPlane
+    ) -> Tuple[int, int]:
+        """
+        Introspect the netting builder to recover its (real, imag) step counters
+        for a given node position. The upstream-edge builder returns four values
+        (steps + quotas); the others return two. We only need the counters to
+        keep a deterministic axial-like coordinate per node and to clip the
+        display patch to the requested q/r ranges.
+        """
+        raw_steps = builder._steps(root, origin_plane, position)  # type: ignore[attr-defined]
+        if len(raw_steps) == 2:
+            return raw_steps  # type: ignore[return-value]
+        if len(raw_steps) == 4:
+            real_steps, imag_steps, _, _ = raw_steps  # type: ignore[misc]
+            return real_steps, imag_steps
+        raise ValueError(f"Unexpected _steps output for {builder}: {raw_steps}")
+
     def _convert_nodes(
-        self, graph_nodes: Dict[int, object], netting: BuilderNetting, offset: int
+        self,
+        graph_nodes: Dict[int, object],
+        netting: BuilderNetting,
+        offset: int,
+        builder: object,
+        root: GraphRoot,
+        origin_plane: ComplexPlane,
+        q_range: range,
+        r_range: range,
     ) -> List[Node]:
         converted: List[Node] = []
         for original_id, gnode in graph_nodes.items():
+            steps = self._builder_steps(builder, root, origin_plane, gnode.position)
+            real_steps, imag_steps = steps
+            if real_steps not in q_range or imag_steps not in r_range:
+                continue
+
             stream_app_type = self._map_app_type(netting, gnode.app_type, gnode.layer)
             netting_enum = InformationalStreamNetting(netting.value)
             vector_direction = self._map_vector_direction(gnode.vector_direction)
@@ -140,6 +171,7 @@ class InfiniteCoherentGraph:
                     connections={},
                     namespace=self.namespace,
                     network_links={},
+                    lattice_steps=(real_steps, imag_steps),
                 )
             )
         return converted
@@ -168,7 +200,11 @@ class InfiniteCoherentGraph:
         # Keep IDs unique across nettings by reserving a wide offset block for each graph.
         id_block = 1_000_000
         for idx, netting in enumerate(nettings_in_order):
+            builder_impl = next(b for b in self.builder.builders if b.accept(netting))
             view = self._netting_display_window(netting, q_range, r_range)
+            graph_root = GraphRoot(
+                stream_distance=self.stream_distance, step=0, scale=self.scale, netting=netting
+            )
             graph_nodes = self.builder.get_graph(
                 netting=netting,
                 stream_distance=self.stream_distance,
@@ -177,7 +213,18 @@ class InfiniteCoherentGraph:
                 origin=origin_plane,
                 display_bottom_right=view,
             )
-            all_nodes.extend(self._convert_nodes(graph_nodes, netting, offset=idx * id_block))
+            all_nodes.extend(
+                self._convert_nodes(
+                    graph_nodes,
+                    netting,
+                    offset=idx * id_block,
+                    builder=builder_impl,
+                    root=graph_root,
+                    origin_plane=origin_plane,
+                    q_range=q_range,
+                    r_range=r_range,
+                )
+            )
 
         self._attach_hexavalent_links(all_nodes)
         return all_nodes

@@ -46,6 +46,9 @@ class Node:
     # Canonicalized network links keyed by fully qualified StreamApplicationType name.
     network_links: Dict[str, List[int]] = field(default_factory=dict)
 
+    # Axial-like lattice coordinates inferred from the builder (_steps real/imag).
+    lattice_steps: Tuple[int, int] = field(default_factory=tuple)
+
     def to_dict(self) -> dict:
         return {
             "id": self.id,
@@ -58,4 +61,5 @@ class Node:
             "connections": self.connections,
             "namespace": self.namespace,
             "network_links": self.network_links,
+            "lattice_steps": self.lattice_steps,
         }
