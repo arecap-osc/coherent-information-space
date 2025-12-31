@@ -8,6 +8,12 @@ You can tweak the window and parameters below.
 
 from __future__ import annotations
 
+import argparse
+import os
+
+import matplotlib
+
+matplotlib.use("Agg")  # headless-friendly
 import matplotlib.pyplot as plt
 
 from informationalstream_graph import (
@@ -43,6 +49,19 @@ def plot_graph(ax, nodes, title: str, with_edges: bool = True):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Render all four informational-stream nettings.")
+    parser.add_argument(
+        "--output",
+        default="render_demo.png",
+        help="Path to save the generated visualization (default: render_demo.png)",
+    )
+    parser.add_argument(
+        "--show",
+        action="store_true",
+        help="Display the interactive window in addition to saving the image.",
+    )
+    args = parser.parse_args()
+
     builder = InformationalStreamDoubleRangeIntegerIdentityGraphBuilderPy()
 
     # Parameters similar to Java call
@@ -67,7 +86,10 @@ def main():
         plot_graph(ax, g, title)
 
     plt.tight_layout()
-    plt.show()
+    plt.savefig(args.output, dpi=300)
+    print(f"Saved demo visualization to {os.path.abspath(args.output)}")
+    if args.show:
+        plt.show()
 
 
 if __name__ == "__main__":

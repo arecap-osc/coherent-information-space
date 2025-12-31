@@ -19,6 +19,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install matplotlib
 
+# Generates render_demo.png in the current folder
 python render_demo.py
 ```
 
@@ -27,8 +28,13 @@ python render_demo.py
 If you want to inspect one netting at a time (pick upstream/downstream + edge/vertex, level/step, stream distance, scale, and window):
 
 ```bash
+# Saves single_netting.png by default
 python render_single_netting.py --hexagon upstream --connection edge --step 0 --stream-distance 3 --scale 1 --width 50 --height 30 --with-edges
 ```
+
+Both scripts are headless-friendly: they always write a PNG and print the absolute
+path. Use `--output` to change the filename and `--show` if you also want an
+interactive window (when a display is available).
 
 ## Notes
 
