@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 from coherent_space_py.model.infinite_graph import InfiniteCoherentGraph
 from coherent_space_py.model.enums import (
-    InformationalStreamVectorDirection
+    InformationalStreamVectorDirection,
+    StreamApplicationType,
 )
 
 VD = InformationalStreamVectorDirection
@@ -29,7 +30,7 @@ def visualize_infinite():
         ys.append(node.position.imag)
         
         # Color by Netting Type logic
-        if "Upstream" in node.stream_application_type:
+        if node.stream_application_type.value.startswith("Upstream"):
             colors.append("blue") # Upstream
             labels.append("U")
         else:
@@ -52,7 +53,8 @@ def visualize_infinite():
                  # Simple heuristic: find nearest node of that type in the patch
                  # In a real implementation, this would be computed by math
                  
-                 candidates = [n for n in nodes if n.stream_application_type == target_type_name]
+                 target_enum = StreamApplicationType[target_type_name]
+                 candidates = [n for n in nodes if n.stream_application_type == target_enum]
                  if not candidates: continue
                  
                  # Find nearest
