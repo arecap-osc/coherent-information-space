@@ -22,6 +22,14 @@ pip install matplotlib
 python render_demo.py
 ```
 
+## Single-netting demo
+
+If you want to inspect one netting at a time (pick upstream/downstream + edge/vertex, level/step, stream distance, scale, and window):
+
+```bash
+python render_single_netting.py --hexagon upstream --connection edge --step 0 --stream-distance 3 --scale 1 --width 50 --height 30 --with-edges
+```
+
 ## Notes
 
 - The original Java builder doesn’t explicitly compute *neighbors*; it places nodes deterministically.  
