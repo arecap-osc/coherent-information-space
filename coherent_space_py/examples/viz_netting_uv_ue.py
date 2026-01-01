@@ -1,3 +1,4 @@
+# run this PYTHONPATH=. python coherent_space_py/examples/viz_netting_uv_ue.py
 from __future__ import annotations
 
 import math
