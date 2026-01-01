@@ -5,12 +5,12 @@ from coherent_space_py.model.infinite_graph import InfiniteCoherentGraph
 from coherent_space_py.model.enums import (
     InformationalStreamNetting,
     InformationalStreamVectorDirection,
-    StreamApplicationType,
+    StreamProcessType,
 )
 
 VD = InformationalStreamVectorDirection
 
-def _short_label(app_type: StreamApplicationType) -> str:
+def _short_label(app_type: StreamProcessType) -> str:
     upstream = "U" if app_type.value.startswith("Upstream") else "D"
     role = (
         "S" if "Selector" in app_type.value else "D" if "Detector" in app_type.value else "C"

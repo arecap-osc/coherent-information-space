@@ -1,13 +1,13 @@
 from typing import List, Tuple
 from coherent_space_py.model.enums import (
-    InformationalStreamNeuronType,
+    InformationalStreamProcessType,
     InformationalStreamVectorDirection,
     InformationalStreamNetting,
 )
 
 # Alias for brevity
 VD = InformationalStreamVectorDirection
-SAT = InformationalStreamNeuronType
+SAT = InformationalStreamProcessType
 ISN = InformationalStreamNetting
 
 def get_upstream_connections(

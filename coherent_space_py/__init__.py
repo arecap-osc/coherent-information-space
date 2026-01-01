@@ -6,11 +6,11 @@ from coherent_space_py.model.node import Node
 from coherent_space_py.model.graph import InformationalStreamGraph
 from coherent_space_py.utils.gauss import gauss_sum
 from coherent_space_py.model.enums import (
-    InformationalStreamNeuronType,
+    InformationalStreamProcessType,
     InformationalStreamNetting,
     InformationalStreamVectorDirection,
     StreamTopology,
-    StreamApplicationType,  # compat alias
+    StreamProcessType,  # compat alias
 )
 
 __all__ = [
@@ -20,8 +20,8 @@ __all__ = [
     "Node",
     "InformationalStreamGraph",
     "gauss_sum",
-    "InformationalStreamNeuronType",
-    "StreamApplicationType",  # compat alias
+    "InformationalStreamProcessType",
+    "StreamProcessType",  # compat alias
     "InformationalStreamNetting",
     "InformationalStreamVectorDirection",
     "StreamTopology"

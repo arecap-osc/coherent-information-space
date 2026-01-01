@@ -1,5 +1,5 @@
 from coherent_space_py.model.enums import (
-    StreamApplicationType, 
+    StreamProcessType, 
     InformationalStreamVectorDirection
 )
 from coherent_space_py.model.topology_rules import (
@@ -8,7 +8,7 @@ from coherent_space_py.model.topology_rules import (
 )
 
 VD = InformationalStreamVectorDirection
-SAT = StreamApplicationType
+SAT = StreamProcessType
 
 def print_hexagon(title: str, is_upstream: bool, source_vd: VD):
     print(f"\n=== {title} ===")

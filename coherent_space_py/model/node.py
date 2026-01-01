@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Tuple
 
 from coherent_space_py.model.enums import (
-    InformationalStreamNeuronType,
+    InformationalStreamProcessType,
     InformationalStreamNetting,
     InformationalStreamVectorDirection
 )
@@ -23,7 +23,7 @@ class Node:
     position: Tuple[float, float]
     
     # Tipul de "neuron" logic (fost StreamApplicationType), ex: UpstreamSelectorFunction
-    stream_application_type: InformationalStreamNeuronType
+    stream_application_type: InformationalStreamProcessType
     
     # The netting type (e.g. UpstreamEdge)
     netting: InformationalStreamNetting

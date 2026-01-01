@@ -15,7 +15,7 @@ from py_informationalstream_graph.informationalstream_graph import (
 from coherent_space_py.model.enums import (
     InformationalStreamNetting,
     InformationalStreamVectorDirection,
-    InformationalStreamNeuronType,
+    InformationalStreamProcessType,
 )
 from coherent_space_py.model.node import Node
 from coherent_space_py.model.topology_rules import (
@@ -71,43 +71,43 @@ class InfiniteCoherentGraph:
 
     def _map_app_type(
         self, netting: BuilderNetting, app_type: BuilderAppType, layer: BuilderLayer
-    ) -> InformationalStreamNeuronType:
+    ) -> InformationalStreamProcessType:
         upstream = netting in (BuilderNetting.UpstreamEdge, BuilderNetting.UpstreamVertex)
         if app_type == BuilderAppType.selector and layer == BuilderLayer.function:
             return (
-                InformationalStreamNeuronType.UpstreamSelectorFunction
+                InformationalStreamProcessType.UpstreamSelectorFunction
                 if upstream
-                else InformationalStreamNeuronType.DownstreamSelectorFunction
+                else InformationalStreamProcessType.DownstreamSelectorFunction
             )
         if app_type == BuilderAppType.selector and layer == BuilderLayer.system:
             return (
-                InformationalStreamNeuronType.UpstreamSelectorSystem
+                InformationalStreamProcessType.UpstreamSelectorSystem
                 if upstream
-                else InformationalStreamNeuronType.DownstreamSelectorSystem
+                else InformationalStreamProcessType.DownstreamSelectorSystem
             )
         if app_type == BuilderAppType.detector and layer == BuilderLayer.function:
             return (
-                InformationalStreamNeuronType.UpstreamDetectorFunction
+                InformationalStreamProcessType.UpstreamDetectorFunction
                 if upstream
-                else InformationalStreamNeuronType.DownstreamDetectorFunction
+                else InformationalStreamProcessType.DownstreamDetectorFunction
             )
         if app_type == BuilderAppType.detector and layer == BuilderLayer.system:
             return (
-                InformationalStreamNeuronType.UpstreamDetectorSystem
+                InformationalStreamProcessType.UpstreamDetectorSystem
                 if upstream
-                else InformationalStreamNeuronType.DownstreamDetectorSystem
+                else InformationalStreamProcessType.DownstreamDetectorSystem
             )
         if app_type == BuilderAppType.consumer and layer == BuilderLayer.function:
             return (
-                InformationalStreamNeuronType.UpstreamConsumerFunction
+                InformationalStreamProcessType.UpstreamConsumerFunction
                 if upstream
-                else InformationalStreamNeuronType.DownstreamConsumerFunction
+                else InformationalStreamProcessType.DownstreamConsumerFunction
             )
         if app_type == BuilderAppType.consumer and layer == BuilderLayer.system:
             return (
-                InformationalStreamNeuronType.UpstreamConsumerSystem
+                InformationalStreamProcessType.UpstreamConsumerSystem
                 if upstream
-                else InformationalStreamNeuronType.DownstreamConsumerSystem
+                else InformationalStreamProcessType.DownstreamConsumerSystem
             )
         raise ValueError(f"Unsupported application combination: {netting} {app_type} {layer}")
 
@@ -249,20 +249,20 @@ class InfiniteCoherentGraph:
             return None
         return min(filtered, key=lambda cand: abs(self._as_complex(cand.position) - origin_pos))
 
-    def _group_by_type(self, nodes: List[Node]) -> Dict[InformationalStreamNeuronType, List[Node]]:
-        grouped: Dict[InformationalStreamNeuronType, List[Node]] = {}
+    def _group_by_type(self, nodes: List[Node]) -> Dict[InformationalStreamProcessType, List[Node]]:
+        grouped: Dict[InformationalStreamProcessType, List[Node]] = {}
         for node in nodes:
             grouped.setdefault(node.stream_application_type, []).append(node)
         return grouped
 
     def _index_by_type_and_lattice(
         self, nodes: List[Node]
-    ) -> Dict[InformationalStreamNeuronType, Dict[Tuple[int, int], List[Node]]]:
+    ) -> Dict[InformationalStreamProcessType, Dict[Tuple[int, int], List[Node]]]:
         """
         Build a lattice-aware index so that, pentru fiecare centru (q, r), putem
         lega hexagonul local determinist pe aceeași pereche de coordonate.
         """
-        index: Dict[InformationalStreamNeuronType, Dict[Tuple[int, int], List[Node]]] = {}
+        index: Dict[InformationalStreamProcessType, Dict[Tuple[int, int], List[Node]]] = {}
         for node in nodes:
             type_bucket = index.setdefault(node.stream_application_type, {})
             type_bucket.setdefault(node.lattice_steps, []).append(node)

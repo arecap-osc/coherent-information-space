@@ -20,12 +20,12 @@ from typing import Dict, List, Tuple
 from coherent_space_py.model.infinite_graph import InfiniteCoherentGraph
 from coherent_space_py.model.enums import (
     InformationalStreamNetting,
-    StreamApplicationType,
+    StreamProcessType,
 )
 
 
 def summarize(nodes) -> None:
-    grouped: Dict[Tuple[InformationalStreamNetting, StreamApplicationType], List] = defaultdict(list)
+    grouped: Dict[Tuple[InformationalStreamNetting, StreamProcessType], List] = defaultdict(list)
     for node in nodes:
         grouped[(node.netting, node.stream_application_type)].append(node)
 

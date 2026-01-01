@@ -7,7 +7,7 @@ import math
 from coherent_space_py.model.enums import (
     InformationalStreamVectorDirection, 
     InformationalStreamNetting,
-    StreamApplicationType
+    StreamProcessType
 )
 from coherent_space_py.geometry.roots_of_unity import (
     get_1_root_of_12, get_2_root_of_12, get_3_root_of_12, 
@@ -56,7 +56,7 @@ class LatticeMath(ABC):
         """Returns valid nodes for the given lattice steps (q, r)."""
         pass
 
-    def _create_node(self, nid: int, pos: complex, type_enum: StreamApplicationType, vd_idx: int) -> Node:
+    def _create_node(self, nid: int, pos: complex, type_enum: StreamProcessType, vd_idx: int) -> Node:
         vd = InformationalStreamVectorDirection.CornerParity if vd_idx == 0 else InformationalStreamVectorDirection.SideParity
         
         # Determine netting dynamically based on type name
@@ -115,12 +115,12 @@ class UpstreamEdgeLattice(LatticeMath):
         # --- 1. Upstream Selector Function ---
         node_sf = None
         if real_steps == 0 and real_steps == imaginary_steps:
-             node_sf = self._create_node(0, origin, StreamApplicationType.UpstreamSelectorFunction, 0)
+             node_sf = self._create_node(0, origin, StreamProcessType.UpstreamSelectorFunction, 0)
         elif imaginary_steps == 0:
              real_gauss = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
              root1_real = get_1_root_of_12(w * real_steps)
              pos = origin + root1_real
-             node_sf = self._create_node(real_gauss + real_steps, pos, StreamApplicationType.UpstreamSelectorFunction, real_steps % 2)
+             node_sf = self._create_node(real_gauss + real_steps, pos, StreamProcessType.UpstreamSelectorFunction, real_steps % 2)
         elif real_steps + 1 >= imaginary_steps:
              real_gauss = get_n_gauss_sum(6, real_steps)
              root11_imag = get_11_root_of_12(w * imaginary_steps)
@@ -128,7 +128,7 @@ class UpstreamEdgeLattice(LatticeMath):
              nid = real_gauss + real_steps - imaginary_steps + 2
              vd_idx = (real_steps + imaginary_steps + 1) % 2 if imaginary_steps % 2 == 0 else (real_steps + imaginary_steps) % 2
              pos = origin + complex(root11_imag.real + root1_imag.real, root11_imag.imag + root1_imag.imag)
-             node_sf = self._create_node(nid, pos, StreamApplicationType.UpstreamSelectorFunction, vd_idx)
+             node_sf = self._create_node(nid, pos, StreamProcessType.UpstreamSelectorFunction, vd_idx)
         
         if node_sf: nodes.append(node_sf)
         
@@ -136,12 +136,12 @@ class UpstreamEdgeLattice(LatticeMath):
         node_cs = None
         r_cs = r * -1
         if real_steps == 0 and real_steps == r_cs:
-             node_cs = self._create_node(0, origin, StreamApplicationType.UpstreamConsumerSystem, 0)
+             node_cs = self._create_node(0, origin, StreamProcessType.UpstreamConsumerSystem, 0)
         elif r_cs == 0:
              real_gauss = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
              root1_real = get_1_root_of_12(w * real_steps)
              pos = origin + root1_real
-             node_cs = self._create_node(real_gauss + real_steps, pos, StreamApplicationType.UpstreamConsumerSystem, real_steps % 2)
+             node_cs = self._create_node(real_gauss + real_steps, pos, StreamProcessType.UpstreamConsumerSystem, real_steps % 2)
         elif real_steps + 1 >= r_cs and r_cs >= 0:
              root3_imag = get_3_root_of_12(w * r_cs)
              root1_imag = get_1_root_of_12(w * max(0, real_steps - r_cs + 1))
@@ -149,19 +149,19 @@ class UpstreamEdgeLattice(LatticeMath):
              nid = real_gauss + real_steps + r_cs + 2
              vd_idx = (real_steps + r_cs + 1) % 2
              pos = origin + complex(root3_imag.real + root1_imag.real, root3_imag.imag + root1_imag.imag)
-             node_cs = self._create_node(nid, pos, StreamApplicationType.UpstreamConsumerSystem, vd_idx)
+             node_cs = self._create_node(nid, pos, StreamProcessType.UpstreamConsumerSystem, vd_idx)
 
         if node_cs: nodes.append(node_cs)
 
         # --- 3. Upstream Detector Function ---
         node_df = None
         if real_steps == 0 and real_steps == imaginary_steps:
-             node_df = self._create_node(0, origin, StreamApplicationType.UpstreamDetectorFunction, 0)
+             node_df = self._create_node(0, origin, StreamProcessType.UpstreamDetectorFunction, 0)
         elif imaginary_steps == 0:
              real_gauss = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
              root1_real = get_1_root_of_12(w * real_steps)
              pos = origin + root1_real
-             node_df = self._create_node(real_gauss + real_steps, pos, StreamApplicationType.UpstreamDetectorFunction, real_steps % 2)
+             node_df = self._create_node(real_gauss + real_steps, pos, StreamProcessType.UpstreamDetectorFunction, real_steps % 2)
         elif real_steps + 1 >= imaginary_steps:
              if imaginary_steps < 0 and real_steps >= imaginary_steps and real_steps < imaginary_steps + abs(imaginary_steps):
                  root5_imag = get_5_root_of_12(w * abs(imaginary_steps))
@@ -171,7 +171,7 @@ class UpstreamEdgeLattice(LatticeMath):
                  vd_idx = (abs(real_steps)) % 2
                  
                  pos = origin + complex(root5_imag.real + root1_imag.real, root5_imag.imag + root1_imag.imag)
-                 node_df = self._create_node(nid, pos, StreamApplicationType.UpstreamDetectorFunction, vd_idx)
+                 node_df = self._create_node(nid, pos, StreamProcessType.UpstreamDetectorFunction, vd_idx)
         
         if node_df: nodes.append(node_df)
 
@@ -181,12 +181,12 @@ class UpstreamEdgeLattice(LatticeMath):
         q_ss = q * -1
         
         if q_ss == 0 and q_ss == r_ss:
-             node_ss = self._create_node(0, origin, StreamApplicationType.UpstreamSelectorSystem, 0)
+             node_ss = self._create_node(0, origin, StreamProcessType.UpstreamSelectorSystem, 0)
         elif r_ss == 0:
              real_gauss = get_n_gauss_sum(6, max(0, q_ss - 1)) + 1 
              root7_real = get_7_root_of_12(w * q_ss)
              pos = origin + root7_real
-             node_ss = self._create_node(real_gauss + q_ss, pos, StreamApplicationType.UpstreamSelectorSystem, q_ss % 2) 
+             node_ss = self._create_node(real_gauss + q_ss, pos, StreamProcessType.UpstreamSelectorSystem, q_ss % 2) 
         elif q_ss + 1 >= r_ss and r_ss >= 0:
              if q_ss >= r_ss: 
                  root7_imag = get_7_root_of_12(w * max(0, q_ss - r_ss))
@@ -197,7 +197,7 @@ class UpstreamEdgeLattice(LatticeMath):
                  
                  vd_idx = q_ss % 2
                  pos = origin + complex(root5_imag.real + root7_imag.real, root5_imag.imag + root7_imag.imag)
-                 node_ss = self._create_node(nid, pos, StreamApplicationType.UpstreamSelectorSystem, vd_idx)
+                 node_ss = self._create_node(nid, pos, StreamProcessType.UpstreamSelectorSystem, vd_idx)
                  
         if node_ss: nodes.append(node_ss)
 
@@ -206,12 +206,12 @@ class UpstreamEdgeLattice(LatticeMath):
         r_cf = r * -1
         
         if real_steps == 0 and real_steps == r_cf:
-             node_cf = self._create_node(0, origin, StreamApplicationType.UpstreamConsumerFunction, 0)
+             node_cf = self._create_node(0, origin, StreamProcessType.UpstreamConsumerFunction, 0)
         elif r_cf == 0:
              real_gauss = get_n_gauss_sum(6, max(0, real_steps)) - 1
              root7_real = get_7_root_of_12(w * real_steps)
              pos = origin + root7_real
-             node_cf = self._create_node(real_gauss - 2*(real_steps - 1), pos, StreamApplicationType.UpstreamConsumerFunction, real_steps % 2)
+             node_cf = self._create_node(real_gauss - 2*(real_steps - 1), pos, StreamProcessType.UpstreamConsumerFunction, real_steps % 2)
         elif real_steps + 1 >= r_cf and r_cf >= 0:
              root7_imag = get_7_root_of_12(w * max(0, real_steps - r_cf + 1))
              root9_imag = get_9_root_of_12(w * r_cf)
@@ -221,7 +221,7 @@ class UpstreamEdgeLattice(LatticeMath):
              vd_idx = (real_steps + r_cf + 1) % 2
              
              pos = origin + complex(root9_imag.real + root7_imag.real, root9_imag.imag + root7_imag.imag)
-             node_cf = self._create_node(nid, pos, StreamApplicationType.UpstreamConsumerFunction, vd_idx)
+             node_cf = self._create_node(nid, pos, StreamProcessType.UpstreamConsumerFunction, vd_idx)
 
         if node_cf: nodes.append(node_cf)
 
@@ -235,7 +235,7 @@ class UpstreamEdgeLattice(LatticeMath):
              vd_idx = (abs(real_steps) + abs(r)) % 2
              
              pos = origin + complex(root9_imag.real + root1_imag.real, root9_imag.imag + root1_imag.imag)
-             node_ds = self._create_node(nid, pos, StreamApplicationType.UpstreamDetectorSystem, vd_idx)
+             node_ds = self._create_node(nid, pos, StreamProcessType.UpstreamDetectorSystem, vd_idx)
              
         if node_ds: nodes.append(node_ds)
         
@@ -270,19 +270,19 @@ class DownstreamEdgeLattice(LatticeMath):
         # --- 1. Downstream Selector Function ---
         node_sf = None
         if real_steps == 0 and real_steps == imaginary_steps:
-             node_sf = self._create_node(0, origin, StreamApplicationType.DownstreamSelectorFunction, 0)
+             node_sf = self._create_node(0, origin, StreamProcessType.DownstreamSelectorFunction, 0)
         elif imaginary_steps == 0:
              real_gauss = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
              root6_real = get_6_root_of_12(h * real_steps)
              pos = origin + root6_real
-             node_sf = self._create_node(real_gauss, pos, StreamApplicationType.DownstreamSelectorFunction, real_steps % 2)
+             node_sf = self._create_node(real_gauss, pos, StreamProcessType.DownstreamSelectorFunction, real_steps % 2)
         elif real_steps + 1 >= imaginary_steps:
              root6_imag = get_6_root_of_12(h * max(0, real_steps - imaginary_steps + 1))
              root8_imag = get_8_root_of_12(h * imaginary_steps)
              nid = get_n_gauss_sum(6, real_steps) + imaginary_steps + 1
              vd_idx = (real_steps + imaginary_steps + 1) % 2 if imaginary_steps % 2 == 0 else (real_steps + imaginary_steps) % 2
              pos = origin + complex(root8_imag.real + root6_imag.real, root8_imag.imag + root6_imag.imag)
-             node_sf = self._create_node(nid, pos, StreamApplicationType.DownstreamSelectorFunction, vd_idx)
+             node_sf = self._create_node(nid, pos, StreamProcessType.DownstreamSelectorFunction, vd_idx)
              
         if node_sf: nodes.append(node_sf)
         
@@ -297,26 +297,26 @@ class DownstreamEdgeLattice(LatticeMath):
              vd_idx = abs(q) % 2
              
              pos = origin + complex(root8_imag.real + root12_imag.real, root8_imag.imag + root12_imag.imag)
-             node_cs = self._create_node(nid, pos, StreamApplicationType.DownstreamConsumerSystem, vd_idx)
+             node_cs = self._create_node(nid, pos, StreamProcessType.DownstreamConsumerSystem, vd_idx)
              
         if node_cs: nodes.append(node_cs)
 
         # --- 3. Downstream Detector Function ---
         node_df = None
         if q == 0 and q == r:
-             node_df = self._create_node(0, origin, StreamApplicationType.DownstreamDetectorFunction, 0)
+             node_df = self._create_node(0, origin, StreamProcessType.DownstreamDetectorFunction, 0)
         elif r == 0:
              real_gauss = get_n_gauss_sum(6, max(0, q))
              root12_real = get_12_root_of_12(h * q)
              pos = origin + root12_real
-             node_df = self._create_node(real_gauss - 3*q + 1, pos, StreamApplicationType.DownstreamDetectorFunction, q % 2)
+             node_df = self._create_node(real_gauss - 3*q + 1, pos, StreamProcessType.DownstreamDetectorFunction, q % 2)
         elif q + 1 >= r:
              root10_imag = get_10_root_of_12(h * r)
              root12_imag = get_12_root_of_12(h * max(0, q - r + 1))
              nid = get_n_gauss_sum(6, max(0, q + 1)) - 3*(q+1) - r + 1
              vd_idx = (q + r + 1) % 2
              pos = origin + complex(root10_imag.real + root12_imag.real, root10_imag.imag + root12_imag.imag)
-             node_df = self._create_node(nid, pos, StreamApplicationType.DownstreamDetectorFunction, vd_idx)
+             node_df = self._create_node(nid, pos, StreamProcessType.DownstreamDetectorFunction, vd_idx)
 
         if node_df: nodes.append(node_df)
 
@@ -325,18 +325,18 @@ class DownstreamEdgeLattice(LatticeMath):
         r_ss = r * -1
         
         if q == 0 and q == r_ss:
-             node_ss = self._create_node(0, origin, StreamApplicationType.DownstreamSelectorSystem, 0)
+             node_ss = self._create_node(0, origin, StreamProcessType.DownstreamSelectorSystem, 0)
         elif r_ss == 0:
              real_gauss = get_n_gauss_sum(6, max(0, q))
              root12_real = get_12_root_of_12(h * q)
-             node_ss = self._create_node(real_gauss - 3*q + 1, origin + root12_real, StreamApplicationType.DownstreamSelectorSystem, q % 2)
+             node_ss = self._create_node(real_gauss - 3*q + 1, origin + root12_real, StreamProcessType.DownstreamSelectorSystem, q % 2)
         elif q + 1 >= r_ss:
              root2_imag = get_2_root_of_12(h * r_ss)
              root12_imag = get_12_root_of_12(h * max(0, q - r_ss + 1))
              nid = get_n_gauss_sum(6, max(0, q + 1)) - 3*(q+1) + r_ss + 1
              vd_idx = (q + 1) % 2
              pos = origin + complex(root2_imag.real + root12_imag.real, root2_imag.imag + root12_imag.imag)
-             node_ss = self._create_node(nid, pos, StreamApplicationType.DownstreamSelectorSystem, vd_idx)
+             node_ss = self._create_node(nid, pos, StreamProcessType.DownstreamSelectorSystem, vd_idx)
              
         if node_ss: nodes.append(node_ss)
 
@@ -351,7 +351,7 @@ class DownstreamEdgeLattice(LatticeMath):
              vd_idx = abs(q + r) % 2
              
              pos = origin + complex(root4_imag.real + root12_imag.real, root4_imag.imag + root12_imag.imag)
-             node_cf = self._create_node(nid, pos, StreamApplicationType.DownstreamConsumerFunction, vd_idx)
+             node_cf = self._create_node(nid, pos, StreamProcessType.DownstreamConsumerFunction, vd_idx)
              
         if node_cf: nodes.append(node_cf)
 
@@ -361,11 +361,11 @@ class DownstreamEdgeLattice(LatticeMath):
         r_ds = r * -1
         
         if q_ds == 0 and q_ds == r_ds:
-             node_ds = self._create_node(0, origin, StreamApplicationType.DownstreamDetectorSystem, 0)
+             node_ds = self._create_node(0, origin, StreamProcessType.DownstreamDetectorSystem, 0)
         elif r_ds == 0:
              real_gauss = get_n_gauss_sum(6, max(0, q_ds - 1)) + 1
              root6_real = get_6_root_of_12(h * q_ds)
-             node_ds = self._create_node(real_gauss, origin + root6_real, StreamApplicationType.DownstreamDetectorSystem, q_ds % 2)
+             node_ds = self._create_node(real_gauss, origin + root6_real, StreamProcessType.DownstreamDetectorSystem, q_ds % 2)
         elif q_ds >= r_ds:
              root4_imag = get_4_root_of_12(h * r_ds)
              root6_imag = get_6_root_of_12(h * max(0, q_ds - r_ds))
@@ -375,7 +375,7 @@ class DownstreamEdgeLattice(LatticeMath):
              vd_idx = (q_ds + r_ds) % 2
              
              pos = origin + complex(root4_imag.real + root6_imag.real, root4_imag.imag + root6_imag.imag)
-             node_ds = self._create_node(nid, pos, StreamApplicationType.DownstreamDetectorSystem, vd_idx)
+             node_ds = self._create_node(nid, pos, StreamProcessType.DownstreamDetectorSystem, vd_idx)
              
         if node_ds: nodes.append(node_ds)
         
@@ -400,19 +400,19 @@ class UpstreamVertexLattice(LatticeMath):
         # --- 1. Upstream Selector Function ---
         node_sf = None
         if real_steps == 0 and real_steps == imaginary_steps:
-             node_sf = self._create_node(0, origin, StreamApplicationType.UpstreamSelectorFunction, 0)
+             node_sf = self._create_node(0, origin, StreamProcessType.UpstreamSelectorFunction, 0)
         elif imaginary_steps == 0:
              real_gauss = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
              root12_real = get_12_root_of_12(h * real_steps)
              pos = origin + root12_real
-             node_sf = self._create_node(real_gauss + real_steps, pos, StreamApplicationType.UpstreamSelectorFunction, real_steps % 2)
+             node_sf = self._create_node(real_gauss + real_steps, pos, StreamProcessType.UpstreamSelectorFunction, real_steps % 2)
         elif real_steps + 1 >= imaginary_steps:
              root10_imag = get_10_root_of_12(h * imaginary_steps)
              root12_imag = get_12_root_of_12(h * max(0, real_steps - imaginary_steps + 1))
              nid = get_n_gauss_sum(6, real_steps) + real_steps - imaginary_steps + 2
              vd_idx = (real_steps + imaginary_steps + 1) % 2 if imaginary_steps % 2 == 0 else (real_steps + imaginary_steps) % 2
              pos = origin + complex(root10_imag.real + root12_imag.real, root10_imag.imag + root12_imag.imag)
-             node_sf = self._create_node(nid, pos, StreamApplicationType.UpstreamSelectorFunction, vd_idx)
+             node_sf = self._create_node(nid, pos, StreamProcessType.UpstreamSelectorFunction, vd_idx)
              
         if node_sf: nodes.append(node_sf)
         
@@ -420,19 +420,19 @@ class UpstreamVertexLattice(LatticeMath):
         node_cs = None
         r_cs = r * -1
         if real_steps == 0 and real_steps == r_cs:
-             node_cs = self._create_node(0, origin, StreamApplicationType.UpstreamConsumerSystem, 0)
+             node_cs = self._create_node(0, origin, StreamProcessType.UpstreamConsumerSystem, 0)
         elif r_cs == 0:
              real_gauss = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
              root12_real = get_12_root_of_12(h * real_steps)
              pos = origin + root12_real
-             node_cs = self._create_node(real_gauss + real_steps, pos, StreamApplicationType.UpstreamConsumerSystem, real_steps % 2)
+             node_cs = self._create_node(real_gauss + real_steps, pos, StreamProcessType.UpstreamConsumerSystem, real_steps % 2)
         elif real_steps + 1 >= r_cs and r_cs >= 0:
              root2_imag = get_2_root_of_12(h * r_cs)
              root12_imag = get_12_root_of_12(h * max(0, real_steps - r_cs + 1))
              nid = get_n_gauss_sum(6, real_steps) + real_steps + r_cs + 2
              vd_idx = (real_steps + r_cs + 1) % 2
              pos = origin + complex(root2_imag.real + root12_imag.real, root2_imag.imag + root12_imag.imag)
-             node_cs = self._create_node(nid, pos, StreamApplicationType.UpstreamConsumerSystem, vd_idx)
+             node_cs = self._create_node(nid, pos, StreamProcessType.UpstreamConsumerSystem, vd_idx)
 
         if node_cs: nodes.append(node_cs)
 
@@ -446,7 +446,7 @@ class UpstreamVertexLattice(LatticeMath):
              vd_idx = abs(real_steps) % 2
              
              pos = origin + complex(root4_imag.real + root12_imag.real, root4_imag.imag + root12_imag.imag)
-             node_df = self._create_node(nid, pos, StreamApplicationType.UpstreamDetectorFunction, vd_idx)
+             node_df = self._create_node(nid, pos, StreamProcessType.UpstreamDetectorFunction, vd_idx)
              
         if node_df: nodes.append(node_df)
 
@@ -456,12 +456,12 @@ class UpstreamVertexLattice(LatticeMath):
         r_ss = r * -1
         
         if q_ss == 0 and q_ss == r_ss:
-             node_ss = self._create_node(0, origin, StreamApplicationType.UpstreamSelectorSystem, 0)
+             node_ss = self._create_node(0, origin, StreamProcessType.UpstreamSelectorSystem, 0)
         elif r_ss == 0:
              real_gauss = get_n_gauss_sum(6, max(0, q_ss)) - 1
              root6_real = get_6_root_of_12(h * q_ss)
              pos = origin + root6_real
-             node_ss = self._create_node(real_gauss - 2*(q_ss - 1), pos, StreamApplicationType.UpstreamSelectorSystem, q_ss % 2)
+             node_ss = self._create_node(real_gauss - 2*(q_ss - 1), pos, StreamProcessType.UpstreamSelectorSystem, q_ss % 2)
         elif q_ss >= r_ss and r_ss >= 0:
              root4_imag = get_4_root_of_12(h * r_ss)
              root6_imag = get_6_root_of_12(h * max(0, q_ss - r_ss))
@@ -471,7 +471,7 @@ class UpstreamVertexLattice(LatticeMath):
              vd_idx = q_ss % 2
              
              pos = origin + complex(root4_imag.real + root6_imag.real, root4_imag.imag + root6_imag.imag)
-             node_ss = self._create_node(nid, pos, StreamApplicationType.UpstreamSelectorSystem, vd_idx)
+             node_ss = self._create_node(nid, pos, StreamProcessType.UpstreamSelectorSystem, vd_idx)
 
         if node_ss: nodes.append(node_ss)
 
@@ -480,12 +480,12 @@ class UpstreamVertexLattice(LatticeMath):
         r_cf = r * -1
         
         if real_steps == 0 and real_steps == r_cf:
-             node_cf = self._create_node(0, origin, StreamApplicationType.UpstreamConsumerFunction, 0)
+             node_cf = self._create_node(0, origin, StreamProcessType.UpstreamConsumerFunction, 0)
         elif r_cf == 0:
              real_gauss = get_n_gauss_sum(6, max(0, real_steps)) - 1
              root6_real = get_6_root_of_12(h * real_steps)
              pos = origin + root6_real
-             node_cf = self._create_node(real_gauss - 2*(real_steps - 1), pos, StreamApplicationType.UpstreamConsumerFunction, real_steps % 2)
+             node_cf = self._create_node(real_gauss - 2*(real_steps - 1), pos, StreamProcessType.UpstreamConsumerFunction, real_steps % 2)
         elif real_steps + 1 >= r_cf and r_cf >= 0:
              root8_imag = get_8_root_of_12(h * r_cf)
              root6_imag = get_6_root_of_12(h * max(0, real_steps - r_cf + 1))
@@ -493,7 +493,7 @@ class UpstreamVertexLattice(LatticeMath):
              nid = imaginary_gauss - 2*real_steps + r_cf
              vd_idx = (real_steps + r_cf + 1) % 2
              pos = origin + complex(root8_imag.real + root6_imag.real, root8_imag.imag + root6_imag.imag)
-             node_cf = self._create_node(nid, pos, StreamApplicationType.UpstreamConsumerFunction, vd_idx)
+             node_cf = self._create_node(nid, pos, StreamProcessType.UpstreamConsumerFunction, vd_idx)
 
         if node_cf: nodes.append(node_cf)
 
@@ -508,7 +508,7 @@ class UpstreamVertexLattice(LatticeMath):
              vd_idx = (abs(real_steps) + abs(r)) % 2
              
              pos = origin + complex(root8_imag.real + root12_imag.real, root8_imag.imag + root12_imag.imag)
-             node_ds = self._create_node(nid, pos, StreamApplicationType.UpstreamDetectorSystem, vd_idx)
+             node_ds = self._create_node(nid, pos, StreamProcessType.UpstreamDetectorSystem, vd_idx)
              
         if node_ds: nodes.append(node_ds)
         
@@ -542,19 +542,19 @@ class DownstreamVertexLattice(LatticeMath):
         # --- 1. Downstream Selector Function ---
         node_sf = None
         if real_steps == 0 and real_steps == imaginary_steps:
-             node_sf = self._create_node(0, origin, StreamApplicationType.DownstreamSelectorFunction, 0)
+             node_sf = self._create_node(0, origin, StreamProcessType.DownstreamSelectorFunction, 0)
         elif imaginary_steps == 0:
              real_gauss = get_n_gauss_sum(6, max(0, real_steps - 1)) + 1
              root7_real = get_7_root_of_12(w * real_steps)
              pos = origin + root7_real
-             node_sf = self._create_node(real_gauss, pos, StreamApplicationType.DownstreamSelectorFunction, real_steps % 2)
+             node_sf = self._create_node(real_gauss, pos, StreamProcessType.DownstreamSelectorFunction, real_steps % 2)
         elif real_steps + 1 >= imaginary_steps:
              root9_imag = get_9_root_of_12(w * imaginary_steps)
              root7_imag = get_7_root_of_12(w * max(0, real_steps - imaginary_steps + 1))
              nid = get_n_gauss_sum(6, real_steps) + imaginary_steps + 1
              vd_idx = (real_steps + imaginary_steps + 1) % 2 if imaginary_steps % 2 == 0 else (real_steps + imaginary_steps) % 2
              pos = origin + complex(root9_imag.real + root7_imag.real, root9_imag.imag + root7_imag.imag)
-             node_sf = self._create_node(nid, pos, StreamApplicationType.DownstreamSelectorFunction, vd_idx)
+             node_sf = self._create_node(nid, pos, StreamProcessType.DownstreamSelectorFunction, vd_idx)
              
         if node_sf: nodes.append(node_sf)
         
@@ -568,26 +568,26 @@ class DownstreamVertexLattice(LatticeMath):
              nid = imaginary_gauss - 2*r + q + 1
              vd_idx = abs(q) % 2
              pos = origin + complex(root9_imag.real + root1_imag.real, root9_imag.imag + root1_imag.imag)
-             node_cs = self._create_node(nid, pos, StreamApplicationType.DownstreamConsumerSystem, vd_idx)
+             node_cs = self._create_node(nid, pos, StreamProcessType.DownstreamConsumerSystem, vd_idx)
              
         if node_cs: nodes.append(node_cs)
         
         # --- 3. Downstream Detector Function ---
         node_df = None
         if q == 0 and q == r:
-             node_df = self._create_node(0, origin, StreamApplicationType.DownstreamDetectorFunction, 0)
+             node_df = self._create_node(0, origin, StreamProcessType.DownstreamDetectorFunction, 0)
         elif r == 0:
              real_gauss = get_n_gauss_sum(6, max(0, q))
              root1_real = get_1_root_of_12(w * q)
              pos = origin + root1_real
-             node_df = self._create_node(real_gauss - 3*q + 1, pos, StreamApplicationType.DownstreamDetectorFunction, q % 2)
+             node_df = self._create_node(real_gauss - 3*q + 1, pos, StreamProcessType.DownstreamDetectorFunction, q % 2)
         elif q + 1 >= r:
              root11_imag = get_11_root_of_12(w * r)
              root1_imag = get_1_root_of_12(w * max(0, q - r + 1))
              nid = get_n_gauss_sum(6, max(0, q + 1)) - 3*(q+1) - r + 1
              vd_idx = (q + r + 1) % 2
              pos = origin + complex(root11_imag.real + root1_imag.real, root11_imag.imag + root1_imag.imag)
-             node_df = self._create_node(nid, pos, StreamApplicationType.DownstreamDetectorFunction, vd_idx)
+             node_df = self._create_node(nid, pos, StreamProcessType.DownstreamDetectorFunction, vd_idx)
              
         if node_df: nodes.append(node_df)
         
@@ -597,18 +597,18 @@ class DownstreamVertexLattice(LatticeMath):
         r_ss = r * -1
         
         if q_ss == 0 and q_ss == r_ss:
-             node_ss = self._create_node(0, origin, StreamApplicationType.DownstreamSelectorSystem, 0)
+             node_ss = self._create_node(0, origin, StreamProcessType.DownstreamSelectorSystem, 0)
         elif r_ss == 0:
              real_gauss = get_n_gauss_sum(6, max(0, q_ss)) - 1
              root1_real = get_1_root_of_12(w * q_ss)
-             node_ss = self._create_node(real_gauss - 3*q_ss + 1, origin + root1_real, StreamApplicationType.DownstreamSelectorSystem, q_ss % 2)
+             node_ss = self._create_node(real_gauss - 3*q_ss + 1, origin + root1_real, StreamProcessType.DownstreamSelectorSystem, q_ss % 2)
         elif q_ss + 1 >= r_ss:
              root3_imag = get_3_root_of_12(w * r_ss)
              root1_imag = get_1_root_of_12(w * max(0, q_ss - r_ss + 1))
              nid = get_n_gauss_sum(6, max(0, q_ss + 1)) - 3*(q_ss+1) + r_ss + 1
              vd_idx = (q_ss + 1) % 2
              pos = origin + complex(root3_imag.real + root1_imag.real, root3_imag.imag + root1_imag.imag)
-             node_ss = self._create_node(nid, pos, StreamApplicationType.DownstreamSelectorSystem, vd_idx)
+             node_ss = self._create_node(nid, pos, StreamProcessType.DownstreamSelectorSystem, vd_idx)
              
         if node_ss: nodes.append(node_ss)
         
@@ -624,7 +624,7 @@ class DownstreamVertexLattice(LatticeMath):
              vd_idx = abs(q + r) % 2
              
              pos = origin + complex(root5_imag.real + root1_imag.real, root5_imag.imag + root1_imag.imag)
-             node_cf = self._create_node(nid, pos, StreamApplicationType.DownstreamConsumerFunction, vd_idx)
+             node_cf = self._create_node(nid, pos, StreamProcessType.DownstreamConsumerFunction, vd_idx)
              
         if node_cf: nodes.append(node_cf)
         
@@ -634,11 +634,11 @@ class DownstreamVertexLattice(LatticeMath):
         r_ds = r * -1
         
         if q_ds == 0 and q_ds == r_ds:
-             node_ds = self._create_node(0, origin, StreamApplicationType.DownstreamDetectorSystem, 0)
+             node_ds = self._create_node(0, origin, StreamProcessType.DownstreamDetectorSystem, 0)
         elif r_ds == 0:
              real_gauss = get_n_gauss_sum(6, max(0, q_ds - 1)) + 1
              root7_real = get_7_root_of_12(w * q_ds)
-             node_ds = self._create_node(real_gauss - r_ds + 1, origin + root7_real, StreamApplicationType.DownstreamDetectorSystem, int(q_ds % 2))
+             node_ds = self._create_node(real_gauss - r_ds + 1, origin + root7_real, StreamProcessType.DownstreamDetectorSystem, int(q_ds % 2))
         elif q_ds >= r_ds:
              root5_imag = get_5_root_of_12(w * r_ds)
              root7_imag = get_7_root_of_12(w * max(0, q_ds - r_ds))
@@ -648,7 +648,7 @@ class DownstreamVertexLattice(LatticeMath):
              vd_idx = (q_ds + r_ds) % 2
              
              pos = origin + complex(root5_imag.real + root7_imag.real, root5_imag.imag + root7_imag.imag)
-             node_ds = self._create_node(nid, pos, StreamApplicationType.DownstreamDetectorSystem, vd_idx)
+             node_ds = self._create_node(nid, pos, StreamProcessType.DownstreamDetectorSystem, vd_idx)
              
         if node_ds: nodes.append(node_ds)
         

@@ -8,7 +8,7 @@ from coherent_space_py.utils.gauss import gauss_sum
 from coherent_space_py.model.node import Node
 from coherent_space_py.model.graph import InformationalStreamGraph
 from coherent_space_py.model.enums import (
-    StreamApplicationType,
+    StreamProcessType,
     InformationalStreamNetting,
     InformationalStreamVectorDirection
 )
@@ -68,13 +68,13 @@ class CoherentSpaceBuilder:
         idx = (radius + index_on_ring + self.type_offset) % 3
         return self.TYPE_CYCLE[idx]
 
-    def _get_application_types(self, role: str) -> List[StreamApplicationType]:
+    def _get_application_types(self, role: str) -> List[StreamProcessType]:
         """
         Returns the 4 application types valid for a given geometric role (S/D/C).
         e.g. Role "Selector" -> [UpstreamSelectorFunction, UpstreamSelectorSystem, Downstream..., Downstream...]
         """
         types = []
-        for t in StreamApplicationType:
+        for t in StreamProcessType:
             # t.value looks like "UpstreamSelectorFunction"
             if role in t.value:
                 types.append(t)

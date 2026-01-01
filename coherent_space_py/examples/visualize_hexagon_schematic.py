@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Polygon
 from coherent_space_py.model.enums import (
-    StreamApplicationType, 
+    StreamProcessType, 
     InformationalStreamVectorDirection
 )
 from coherent_space_py.model.topology_rules import (
@@ -11,7 +11,7 @@ from coherent_space_py.model.topology_rules import (
 )
 
 VD = InformationalStreamVectorDirection
-SAT = StreamApplicationType
+SAT = StreamProcessType
 
 def visualize_schematics():
     # Setup Figure with 3x2 subplots (Row 3 for Superposition)

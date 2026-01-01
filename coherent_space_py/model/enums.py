@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
-class InformationalStreamNeuronType(str, Enum):
+class InformationalStreamProcessType(str, Enum):
     """
     Reprezintă cei 12 neuroni logici din spațiul coerent (fost "StreamApplicationType").
     Păstrăm aceeași enumerare, dar cu o semantică orientată pe neuron logic, nu "aplicație".
@@ -24,7 +24,7 @@ class InformationalStreamNeuronType(str, Enum):
         return self.value
 
 # Backward-compat alias while restul codului este migrat.
-StreamApplicationType = InformationalStreamNeuronType
+StreamProcessType = InformationalStreamProcessType
 
 class InformationalStreamNetting(str, Enum):
     """

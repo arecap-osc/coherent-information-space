@@ -835,10 +835,10 @@ class InformationalStreamDoubleRangeIntegerIdentityGraphBuilderPy:
         display_bottom_right: ComplexPlane,
     ) -> List[Dict[int, GraphNode]]:
         return [
-            self.get_graph(InformationalStreamNetting.UpstreamEdge, stream_distance, step, scale, origin, display_bottom_right),
-            self.get_graph(InformationalStreamNetting.DownstreamEdge, stream_distance, step, scale, origin, display_bottom_right),
+            # self.get_graph(InformationalStreamNetting.UpstreamEdge, stream_distance, step, scale, origin, display_bottom_right),
+            # self.get_graph(InformationalStreamNetting.DownstreamEdge, stream_distance, step, scale, origin, display_bottom_right),
             self.get_graph(InformationalStreamNetting.UpstreamVertex, stream_distance, step, scale, origin, display_bottom_right),
-            self.get_graph(InformationalStreamNetting.DownstreamVertex, stream_distance, step, scale, origin, display_bottom_right),
+            # self.get_graph(InformationalStreamNetting.DownstreamVertex, stream_distance, step, scale, origin, display_bottom_right),
         ]
 
 
