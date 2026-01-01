@@ -307,7 +307,7 @@ def draw_cell(
 
     # Upstream arrows: keep all (full rules), parity varies per cell via vd_cell
     if up_nodes:
-        draw_arrows(up_nodes, get_upstream_connections, origin_vd=origin_vd) #, target_filter=upstream_filter_targets)
+        draw_arrows(up_nodes, get_upstream_connections, origin_vd=origin_vd, target_filter=upstream_filter_targets)
 
     # Build SPT -> (x,y) positions for this cell (needed by star overlay)
     spt_positions = {}
@@ -320,18 +320,19 @@ def draw_cell(
         cell_vd=vd_cell,
     )
 
-    # draw_star_overlay(
-    #     ax,
-    #     sat_positions=spt_positions,
-    #     intersection_positions=inter_pos,
-    #     edges=star_edges,
-    #     origin_vd=origin_vd,
-    #     cell_vd=vd_cell,
-    #     draw_intersection_nodes=True,
-    #     draw_seg_edges=True,
-    #     draw_skip_edges=True,
-    #     draw_full_edges=True,
-    # )
+    # print("Star edges len:", len(star_edges))
+    draw_star_overlay(
+        ax,
+        sat_positions=spt_positions,
+        intersection_positions=inter_pos,
+        edges=star_edges,
+        origin_vd=origin_vd,
+        cell_vd=vd_cell,
+        draw_intersection_nodes=False,
+        draw_seg_edges=True,
+        draw_skip_edges=False,
+        draw_full_edges=False,
+    )
 
 
 # -----------------------------
@@ -509,7 +510,7 @@ if __name__ == "__main__":
 
     # Level 1 (3x denser)
     visualize_uv_level(
-        origin_vd=VD.CornerParity,
+        origin_vd=VD.SideParity,
         base_radius=1,
         stream_distance=3.0,
         step=1,
@@ -529,7 +530,7 @@ if __name__ == "__main__":
 
     # UE Level 1 (3x denser)
     visualize_ue_level(
-        origin_vd=VD.CornerParity,
+        origin_vd=VD.SideParity,
         base_radius=1,
         stream_distance=3.0,
         step=1,

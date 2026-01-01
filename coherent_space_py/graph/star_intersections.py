@@ -7,7 +7,7 @@ import math
 
 from coherent_space_py.model.enums import InformationalStreamProcessType as SPT
 from coherent_space_py.model.enums import InformationalStreamVectorDirection as VD
-from coherent_space_py.model.star_rules import star_dir, star_intersection_spts
+from coherent_space_py.model.star_rules import star_intersections
 
 
 # -----------------------------
@@ -104,43 +104,38 @@ def build_star_overlay(
     edges: List[EdgeSpec] = []
 
     for diag_id, (i0, i1) in enumerate(DIAGONALS):
+        # u0,u1 are the upstream endpoints of the diagonal
         u0 = UP_RING[i0]
         u1 = UP_RING[i1]
 
-        # Align (u0 -> u1) with star_rules orientation for this (origin_vd, cell_vd)
-        d = star_dir(origin_vd, cell_vd, u0, u1)
-        if d < 0:
+        I1_spt, I2_spt, forward = star_intersections(origin_vd, cell_vd, u0, u1)
+
+        # If forward is False, reverse geometry endpoints so we always build u0->u1 consistently
+        if not forward:
             u0, u1 = u1, u0
-            i0, i1 = i1, i0  # only if you use i0/i1 later; safe to keep
 
         p0 = sat_positions[u0]
         p1 = sat_positions[u1]
 
-        # Intersection points at 1/3 and 2/3 along the diagonal
-        I1 = _lerp(p0, p1, 1.0 / 3.0)
-        I2 = _lerp(p0, p1, 2.0 / 3.0)
+        I1 = _lerp(p0, p1, 1.0/3.0)
+        I2 = _lerp(p0, p1, 2.0/3.0)
 
-        # Deterministic intersection SPTs from star_rules (NO geometry guessing)
-        spt_I1, spt_I2 = star_intersection_spts(u0, u1)
-
-        nI1 = NodeId(sat=spt_I1, diag=diag_id, frac=1)
-        nI2 = NodeId(sat=spt_I2, diag=diag_id, frac=2)
+        nI1 = NodeId(sat=I1_spt, diag=diag_id, frac=1)
+        nI2 = NodeId(sat=I2_spt, diag=diag_id, frac=2)
 
         inter_pos[nI1] = I1
         inter_pos[nI2] = I2
 
-        # 6 vectors per diagonal (your model)
-        edges.append(EdgeSpec(src=_as_node_id(u0), dst=nI1, dim=Fraction(1, 3), kind="seg"))
-        edges.append(EdgeSpec(src=nI1, dst=nI2, dim=Fraction(1, 3), kind="seg"))
-        edges.append(EdgeSpec(src=nI2, dst=_as_node_id(u1), dim=Fraction(1, 3), kind="seg"))
+        # --- build the 6 edges per diagonal (36 total on 6 diagonals)
+        edges.append(EdgeSpec(src=_as_node_id(u0), dst=nI1, dim=Fraction(1,3), kind="seg"))
+        edges.append(EdgeSpec(src=nI1, dst=nI2, dim=Fraction(1,3), kind="seg"))
+        edges.append(EdgeSpec(src=nI2, dst=_as_node_id(u1), dim=Fraction(1,3), kind="seg"))
 
-        edges.append(EdgeSpec(src=_as_node_id(u0), dst=nI2, dim=Fraction(2, 3), kind="skip"))
+        # skip vectors (2/3)
+        edges.append(EdgeSpec(src=_as_node_id(u0), dst=nI2, dim=Fraction(2,3), kind="skip"))
+        edges.append(EdgeSpec(src=nI1, dst=_as_node_id(u1), dim=Fraction(2,3), kind="skip"))
 
-        # Keep this edge if you still want the "I1 -> downstream base" jump.
-        # NOTE: direction cannot be decided by star_dir when sat is same; we keep default orientation in draw.
-        edges.append(EdgeSpec(src=nI1, dst=_as_node_id(spt_I1), dim=Fraction(2, 3), kind="skip"))
-
-        edges.append(EdgeSpec(src=_as_node_id(u0), dst=_as_node_id(u1), dim=Fraction(1, 1), kind="full"))
+        edges.append(EdgeSpec(src=_as_node_id(u0), dst=_as_node_id(u1), dim=Fraction(1,1), kind="full"))
 
     # NOTE: "base 6 edges" are NOT added here. You can add them outside depending on what you define as base.
     return inter_pos, edges
@@ -188,20 +183,20 @@ def draw_star_overlay(
         if e.kind == "full" and not draw_full_edges:
             continue
 
-        a_sat = sat_of(e.src)
-        b_sat = sat_of(e.dst)
+        # a_sat = sat_of(e.src)
+        # b_sat = sat_of(e.dst)
 
-        if a_sat != b_sat:
-            d = star_dir(origin_vd, cell_vd, a_sat, b_sat)
-            if d < 0:
-                src, dst = e.dst, e.src
-            else:
-                src, dst = e.src, e.dst
-        else:
-            # Same SAT type: keep the builder direction (NodeId vs base NodeId)
-            src, dst = e.src, e.dst
-        a = pos_of(src)
-        b = pos_of(dst)
+        # if a_sat != b_sat:
+        #     d = star_dir(origin_vd, cell_vd, a_sat, b_sat)
+        #     if d < 0:
+        #         src, dst = e.dst, e.src
+        #     else:
+        #         src, dst = e.src, e.dst
+        # else:
+        #     # Same SAT type: keep the builder direction (NodeId vs base NodeId)
+        #     src, dst = e.src, e.dst
+        a = pos_of(e.src)
+        b = pos_of(e.dst)
 
         ax.annotate(
             "",

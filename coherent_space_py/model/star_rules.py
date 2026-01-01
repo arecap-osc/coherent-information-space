@@ -1,176 +1,98 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from fractions import Fraction
-from typing import Dict, List, Tuple, Set
+from typing import Dict, Tuple, List
 
 from coherent_space_py.model.enums import InformationalStreamProcessType as SPT
 from coherent_space_py.model.enums import InformationalStreamVectorDirection as VD
-from coherent_space_py.model.topology_rules import get_upstream_connections, get_downstream_connections
+from coherent_space_py.model.topology_rules import get_upstream_connections
 
-# ---------------------------------
-# Star template: upstream ring order
-# ---------------------------------
+# --------------------------------------------
+# Diagonals in the upstream "Star of David"
+# --------------------------------------------
+# Two triangles:
+#   Function triangle:  USF-UDF-UCF
+#   System triangle:    USS-UDS-UCS
+#
+# We will treat a diagonal as an ORDERED pair (u0 -> u1)
+# and define the two intersection SPTs at 1/3 and 2/3:
+#   u0 --(1/3)-> I1 --(1/3)-> I2 --(1/3)-> u1
+#
+# Your provided mapping (corner-mode baseline):
+#   (USF,UDF)->(DDS,DSF)
+#   (USF,UCF)->(DCF,DSS)
+#   (UDF,UCF)->(DCS,DDF)
+#   (USS,UDS)->(DCS,DSF)
+#   (UCS,USS)->(DDF,DSS)
+#   (UDS,UCS)->(DDS,DCF)
+#
+# --------------------------------------------
 
-UP_RING: List[SPT] = [
-    SPT.UpstreamSelectorFunction,
-    SPT.UpstreamConsumerSystem,
-    SPT.UpstreamDetectorFunction,
-    SPT.UpstreamSelectorSystem,
-    SPT.UpstreamConsumerFunction,
-    SPT.UpstreamDetectorSystem,
-]
+Diagonal = Tuple[SPT, SPT]
+Intersections = Tuple[SPT, SPT]
 
-# Two triangles inside the star (indices in UP_RING)
-TRI_A = (0, 2, 4)  # (SF, DF, CF)
-TRI_B = (1, 3, 5)  # (CS, SS, DS)
+BASE_CORNER_MAP: Dict[Diagonal, Intersections] = {
+    (SPT.UpstreamDetectorFunction, SPT.UpstreamSelectorFunction): (SPT.DownstreamSelectorSystem, SPT.DownstreamConsumerFunction),
+    (SPT.UpstreamSelectorFunction, SPT.UpstreamConsumerFunction): (SPT.DownstreamDetectorSystem, SPT.DownstreamSelectorFunction),
+    (SPT.UpstreamConsumerFunction, SPT.UpstreamDetectorFunction): (SPT.DownstreamConsumerSystem, SPT.DownstreamDetectorFunction),
 
-def _tri_edges(tri: Tuple[int, int, int]) -> List[Tuple[int, int]]:
-    a, b, c = tri
-    return [(a, b), (b, c), (c, a)]
+    (SPT.UpstreamSelectorSystem,   SPT.UpstreamDetectorSystem):   (SPT.DownstreamConsumerSystem, SPT.DownstreamSelectorFunction),
+    (SPT.UpstreamSelectorSystem,   SPT.UpstreamConsumerSystem):   (SPT.DownstreamDetectorFunction, SPT.DownstreamSelectorSystem),
+    (SPT.UpstreamConsumerSystem,   SPT.UpstreamDetectorSystem):   (SPT.DownstreamDetectorSystem, SPT.DownstreamConsumerFunction),
+}
 
-# 6 "big diagonals" = edges of the two triangles
-DIAGONALS: List[Tuple[SPT, SPT]] = [
-    (UP_RING[i0], UP_RING[i1]) for (i0, i1) in (_tri_edges(TRI_A) + _tri_edges(TRI_B))
-]
+DIAGONALS: List[Diagonal] = list(BASE_CORNER_MAP.keys())
 
-# ---------------------------------
-# Helper: role extraction
-# ---------------------------------
-
-def _role(s: SPT) -> str:
-    n = s.name
-    if "Selector" in n: return "Selector"
-    if "Detector" in n: return "Detector"
-    if "Consumer" in n: return "Consumer"
-    raise ValueError(n)
-
-def _fs(s: SPT) -> str:
-    n = s.name
-    if "Function" in n: return "Function"
-    if "System" in n: return "System"
-    raise ValueError(n)
-
-def _mk_down(role: str, fs: str) -> SPT:
-    # Downstream + Role + Function/System
-    name = f"Downstream{role}{fs}"
-    return getattr(SPT, name)
-
-def _mk_up(role: str, fs: str) -> SPT:
-    name = f"Upstream{role}{fs}"
-    return getattr(SPT, name)
-
-# ---------------------------------
-# YOUR KEY RULE: which downstream SPTs are the "two intersections" on a diagonal
-# ---------------------------------
-
-def star_intersection_spts(a_up: SPT, b_up: SPT) -> Tuple[SPT, SPT]:
+def is_vertex_mode(origin_vd: VD, cell_vd: VD) -> bool:
     """
-    Return (I1_spt, I2_spt) for the diagonal between a_up and b_up.
-
-    Design goal:
-      - Deterministic, fast, no geometry.
-      - Must match your model: e.g. USF--UCF intersects DDS and DSF.
-
-    Current convention (easy to change in one place):
-      - a_up and b_up are both in the same triangle (both Function OR both System)
-      - missing role = the third role not in {role(a), role(b)}
-      - I1 = Downstream(missing_role, opposite FS)
-      - I2 = Downstream(role(a), same FS)
-
-    Example:
-      a=UpstreamSelectorFunction, b=UpstreamConsumerFunction
-        roles = {Selector, Consumer} => missing Detector
-        fs = Function => opposite System
-        I1 = DownstreamDetectorSystem  (DDS)  ✅ matches your example
-        I2 = DownstreamSelectorFunction (DSF) ✅ matches your example (anchored to a)
+    Match your upstream topology_rules meaning:
+    vertex-mode = (origin CornerParity and cell CornerParity)
     """
-    ra, rb = _role(a_up), _role(b_up)
-    fsa, fsb = _fs(a_up), _fs(b_up)
-    if fsa != fsb:
-        raise ValueError("Star diagonal endpoints must belong to same triangle (same FS).")
+    return (origin_vd == VD.CornerParity and cell_vd == VD.CornerParity)
 
-    roles = {"Selector", "Detector", "Consumer"}
-    missing = list(roles - {ra, rb})[0]
-    opposite_fs = "System" if fsa == "Function" else "Function"
-
-    I1 = _mk_down(missing, opposite_fs)
-    I2 = _mk_down(ra, fsa)
-    return (I1, I2)
-
-# ---------------------------------
-# Direction resolution: use topology_rules where applicable
-# ---------------------------------
-
-def _ring_dir(origin_vd: VD, cell_vd: VD, a: SPT, b: SPT) -> int:
+def canonical_forward(origin_vd: VD, cell_vd: VD, u0: SPT, u1: SPT) -> bool:
     """
-    Return +1 if a->b per topology_rules, -1 if b->a, else 0.
+    Decide if the 'forward' direction should be u0->u1.
+    We use upstream topology_rules to align with the ring's directed space:
+      if u1 is in targets(u0) => forward
+      elif u0 is in targets(u1) => reverse
+      else => keep u0->u1 (should not happen for star diagonals if model is coherent)
     """
-    if "Upstream" in a.name:
-        if b in set(get_upstream_connections(a, cell_vd, origin_vd)): return +1
+    if u1 in set(get_upstream_connections(u0, cell_vd, origin_vd)):
+        return True
+    if u0 in set(get_upstream_connections(u1, cell_vd, origin_vd)):
+        return False
+    return True
+
+def star_intersections(origin_vd: VD, cell_vd: VD, u0: SPT, u1: SPT) -> Tuple[SPT, SPT, bool]:
+    """
+    Return (I1, I2, forward_is_u0_to_u1).
+
+    - Uses your BASE_CORNER_MAP as the semantic definition.
+    - If the diagonal is requested reversed (u1,u0), we swap intersections (I2,I1).
+    - If parity implies a global direction inversion, we invert using canonical_forward() alignment.
+
+    NOTE:
+      Right now we assume BASE_CORNER_MAP is the correct semantic mapping.
+      Parity effects are handled by direction alignment, not by changing which intersections exist.
+    """
+    # Find mapping for (u0,u1) or (u1,u0)
+    if (u0, u1) in BASE_CORNER_MAP:
+        I1, I2 = BASE_CORNER_MAP[(u0, u1)]
+        base_forward = True
+    elif (u1, u0) in BASE_CORNER_MAP:
+        # reversed diagonal: swap intersections
+        I2, I1 = BASE_CORNER_MAP[(u1, u0)]
+        base_forward = True  # because we already adapted to u0->u1 by swapping
     else:
-        if b in set(get_downstream_connections(a, cell_vd, origin_vd)): return +1
+        raise KeyError(f"Missing star diagonal mapping for {u0.name} <-> {u1.name}")
 
-    if "Upstream" in b.name:
-        if a in set(get_upstream_connections(b, cell_vd, origin_vd)): return -1
-    else:
-        if a in set(get_downstream_connections(b, cell_vd, origin_vd)): return -1
+    # Align direction with upstream ring space
+    forward = canonical_forward(origin_vd, cell_vd, u0, u1)
 
-    return 0
+    # If forward is False, we are conceptually going u1->u0.
+    # For geometry building we will swap endpoints and also swap intersections.
+    if not forward:
+        return (I2, I1, False)
 
-# ---------------------------------
-# Build the 36 star edges as SAT->SAT rules
-# ---------------------------------
-
-# STAR_RULES[(origin_vd, cell_vd)][src] = set(dsts)
-STAR_RULES: Dict[Tuple[VD, VD], Dict[SPT, Set[SPT]]] = {}
-
-def build_star_rules(origin_vd: VD, cell_vd: VD) -> Dict[SPT, Set[SPT]]:
-    """
-    Build the full 36 directed edges (6 diagonals × 6 vectors/diagonal) as SPT->SPT.
-    """
-    rules: Dict[SPT, Set[SPT]] = {}
-
-    def add(u: SPT, v: SPT):
-        rules.setdefault(u, set()).add(v)
-
-    for (a_up, b_up) in DIAGONALS:
-        # Decide base diagonal orientation using topology_rules if possible.
-        d = _ring_dir(origin_vd, cell_vd, a_up, b_up)
-        if d < 0:
-            a_up, b_up = b_up, a_up  # swap to keep (a->b) consistent
-
-        I1, I2 = star_intersection_spts(a_up, b_up)
-
-        # 6 vectors per diagonal (your definition):
-        # dim 1/3 segments:
-        add(a_up, I1)
-        add(I1, I2)
-        add(I2, b_up)
-
-        # dim 2/3:
-        add(a_up, I2)
-
-        # dim 1:
-        add(a_up, b_up)
-
-    return rules
-
-def init_star_rules():
-    for o in (VD.CornerParity, VD.SideParity):
-        for c in (VD.CornerParity, VD.SideParity):
-            STAR_RULES[(o, c)] = build_star_rules(o, c)
-
-init_star_rules()
-
-def star_dir(origin_vd: VD, cell_vd: VD, a: SPT, b: SPT) -> int:
-    """
-    Star direction oracle:
-      +1 if a->b is in STAR_RULES,
-      -1 if b->a is in STAR_RULES,
-       0 otherwise.
-    """
-    m = STAR_RULES.get((origin_vd, cell_vd), {})
-    if b in m.get(a, set()): return +1
-    if a in m.get(b, set()): return -1
-    return 0
+    return (I1, I2, True)
